@@ -2,64 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://github.com/valepipi/valepipi.github.io/pt-br/authors/</loc>
+    <loc>https://valepipi.github.io/pt-br/authors/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://github.com/valepipi/valepipi.github.io/authors/"
+                href="https://valepipi.github.io/authors/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="https://github.com/valepipi/valepipi.github.io/pt-br/authors/"
+                href="https://valepipi.github.io/pt-br/authors/"
                 />
   </url><url>
-    <loc>https://github.com/valepipi/valepipi.github.io/pt-br/categories/</loc>
+    <loc>https://valepipi.github.io/pt-br/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://github.com/valepipi/valepipi.github.io/categories/"
+                href="https://valepipi.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="https://github.com/valepipi/valepipi.github.io/pt-br/categories/"
+                href="https://valepipi.github.io/pt-br/categories/"
                 />
   </url><url>
-    <loc>https://github.com/valepipi/valepipi.github.io/pt-br/series/</loc>
+    <loc>https://valepipi.github.io/pt-br/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://github.com/valepipi/valepipi.github.io/series/"
+                href="https://valepipi.github.io/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="https://github.com/valepipi/valepipi.github.io/pt-br/series/"
+                href="https://valepipi.github.io/pt-br/series/"
                 />
   </url><url>
-    <loc>https://github.com/valepipi/valepipi.github.io/pt-br/tags/</loc>
+    <loc>https://valepipi.github.io/pt-br/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://github.com/valepipi/valepipi.github.io/tags/"
+                href="https://valepipi.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="https://github.com/valepipi/valepipi.github.io/pt-br/tags/"
+                href="https://valepipi.github.io/pt-br/tags/"
                 />
   </url><url>
-    <loc>https://github.com/valepipi/valepipi.github.io/pt-br/</loc>
+    <loc>https://valepipi.github.io/pt-br/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://github.com/valepipi/valepipi.github.io/"
+                href="https://valepipi.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="https://github.com/valepipi/valepipi.github.io/pt-br/"
+                href="https://valepipi.github.io/pt-br/"
                 />
   </url>
 </urlset>
