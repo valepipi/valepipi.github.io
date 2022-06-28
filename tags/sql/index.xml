@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on Ping&#39;s Blog</title>
+    <link>https://valepipi.github.io/tags/sql/</link>
+    <description>Recent content in sql on Ping&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 27 Jun 2022 18:57:30 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL题目</title>
+      <link>https://valepipi.github.io/posts/sql%E9%A2%98%E7%9B%AE/</link>
+      <pubDate>Mon, 27 Jun 2022 18:57:30 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/sql%E9%A2%98%E7%9B%AE/</guid>
+      <description>题目1：⛺查询并计算留存率留存率：留存用户数/总用户数 留存用户：第一天登录，且第二天也登录的用户 四舍五入保留3位小数：round(原始数字，3) 根据得到后一天的日期：DATE_ADD(当天日期yy-mm-dd, INTERVAL 1 DAY) 登录的第一天： min(date) Select round(count(distinct user_id)*1.0/(select count(distinct user_id) from login) ,3) from login where (user_id,date) in (select user_id, DATE_ADD(min(date),INTERVAL 1 DAY) from login group by user_id) </description>
+    </item>
+    
+  </channel>
+</rss>

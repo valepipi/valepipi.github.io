@@ -2,19 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://valepipi.github.io/authors/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://valepipi.github.io/pt-br/authors/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/authors/"
-                />
+    <loc>https://valepipi.github.io/categories/blog/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
   </url><url>
     <loc>https://valepipi.github.io/categories/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -27,6 +19,7 @@
                 />
   </url><url>
     <loc>https://valepipi.github.io/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -36,6 +29,52 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://valepipi.github.io/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/posts/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/tags/reading/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/tags/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="https://valepipi.github.io/pt-br/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/posts/three/</loc>
+    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/tags/sql/</loc>
+    <lastmod>2022-06-27T18:57:30+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/posts/sql%E9%A2%98%E7%9B%AE/</loc>
+    <lastmod>2022-06-27T18:57:30+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/tags/tech/</loc>
+    <lastmod>2022-06-27T18:21:48+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2022-06-27T18:21:48+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/authors/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="https://valepipi.github.io/pt-br/authors/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/authors/"
                 />
   </url><url>
     <loc>https://valepipi.github.io/series/</loc>
@@ -48,18 +87,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://valepipi.github.io/series/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://valepipi.github.io/pt-br/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/tags/"
                 />
   </url>
 </urlset>
