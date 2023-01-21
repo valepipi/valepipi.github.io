@@ -3,10 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://valepipi.github.io/categories/blog/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
   </url><url>
     <loc>https://valepipi.github.io/categories/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -18,8 +18,14 @@
                 href="https://valepipi.github.io/categories/"
                 />
   </url><url>
+    <loc>https://valepipi.github.io/tags/leetcode/</loc>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/posts/leetcode/</loc>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
+  </url><url>
     <loc>https://valepipi.github.io/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -32,13 +38,10 @@
                 />
   </url><url>
     <loc>https://valepipi.github.io/posts/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
-  </url><url>
-    <loc>https://valepipi.github.io/tags/reading/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
   </url><url>
     <loc>https://valepipi.github.io/tags/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
+    <lastmod>2023-01-21T19:57:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
@@ -49,9 +52,6 @@
                 hreflang="en"
                 href="https://valepipi.github.io/tags/"
                 />
-  </url><url>
-    <loc>https://valepipi.github.io/posts/three/</loc>
-    <lastmod>2022-06-28T18:25:34+08:00</lastmod>
   </url><url>
     <loc>https://valepipi.github.io/tags/sql/</loc>
     <lastmod>2022-06-27T18:57:30+08:00</lastmod>
