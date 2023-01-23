@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://valepipi.github.io/projects/</loc>
+    <lastmod>2023-01-23T18:11:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/zh-cn/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/projects/"
+                />
+  </url><url>
     <loc>https://valepipi.github.io/contact/</loc>
     <lastmod>2023-01-23T18:11:28+08:00</lastmod>
     <xhtml:link
@@ -13,6 +26,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://valepipi.github.io/contact/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/about/</loc>
+    <lastmod>2023-01-23T18:11:21+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/zh-cn/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/about/"
                 />
   </url><url>
     <loc>https://valepipi.github.io/posts/leetcode/</loc>
