@@ -8,14 +8,14 @@
     <language>en</language>
     <lastBuildDate>Sat, 21 Jan 2023 19:57:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LeetCode Hot100 题解</title>
+      <title>🐰LeetCode Hot100 题解</title>
       <link>https://valepipi.github.io/posts/leetcode/</link>
       <pubDate>Sat, 21 Jan 2023 19:57:59 +0800</pubDate>
       
       <guid>https://valepipi.github.io/posts/leetcode/</guid>
-      <description>🐰 Leetcode Hot 1001. 两数之和给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
+      <description>😃数学问题1. 两数之和给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。
-输入：nums = [2,7,11,15], target = 9 输出：[0,1] 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。 class Solution: def twoSum(self, nums: List[int], target: int) -&amp;gt; List[int]: &amp;#34;&amp;#34;&amp;#34; 1. 暴力查找O(n^2) 2. 利用dict反查O(n) &amp;#34;&amp;#34;&amp;#34; # n = len(nums) # for i in range(n): # for j in range(i + 1, n): # if nums[i] + nums[j] == target: # return [i ,j] # return [] dict = {} for i in range( len(nums) ): if target - nums[i] not in dict: dict[nums[i]] = i #建立反查表 else: return [dict[target-nums[i]], i] </description>
+输入：nums = [2,7,11,15], target = 9 输出：[0,1] 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。 class Solution: def twoSum(self, nums: List[int], target: int) -&amp;gt; List[int]: &amp;#34;&amp;#34;&amp;#34; 1. 暴力查找O(n^2) 2. 利用dict反查O(n) &amp;#34;&amp;#34;&amp;#34; # n = len(nums) # for i in range(n): # for j in range(i + 1, n): # if nums[i] + nums[j] == target: # return [i ,j] # return [] dict = {} for i in range( len(nums) ): if target - nums[i] not in dict: dict[nums[i]] = i #建立反查表 else: return [dict[target-nums[i]], i] 88.</description>
     </item>
     
     <item>
