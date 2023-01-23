@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tech on 游泳小狗</title>
+    <link>https://valepipi.github.io/zh-cn/tags/tech/</link>
+    <description>Recent content in tech on 游泳小狗</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 27 Jun 2022 18:21:48 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/zh-cn/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建个人博客</title>
+      <link>https://valepipi.github.io/zh-cn/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 27 Jun 2022 18:21:48 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/zh-cn/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>Hugo+Github搭建博客 参考链接：
+Github Pages + Hugo 搭建个人博客
+配置主题：
+Hugo-Coder主题配置
+美化：
+插入emoji
+更新博客： 先 cd 到 myblog/content 目录下，然后写 md 文章 写好以后，cd 到myblog 下执行 hugo 命令重新生成 public 文件 再cd 进 myblog/public 中，然后执行 git 提交命令提交到 github 即可 # 1.新建一篇文章，在网站根目录：H:\HugoWebsite\blog hugo new posts/测试博客.md # 2.在目录 H:\HugoWebsite\blog\content\posts 下找到对应文件进行修改 # 3.本地预览, http://localhost:1313/ hugo server -D # 4.构建 Hugo 网站 hugo # 5.切换到目录 H:\HugoWebsite\blog\public ，提交修改至本地库 git add . git commit -m &amp;#39;commit info&amp;#39; # 6.将修改推至远程库 git push -u origin master </description>
+    </item>
+    
+  </channel>
+</rss>

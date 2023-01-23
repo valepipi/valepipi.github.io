@@ -8,6 +8,15 @@
     <language>en</language>
     <lastBuildDate>Sat, 21 Jan 2023 19:57:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Contact</title>
+      <link>https://valepipi.github.io/contact/</link>
+      <pubDate>Mon, 23 Jan 2023 18:11:28 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/contact/</guid>
+      <description>📧Contact me: savoki163@163.com or jasminewang936@gmail.com</description>
+    </item>
+    
+    <item>
       <title>🐰LeetCode Hot100 题解</title>
       <link>https://valepipi.github.io/posts/leetcode/</link>
       <pubDate>Sat, 21 Jan 2023 19:57:59 +0800</pubDate>
@@ -40,6 +49,35 @@ Hugo-Coder主题配置
 美化：
 插入emoji
 更新博客： 先 cd 到 myblog/content 目录下，然后写 md 文章 写好以后，cd 到myblog 下执行 hugo 命令重新生成 public 文件 再cd 进 myblog/public 中，然后执行 git 提交命令提交到 github 即可 # 1.新建一篇文章，在网站根目录：H:\HugoWebsite\blog hugo new posts/测试博客.md # 2.在目录 H:\HugoWebsite\blog\content\posts 下找到对应文件进行修改 # 3.本地预览, http://localhost:1313/ hugo server -D # 4.构建 Hugo 网站 hugo # 5.切换到目录 H:\HugoWebsite\blog\public ，提交修改至本地库 git add . git commit -m &amp;#39;commit info&amp;#39; # 6.将修改推至远程库 git push -u origin master </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://valepipi.github.io/backup/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://valepipi.github.io/backup/about/</guid>
+      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+Hugo makes use of a variety of open source projects including:
+https://github.com/yuin/goldmark https://github.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://valepipi.github.io/backup/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://valepipi.github.io/backup/contact/</guid>
+      <description>Follow me, @johndoe.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://valepipi.github.io/backup/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://valepipi.github.io/backup/projects/</guid>
+      <description>Nothing to see here&amp;hellip; Move along!</description>
     </item>
     
   </channel>

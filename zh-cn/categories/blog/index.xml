@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on 游泳小狗</title>
+    <link>https://valepipi.github.io/zh-cn/categories/blog/</link>
+    <description>Recent content in blog on 游泳小狗</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 21 Jan 2023 19:57:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/zh-cn/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🐰LeetCode Hot100 题解</title>
+      <link>https://valepipi.github.io/zh-cn/posts/leetcode/</link>
+      <pubDate>Sat, 21 Jan 2023 19:57:59 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/zh-cn/posts/leetcode/</guid>
+      <description>😃数学问题1. 两数之和给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。
+输入：nums = [2,7,11,15], target = 9 输出：[0,1] 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。 class Solution: def twoSum(self, nums: List[int], target: int) -&amp;gt; List[int]: &amp;#34;&amp;#34;&amp;#34; 1. 暴力查找O(n^2) 2. 利用dict反查O(n) &amp;#34;&amp;#34;&amp;#34; # n = len(nums) # for i in range(n): # for j in range(i + 1, n): # if nums[i] + nums[j] == target: # return [i ,j] # return [] dict = {} for i in range( len(nums) ): if target - nums[i] not in dict: dict[nums[i]] = i #建立反查表 else: return [dict[target-nums[i]], i] 88.</description>
+    </item>
+    
+    <item>
+      <title>SQL题目</title>
+      <link>https://valepipi.github.io/zh-cn/posts/sql%E9%A2%98%E7%9B%AE/</link>
+      <pubDate>Mon, 27 Jun 2022 18:57:30 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/zh-cn/posts/sql%E9%A2%98%E7%9B%AE/</guid>
+      <description>题目1：⛺查询并计算留存率留存率：留存用户数/总用户数 留存用户：第一天登录，且第二天也登录的用户 四舍五入保留3位小数：round(原始数字，3) 根据得到后一天的日期：DATE_ADD(当天日期yy-mm-dd, INTERVAL 1 DAY) 登录的第一天： min(date) Select round(count(distinct user_id)*1.0/(select count(distinct user_id) from login) ,3) from login where (user_id,date) in (select user_id, DATE_ADD(min(date),INTERVAL 1 DAY) from login group by user_id) </description>
+    </item>
+    
+    <item>
+      <title>搭建个人博客</title>
+      <link>https://valepipi.github.io/zh-cn/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 27 Jun 2022 18:21:48 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/zh-cn/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>Hugo+Github搭建博客 参考链接：
+Github Pages + Hugo 搭建个人博客
+配置主题：
+Hugo-Coder主题配置
+美化：
+插入emoji
+更新博客： 先 cd 到 myblog/content 目录下，然后写 md 文章 写好以后，cd 到myblog 下执行 hugo 命令重新生成 public 文件 再cd 进 myblog/public 中，然后执行 git 提交命令提交到 github 即可 # 1.新建一篇文章，在网站根目录：H:\HugoWebsite\blog hugo new posts/测试博客.md # 2.在目录 H:\HugoWebsite\blog\content\posts 下找到对应文件进行修改 # 3.本地预览, http://localhost:1313/ hugo server -D # 4.构建 Hugo 网站 hugo # 5.切换到目录 H:\HugoWebsite\blog\public ，提交修改至本地库 git add . git commit -m &amp;#39;commit info&amp;#39; # 6.将修改推至远程库 git push -u origin master </description>
+    </item>
+    
+  </channel>
+</rss>
