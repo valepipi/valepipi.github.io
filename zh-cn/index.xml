@@ -76,33 +76,5 @@ Hugo-Coder主题配置
 更新博客： 先 cd 到 myblog/content 目录下，然后写 md 文章 写好以后，cd 到myblog 下执行 hugo 命令重新生成 public 文件 再cd 进 myblog/public 中，然后执行 git 提交命令提交到 github 即可 # 1.新建一篇文章，在网站根目录：H:\HugoWebsite\blog hugo new posts/测试博客.md # 2.在目录 H:\HugoWebsite\blog\content\posts 下找到对应文件进行修改 # 3.本地预览, http://localhost:1313/ hugo server -D # 4.构建 Hugo 网站 hugo # 5.切换到目录 H:\HugoWebsite\blog\public ，提交修改至本地库 git add . git commit -m &amp;#39;commit info&amp;#39; # 6.将修改推至远程库 git push -u origin master </description>
     </item>
     
-    <item>
-      <title>关于我</title>
-      <link>https://valepipi.github.io/zh-cn/backup/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://valepipi.github.io/zh-cn/backup/about/</guid>
-      <description>Escrito em Go, Hugo é um gerador de sites estáticos de código aberto disponível sobre a licença Apache Licence 2.0. O Hugo suporta TOML, YAML e JSON como arquivos de dados, Markdown e HTML como arquivos de conteúdo, e usa shortcodes para adicionar conteúdos ricos. Outras funcionalidades notaveis são taxonomias, modo multilingual, processamento de imagens, formatos de saída customizaveis, minificação de HTML/CSS/JS e suporte a fluxos SASS/SCSS.
-O Hugo faz o uso de vários projetos de código aberto incluíndo:</description>
-    </item>
-    
-    <item>
-      <title>联系我</title>
-      <link>https://valepipi.github.io/zh-cn/backup/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://valepipi.github.io/zh-cn/backup/contact/</guid>
-      <description>Me siga em @joaoninguem.</description>
-    </item>
-    
-    <item>
-      <title>项目</title>
-      <link>https://valepipi.github.io/zh-cn/backup/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://valepipi.github.io/zh-cn/backup/projects/</guid>
-      <description>Nada para ver aqui.. Circulando!</description>
-    </item>
-    
   </channel>
 </rss>

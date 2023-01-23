@@ -184,32 +184,6 @@
                 href="https://valepipi.github.io/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
                 />
   </url><url>
-    <loc>https://valepipi.github.io/backup/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/zh-cn/backup/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/backup/about/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/backup/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/zh-cn/backup/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/backup/"
-                />
-  </url><url>
     <loc>https://valepipi.github.io/authors/</loc>
     <xhtml:link
                 rel="alternate"
@@ -220,30 +194,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://valepipi.github.io/authors/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/backup/contact/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/zh-cn/backup/contact/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/backup/contact/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/backup/projects/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/zh-cn/backup/projects/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/backup/projects/"
                 />
   </url><url>
     <loc>https://valepipi.github.io/series/</loc>
