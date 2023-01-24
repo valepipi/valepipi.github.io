@@ -6,7 +6,17 @@
     <description>Recent content in tech on Ping&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 27 Jun 2022 18:21:48 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Jan 2023 22:00:57 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cuda编程</title>
+      <link>https://valepipi.github.io/posts/cuda/</link>
+      <pubDate>Tue, 24 Jan 2023 22:00:57 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/cuda/</guid>
+      <description>Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 </description>
+    </item>
+    
     <item>
       <title>搭建个人博客</title>
       <link>https://valepipi.github.io/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net/; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+
+
+
+<meta name="author" content="游泳小狗">
+<meta name="description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 ">
+<meta name="keywords" content="博客，个人">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="cuda编程"/>
+<meta name="twitter:description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 "/>
+
+<meta property="og:title" content="cuda编程" />
+<meta property="og:description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://valepipi.github.io/zh-cn/posts/cuda/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-24T22:00:57+08:00" />
+<meta property="article:modified_time" content="2023-01-24T22:00:57+08:00" /><meta property="og:site_name" content="游泳小狗" />
+
+
+
+
+  <title>游泳小狗</title>
+
+  
+  <link rel="canonical" href="https://valepipi.github.io/zh-cn/posts/cuda/">
+  
+
+  <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.6b1a4fbc48955b72aea7913e43fabeb45e8bc120da5aa41b598dd33adcac4b59.css" integrity="sha256-axpPvEiVW3Kup5E&#43;Q/q&#43;tF6LwSDaWqQbWY3TOtysS1k=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css" integrity="sha256-OeQafxa9&#43;MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+   
+
+
+
+
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+  
+
+  <meta name="generator" content="Hugo 0.101.0" />
+
+
+  
+
+</head>
+
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-dark">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/zh-cn">
+      游泳小狗
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/projects/">爱好</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/contact/">联系我</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://valepipi.github.io/posts/cuda/">英文</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://valepipi.github.io/zh-cn/posts/cuda/">
+              cuda编程
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-01-24T22:00:57&#43;08:00">
+                January 24, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/blog/">blog</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/tech/">tech</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="cuda并行编程">
+  Cuda并行编程
+  <a class="heading-link" href="#cuda%e5%b9%b6%e8%a1%8c%e7%bc%96%e7%a8%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr>
+<h2 id="cuda存储结构">
+  Cuda存储结构
+  <a class="heading-link" href="#cuda%e5%ad%98%e5%82%a8%e7%bb%93%e6%9e%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><img src="/images/cuda-memory.png" alt="cuda-memory"></p>
+<ul>
+<li>Global memory： 可读可写，最大最慢，所有Block共享，通常所说<em>32G的GPU</em>指的是global memory=32G</li>
+<li>Constant memory: 只读，所有Block共享</li>
+<li>Texture memory: 只读，所有Block共享</li>
+</ul>
+<blockquote>
+<p>GPU通过以上三种memory与Host上的memory交互  <strong>cudaMemcpy()</strong></p>
+</blockquote>
+<ul>
+<li>Shared memory: 可读可写，很快，较小，一个block内的Thread共享</li>
+<li>Local memory: 可读可写，很快，很小，Thread专用</li>
+<li>Registers: 可读可写，很快，很小，Thread专用</li>
+</ul>
+<hr>
+<h2 id="cuda线程结构">
+  Cuda线程结构
+  <a class="heading-link" href="#cuda%e7%ba%bf%e7%a8%8b%e7%bb%93%e6%9e%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><img src="/images/cuda-thread.png" alt="cuda-thread"></p>
+<ul>
+<li>Grid:一组线程块(block)</li>
+<li>block：一组线程(thread)</li>
+<li>thread</li>
+</ul>
+<hr>
+<h2 id="cuda编程模型的关键术语">
+  Cuda编程模型的关键术语
+  <a class="heading-link" href="#cuda%e7%bc%96%e7%a8%8b%e6%a8%a1%e5%9e%8b%e7%9a%84%e5%85%b3%e9%94%ae%e6%9c%af%e8%af%ad">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ul>
+<li>host: CPU</li>
+<li>device: GPU</li>
+<li>host memory: 系统的内存</li>
+<li>device memory：gpu卡上的存储器</li>
+<li>kernels: GPU函数，由host发出，由device执行</li>
+<li>device function: GPU函数，device执行，并且只能被device调用</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js"></script>
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2022 -
+    
+    2023
+     游泳小狗 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+  
+  <script src="/js/coder.min.236049395dc3682fb2719640872958e12f1f24067bb09c327b233e6290c7edac.js" integrity="sha256-I2BJOV3DaC&#43;ycZZAhylY4S8fJAZ7sJwyeyM&#43;YpDH7aw="></script>
+  
+
+  
+
+  
+
+  <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//cdn.usefathom.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  <script async defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script>
+
+
+  <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+  
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+
+  <script type="application/javascript">
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.example.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'ABCDE']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=gid"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'gid');
+</script>
+
+
+  <script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="connectionString",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", 
+    
+    
+    
+    crossOrigin: "anonymous", 
+    
+    cfg: { 
+        connectionString: "connectionstring"
+         
+    }});
+    </script>    
+
+</body>
+
+</html>

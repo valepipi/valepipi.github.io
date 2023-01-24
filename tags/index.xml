@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Ping&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Jan 2023 19:57:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Jan 2023 22:00:57 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tech</title>
+      <link>https://valepipi.github.io/tags/tech/</link>
+      <pubDate>Tue, 24 Jan 2023 22:00:57 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/tags/tech/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>LeetCode</title>
       <link>https://valepipi.github.io/tags/leetcode/</link>
@@ -22,15 +31,6 @@
       <pubDate>Mon, 27 Jun 2022 18:57:30 +0800</pubDate>
       
       <guid>https://valepipi.github.io/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tech</title>
-      <link>https://valepipi.github.io/tags/tech/</link>
-      <pubDate>Mon, 27 Jun 2022 18:21:48 +0800</pubDate>
-      
-      <guid>https://valepipi.github.io/tags/tech/</guid>
       <description></description>
     </item>
     
