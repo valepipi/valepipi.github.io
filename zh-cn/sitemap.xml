@@ -4,6 +4,16 @@
   <url>
     <loc>https://valepipi.github.io/categories/blog/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/categories/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/categories/blog/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/categories/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
@@ -20,9 +30,29 @@
   </url><url>
     <loc>https://valepipi.github.io/posts/cuda/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/cuda/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/cuda/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/tags/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
@@ -39,6 +69,16 @@
   </url><url>
     <loc>https://valepipi.github.io/tags/tech/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/tech/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/tech/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
@@ -55,27 +95,107 @@
   </url><url>
     <loc>https://valepipi.github.io/projects/</loc>
     <lastmod>2023-01-23T18:09:07+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/projects/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/contact/</loc>
     <lastmod>2023-01-23T18:07:56+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/contact/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/about/</loc>
     <lastmod>2023-01-23T18:07:44+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/about/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/leetcode/</loc>
     <lastmod>2023-01-21T19:57:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/leetcode/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/leetcode/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/tags/leetcode/</loc>
     <lastmod>2023-01-21T19:57:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/leetcode/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/leetcode/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/tags/sql/</loc>
     <lastmod>2022-06-27T18:57:30+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/sql/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/sql/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/sql%E9%A2%98%E7%9B%AE/</loc>
     <lastmod>2022-06-27T18:57:30+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/sql%E9%A2%98%E7%9B%AE/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/sql%E9%A2%98%E7%9B%AE/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-06-27T18:21:48+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/authors/</loc>
     <xhtml:link

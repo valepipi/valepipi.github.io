@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tech on Ping&#39;s Blog</title>
+    <link>https://valepipi.github.io/en/tags/tech/</link>
+    <description>Recent content in tech on Ping&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Jan 2023 22:00:57 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cuda编程</title>
+      <link>https://valepipi.github.io/en/posts/cuda/</link>
+      <pubDate>Tue, 24 Jan 2023 22:00:57 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/cuda/</guid>
+      <description>Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 </description>
+    </item>
+    
+    <item>
+      <title>搭建个人博客</title>
+      <link>https://valepipi.github.io/en/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 27 Jun 2022 18:21:48 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>Hugo+Github搭建博客 参考链接：
+Github Pages + Hugo 搭建个人博客
+配置主题：
+Hugo-Coder主题配置
+美化：
+插入emoji
+更新博客： 先 cd 到 myblog/content 目录下，然后写 md 文章 写好以后，cd 到myblog 下执行 hugo 命令重新生成 public 文件 再cd 进 myblog/public 中，然后执行 git 提交命令提交到 github 即可 # 1.新建一篇文章，在网站根目录：H:\HugoWebsite\blog hugo new posts/测试博客.md # 2.在目录 H:\HugoWebsite\blog\content\posts 下找到对应文件进行修改 # 3.本地预览, http://localhost:1313/ hugo server -D # 4.构建 Hugo 网站 hugo # 5.切换到目录 H:\HugoWebsite\blog\public ，提交修改至本地库 git add . git commit -m &amp;#39;commit info&amp;#39; # 6.将修改推至远程库 git push -u origin master </description>
+    </item>
+    
+  </channel>
+</rss>
