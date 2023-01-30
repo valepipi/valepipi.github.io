@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://valepipi.github.io/categories/blog/</loc>
-    <lastmod>2023-01-24T22:00:57+08:00</lastmod>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://valepipi.github.io/categories/</loc>
-    <lastmod>2023-01-24T22:00:57+08:00</lastmod>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -27,6 +27,57 @@
                 hreflang="zh-cn"
                 href="https://valepipi.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://valepipi.github.io/tags/cnn/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/posts/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/tags/reram/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/posts/reram/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/tags/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2023-01-30T14:45:42+08:00</lastmod>
   </url><url>
     <loc>https://valepipi.github.io/posts/cuda/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
@@ -41,32 +92,6 @@
                 href="https://valepipi.github.io/posts/cuda/"
                 />
   </url><url>
-    <loc>https://valepipi.github.io/posts/</loc>
-    <lastmod>2023-01-24T22:00:57+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/posts/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/tags/</loc>
-    <lastmod>2023-01-24T22:00:57+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/tags/"
-                />
-  </url><url>
     <loc>https://valepipi.github.io/tags/tech/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>
     <xhtml:link
@@ -78,19 +103,6 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://valepipi.github.io/tags/tech/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/</loc>
-    <lastmod>2023-01-24T22:00:57+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/"
                 />
   </url><url>
     <loc>https://valepipi.github.io/projects/</loc>

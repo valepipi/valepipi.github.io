@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ReRAM on 游泳小狗</title>
+    <link>https://valepipi.github.io/tags/reram/</link>
+    <description>Recent content in ReRAM on 游泳小狗</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Jan 2023 16:06:16 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/reram/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ReRAM存算一体加速CNN</title>
+      <link>https://valepipi.github.io/posts/reram/</link>
+      <pubDate>Mon, 30 Jan 2023 16:06:16 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/reram/</guid>
+      <description>ReRAM器件特性ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。
+存储模式VS计算模式：一般的，ReRAM 阵列在进行计算操作时需要将所有的输入端口打开。
+优势可作为存储元件，将数据以电阻/电导的形式储存在器件中；
+可以依据欧姆定律作为模拟计算元件，实现电导与电压相乘的运算。而 ReRAM交叉阵列结构使得同一列的输出电流能够直接在位线上汇聚，与乘累加运算相匹配，凭借这种原理 ReRAM 阵列可以直接在存储本地实现矩阵-向量乘法运算，突破了传统 CPU 存算分离的架构。
+缺点多值存储不稳定：目前 ReRAM 器件工艺还不成熟，多阻态之间的阈值区间间隔不大，导致 ReRAM 作为多阻态器件不稳定，目前已有 的基于 ReRAM 的神经网络研究都是将 ReRAM 当作**单比特器件(SLC)**来使用
+写入比读取开销大得多：不同于传统存储器件，ReRAM 的阻 变机制导致其读写操作的延时和能耗严重不均衡，对于 ReRAM 多值器件来说，写 操作所需的时间长、输入电压大，写操作的延时和能耗是读操作的 10 倍以上。
+ReRAM加速器与其他模块的关系：
+ReRAM加速神经网络的关键问题不能直接支持超大规模卷积神经网络(如，三维神经网络)的高能效运算： 相比于二维卷积神经网络，三维卷积神经网络需要的参数量和训练所需的内存容量呈指数倍增长，而将三维卷积神经网络映射到二维 ReRAM 阵列会使阵列面积大幅增加，从而导致串扰等现象更加严重，影响算法的精度。 包含以下两个关键问题： 如何将 卷积核运算转换为适合 ReRAM 计算结构处理的矩阵-向量乘法运算，并使得该转 换引入尽可能少的额外数据传输代价 如何高能效的将多比特神经网络权重值存储到单比特 ReRAM 器件 CNN中运算的大量数据迁移CNN末端的全连接层：需要读取大量的权重矩阵，并与该层的输入向量进行矩阵-向量乘法运算。(得到的输出向量既可直接作为识别结果输出， 又可以通过非线性神经元函数作为下一个全连接层的输入向量。)
+CNN中的卷积核运算(占比95%以上)：由于卷积核的每一个元素都是训练得到的神经网络参数，因此卷积核运算中需要反复从存储数据中读取卷积核参数，并与输入特征图进行卷积运算。
+CNN卷积核运算映射到二维ReRAM卷积核运算：将两个三维矩阵中的对应元素进行乘加运算；如果将两个三维矩阵按照相同顺序进行完全地展开，那么卷积运算就可以看作为 向量的内积运算。
+基于矩阵-向量乘法运算的原理，有两种可能实现的卷积运算映射方法：
+特征图数据作为电导值写入到 ReRAM 阵列单元中，卷积核作为 ReRAM 阵列端口的输入电压向量：
+可将相同卷积核对应的不同滑窗位置的特征图数据映射到多个 ReRAM 列中，这样可以在同一时钟周期下计算出不同滑窗位置上的卷积结果，而在不同周期下能够计算出多个卷积核的卷积结果。
+优点：对于单个特征图的卷积运算有较大的并行度
+缺点：(1)进行不同特征图的运算时需要对ReRAM 阵列进行反复擦写，并且写开销远大于读开销; (2)使得神经网络的后一层运算需要等上一层的运算结果写入到 ReRAM 阵列中才能进行运算。</description>
+    </item>
+    
+  </channel>
+</rss>

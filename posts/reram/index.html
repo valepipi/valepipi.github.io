@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net/; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+
+
+
+<meta name="author" content="游泳小狗">
+<meta name="description" content="ReRAM器件特性ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。
+存储模式VS计算模式：一般的，ReRAM 阵列在进行计算操作时需要将所有的输入端口打开。
+优势可作为存储元件，将数据以电阻/电导的形式储存在器件中；
+可以依据欧姆定律作为模拟计算元件，实现电导与电压相乘的运算。而 ReRAM交叉阵列结构使得同一列的输出电流能够直接在位线上汇聚，与乘累加运算相匹配，凭借这种原理 ReRAM 阵列可以直接在存储本地实现矩阵-向量乘法运算，突破了传统 CPU 存算分离的架构。
+缺点多值存储不稳定：目前 ReRAM 器件工艺还不成熟，多阻态之间的阈值区间间隔不大，导致 ReRAM 作为多阻态器件不稳定，目前已有 的基于 ReRAM 的神经网络研究都是将 ReRAM 当作**单比特器件(SLC)**来使用
+写入比读取开销大得多：不同于传统存储器件，ReRAM 的阻 变机制导致其读写操作的延时和能耗严重不均衡，对于 ReRAM 多值器件来说，写 操作所需的时间长、输入电压大，写操作的延时和能耗是读操作的 10 倍以上。
+ReRAM加速器与其他模块的关系：
+ReRAM加速神经网络的关键问题不能直接支持超大规模卷积神经网络(如，三维神经网络)的高能效运算： 相比于二维卷积神经网络，三维卷积神经网络需要的参数量和训练所需的内存容量呈指数倍增长，而将三维卷积神经网络映射到二维 ReRAM 阵列会使阵列面积大幅增加，从而导致串扰等现象更加严重，影响算法的精度。 包含以下两个关键问题： 如何将 卷积核运算转换为适合 ReRAM 计算结构处理的矩阵-向量乘法运算，并使得该转 换引入尽可能少的额外数据传输代价 如何高能效的将多比特神经网络权重值存储到单比特 ReRAM 器件 CNN中运算的大量数据迁移CNN末端的全连接层：需要读取大量的权重矩阵，并与该层的输入向量进行矩阵-向量乘法运算。(得到的输出向量既可直接作为识别结果输出， 又可以通过非线性神经元函数作为下一个全连接层的输入向量。)
+CNN中的卷积核运算(占比95%以上)：由于卷积核的每一个元素都是训练得到的神经网络参数，因此卷积核运算中需要反复从存储数据中读取卷积核参数，并与输入特征图进行卷积运算。
+CNN卷积核运算映射到二维ReRAM卷积核运算：将两个三维矩阵中的对应元素进行乘加运算；如果将两个三维矩阵按照相同顺序进行完全地展开，那么卷积运算就可以看作为 向量的内积运算。
+基于矩阵-向量乘法运算的原理，有两种可能实现的卷积运算映射方法：
+特征图数据作为电导值写入到 ReRAM 阵列单元中，卷积核作为 ReRAM 阵列端口的输入电压向量：
+可将相同卷积核对应的不同滑窗位置的特征图数据映射到多个 ReRAM 列中，这样可以在同一时钟周期下计算出不同滑窗位置上的卷积结果，而在不同周期下能够计算出多个卷积核的卷积结果。
+优点：对于单个特征图的卷积运算有较大的并行度
+缺点：(1)进行不同特征图的运算时需要对ReRAM 阵列进行反复擦写，并且写开销远大于读开销; (2)使得神经网络的后一层运算需要等上一层的运算结果写入到 ReRAM 阵列中才能进行运算。">
+<meta name="keywords" content="博客，个人">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ReRAM存算一体加速CNN"/>
+<meta name="twitter:description" content="ReRAM器件特性ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。
+存储模式VS计算模式：一般的，ReRAM 阵列在进行计算操作时需要将所有的输入端口打开。
+优势可作为存储元件，将数据以电阻/电导的形式储存在器件中；
+可以依据欧姆定律作为模拟计算元件，实现电导与电压相乘的运算。而 ReRAM交叉阵列结构使得同一列的输出电流能够直接在位线上汇聚，与乘累加运算相匹配，凭借这种原理 ReRAM 阵列可以直接在存储本地实现矩阵-向量乘法运算，突破了传统 CPU 存算分离的架构。
+缺点多值存储不稳定：目前 ReRAM 器件工艺还不成熟，多阻态之间的阈值区间间隔不大，导致 ReRAM 作为多阻态器件不稳定，目前已有 的基于 ReRAM 的神经网络研究都是将 ReRAM 当作**单比特器件(SLC)**来使用
+写入比读取开销大得多：不同于传统存储器件，ReRAM 的阻 变机制导致其读写操作的延时和能耗严重不均衡，对于 ReRAM 多值器件来说，写 操作所需的时间长、输入电压大，写操作的延时和能耗是读操作的 10 倍以上。
+ReRAM加速器与其他模块的关系：
+ReRAM加速神经网络的关键问题不能直接支持超大规模卷积神经网络(如，三维神经网络)的高能效运算： 相比于二维卷积神经网络，三维卷积神经网络需要的参数量和训练所需的内存容量呈指数倍增长，而将三维卷积神经网络映射到二维 ReRAM 阵列会使阵列面积大幅增加，从而导致串扰等现象更加严重，影响算法的精度。 包含以下两个关键问题： 如何将 卷积核运算转换为适合 ReRAM 计算结构处理的矩阵-向量乘法运算，并使得该转 换引入尽可能少的额外数据传输代价 如何高能效的将多比特神经网络权重值存储到单比特 ReRAM 器件 CNN中运算的大量数据迁移CNN末端的全连接层：需要读取大量的权重矩阵，并与该层的输入向量进行矩阵-向量乘法运算。(得到的输出向量既可直接作为识别结果输出， 又可以通过非线性神经元函数作为下一个全连接层的输入向量。)
+CNN中的卷积核运算(占比95%以上)：由于卷积核的每一个元素都是训练得到的神经网络参数，因此卷积核运算中需要反复从存储数据中读取卷积核参数，并与输入特征图进行卷积运算。
+CNN卷积核运算映射到二维ReRAM卷积核运算：将两个三维矩阵中的对应元素进行乘加运算；如果将两个三维矩阵按照相同顺序进行完全地展开，那么卷积运算就可以看作为 向量的内积运算。
+基于矩阵-向量乘法运算的原理，有两种可能实现的卷积运算映射方法：
+特征图数据作为电导值写入到 ReRAM 阵列单元中，卷积核作为 ReRAM 阵列端口的输入电压向量：
+可将相同卷积核对应的不同滑窗位置的特征图数据映射到多个 ReRAM 列中，这样可以在同一时钟周期下计算出不同滑窗位置上的卷积结果，而在不同周期下能够计算出多个卷积核的卷积结果。
+优点：对于单个特征图的卷积运算有较大的并行度
+缺点：(1)进行不同特征图的运算时需要对ReRAM 阵列进行反复擦写，并且写开销远大于读开销; (2)使得神经网络的后一层运算需要等上一层的运算结果写入到 ReRAM 阵列中才能进行运算。"/>
+
+<meta property="og:title" content="ReRAM存算一体加速CNN" />
+<meta property="og:description" content="ReRAM器件特性ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。
+存储模式VS计算模式：一般的，ReRAM 阵列在进行计算操作时需要将所有的输入端口打开。
+优势可作为存储元件，将数据以电阻/电导的形式储存在器件中；
+可以依据欧姆定律作为模拟计算元件，实现电导与电压相乘的运算。而 ReRAM交叉阵列结构使得同一列的输出电流能够直接在位线上汇聚，与乘累加运算相匹配，凭借这种原理 ReRAM 阵列可以直接在存储本地实现矩阵-向量乘法运算，突破了传统 CPU 存算分离的架构。
+缺点多值存储不稳定：目前 ReRAM 器件工艺还不成熟，多阻态之间的阈值区间间隔不大，导致 ReRAM 作为多阻态器件不稳定，目前已有 的基于 ReRAM 的神经网络研究都是将 ReRAM 当作**单比特器件(SLC)**来使用
+写入比读取开销大得多：不同于传统存储器件，ReRAM 的阻 变机制导致其读写操作的延时和能耗严重不均衡，对于 ReRAM 多值器件来说，写 操作所需的时间长、输入电压大，写操作的延时和能耗是读操作的 10 倍以上。
+ReRAM加速器与其他模块的关系：
+ReRAM加速神经网络的关键问题不能直接支持超大规模卷积神经网络(如，三维神经网络)的高能效运算： 相比于二维卷积神经网络，三维卷积神经网络需要的参数量和训练所需的内存容量呈指数倍增长，而将三维卷积神经网络映射到二维 ReRAM 阵列会使阵列面积大幅增加，从而导致串扰等现象更加严重，影响算法的精度。 包含以下两个关键问题： 如何将 卷积核运算转换为适合 ReRAM 计算结构处理的矩阵-向量乘法运算，并使得该转 换引入尽可能少的额外数据传输代价 如何高能效的将多比特神经网络权重值存储到单比特 ReRAM 器件 CNN中运算的大量数据迁移CNN末端的全连接层：需要读取大量的权重矩阵，并与该层的输入向量进行矩阵-向量乘法运算。(得到的输出向量既可直接作为识别结果输出， 又可以通过非线性神经元函数作为下一个全连接层的输入向量。)
+CNN中的卷积核运算(占比95%以上)：由于卷积核的每一个元素都是训练得到的神经网络参数，因此卷积核运算中需要反复从存储数据中读取卷积核参数，并与输入特征图进行卷积运算。
+CNN卷积核运算映射到二维ReRAM卷积核运算：将两个三维矩阵中的对应元素进行乘加运算；如果将两个三维矩阵按照相同顺序进行完全地展开，那么卷积运算就可以看作为 向量的内积运算。
+基于矩阵-向量乘法运算的原理，有两种可能实现的卷积运算映射方法：
+特征图数据作为电导值写入到 ReRAM 阵列单元中，卷积核作为 ReRAM 阵列端口的输入电压向量：
+可将相同卷积核对应的不同滑窗位置的特征图数据映射到多个 ReRAM 列中，这样可以在同一时钟周期下计算出不同滑窗位置上的卷积结果，而在不同周期下能够计算出多个卷积核的卷积结果。
+优点：对于单个特征图的卷积运算有较大的并行度
+缺点：(1)进行不同特征图的运算时需要对ReRAM 阵列进行反复擦写，并且写开销远大于读开销; (2)使得神经网络的后一层运算需要等上一层的运算结果写入到 ReRAM 阵列中才能进行运算。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://valepipi.github.io/posts/reram/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-30T16:06:16+08:00" />
+<meta property="article:modified_time" content="2023-01-30T16:06:16+08:00" /><meta property="og:site_name" content="游泳小狗" />
+
+
+
+
+  <title>游泳小狗</title>
+
+  
+  <link rel="canonical" href="https://valepipi.github.io/posts/reram/">
+  
+
+  <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.6b1a4fbc48955b72aea7913e43fabeb45e8bc120da5aa41b598dd33adcac4b59.css" integrity="sha256-axpPvEiVW3Kup5E&#43;Q/q&#43;tF6LwSDaWqQbWY3TOtysS1k=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css" integrity="sha256-OeQafxa9&#43;MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+   
+
+
+
+
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+  
+
+  <meta name="generator" content="Hugo 0.101.0" />
+
+
+  
+
+</head>
+
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-dark">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      游泳小狗
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">爱好</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">联系我</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://valepipi.github.io/en/">英文</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://valepipi.github.io/posts/reram/">
+              ReRAM存算一体加速CNN
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-01-30T16:06:16&#43;08:00">
+                January 30, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/blog/">blog</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/reram/">ReRAM</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/cnn/">CNN</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="reram器件特性">
+  ReRAM器件特性
+  <a class="heading-link" href="#reram%e5%99%a8%e4%bb%b6%e7%89%b9%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。<br>
+存储模式VS计算模式：一般的，ReRAM 阵列在进行<strong>计算操作</strong>时需要将所有的输入端口打开。</p>
+<h3 id="优势">
+  优势
+  <a class="heading-link" href="#%e4%bc%98%e5%8a%bf">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>
+<p>可作为存储元件，将数据以电阻/电导的形式储存在器件中；</p>
+</li>
+<li>
+<p>可以依据欧姆定律作为模拟计算元件，实现电导与电压相乘的运算。而 ReRAM交叉阵列结构使得同一列的输出电流能够直接在位线上汇聚，与乘累加运算相匹配，凭借这种原理 ReRAM 阵列可以直接在存储本地实现矩阵-向量乘法运算，突破了传统 CPU 存算分离的架构。</p>
+</li>
+</ol>
+<h3 id="缺点">
+  缺点
+  <a class="heading-link" href="#%e7%bc%ba%e7%82%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>
+<p><strong>多值存储不稳定</strong>：目前 ReRAM 器件工艺还不成熟，多阻态之间的阈值区间间隔不大，导致 ReRAM 作为多阻态器件不稳定，目前已有 的基于 ReRAM 的神经网络研究都是将 ReRAM 当作**单比特器件(SLC)**来使用</p>
+</li>
+<li>
+<p><strong>写入比读取开销大得多</strong>：不同于传统存储器件，ReRAM 的阻 变机制导致其读写操作的延时和能耗严重不均衡，对于 ReRAM 多值器件来说，写 操作所需的时间长、输入电压大，写操作的延时和能耗是读操作的 10 倍以上。</p>
+</li>
+</ol>
+<p>ReRAM加速器与其他模块的关系：<br>
+<img src="/images/ReRAM%E5%8A%A0%E9%80%9F%E5%99%A8%E4%B8%8E%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt="ReRAM加速器与其他模块的关系"></p>
+<h2 id="reram加速神经网络的关键问题">
+  ReRAM加速神经网络的关键问题
+  <a class="heading-link" href="#reram%e5%8a%a0%e9%80%9f%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e7%9a%84%e5%85%b3%e9%94%ae%e9%97%ae%e9%a2%98">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ul>
+<li><strong>不能直接支持超大规模卷积神经网络(如，三维神经网络)的高能效运算</strong>： 相比于二维卷积神经网络，三维卷积神经网络需要的参数量和训练所需的内存容量呈指数倍增长，而将三维卷积神经网络映射到二维 ReRAM 阵列会使阵列面积大幅增加，从而导致串扰等现象更加严重，影响算法的精度。
+包含以下两个关键问题：
+<ol>
+<li>如何将 卷积核运算转换为适合 ReRAM 计算结构处理的矩阵-向量乘法运算，并使得该转 换引入<em>尽可能少的额外数据传输代价</em></li>
+<li>如何高能效的将多比特神经网络权重值存储到<em>单比特 ReRAM 器件</em></li>
+</ol>
+</li>
+</ul>
+<h2 id="cnn中运算的大量数据迁移">
+  CNN中运算的大量数据迁移
+  <a class="heading-link" href="#cnn%e4%b8%ad%e8%bf%90%e7%ae%97%e7%9a%84%e5%a4%a7%e9%87%8f%e6%95%b0%e6%8d%ae%e8%bf%81%e7%a7%bb">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ol>
+<li>
+<p>CNN末端的全连接层：<strong>需要读取大量的权重矩阵</strong>，并与该层的输入向量进行<em>矩阵-向量乘法运算</em>。(得到的输出向量既可直接作为识别结果输出， 又可以通过非线性神经元函数作为下一个全连接层的输入向量。)</p>
+</li>
+<li>
+<p>CNN中的卷积核运算(占比95%以上)：由于卷积核的每一个元素都是训练得到的神经网络参数，因此卷积核运算中需要<strong>反复从存储数据中读取卷积核参数</strong>，并与<strong>输入特征图</strong>进行卷积运算。</p>
+</li>
+</ol>
+<h2 id="cnn卷积核运算映射到二维reram">
+  CNN卷积核运算映射到二维ReRAM
+  <a class="heading-link" href="#cnn%e5%8d%b7%e7%a7%af%e6%a0%b8%e8%bf%90%e7%ae%97%e6%98%a0%e5%b0%84%e5%88%b0%e4%ba%8c%e7%bb%b4reram">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<blockquote>
+<p>卷积核运算：将<strong>两个三维矩阵</strong>中的对应元素进行<strong>乘加运算</strong>；如果将两个三维矩阵按照相同顺序进行完全地展开，那么卷积运算就可以看作为 <strong>向量的内积</strong>运算。</p>
+</blockquote>
+<p>    基于矩阵-向量乘法运算的原理，有两种可能实现的卷积运算映射方法：</p>
+<ol>
+<li>
+<p>特征图数据作为电导值写入到 ReRAM 阵列单元中，卷积核作为 ReRAM 阵列端口的输入电压向量：</p>
+<p><strong>可将相同卷积核对应的不同滑窗位置的特征图数据映射到多个 ReRAM 列中</strong>，这样可以在<strong>同一时钟周期下</strong>计算出不同滑窗位置上的卷积结果，而在不同周期下能够计算出多个卷积核的卷积结果。</p>
+<blockquote>
+<p><strong>优点</strong>：对于<strong>单个特征图</strong>的卷积运算有较大的并行度<br>
+<strong>缺点</strong>：(1)进行不同特征图的运算时需要对ReRAM 阵列进行<strong>反复擦写</strong>，并且写开销远大于读开销;  (2)使得神经网络的后一层运算<strong>需要等</strong>上一层的运算结果写入到 ReRAM 阵列中才能进行运算。</p>
+</blockquote>
+</li>
+<li>
+<p>卷积核写入到 ReRAM 阵列单元中，特征图数据作为输入数据以 ReRAM 阵列输入端口的输入电压的形式输入：</p>
+<p><strong>不同 ReRAM 列中可以储存不同的卷积核</strong>，在同一时钟周期下可以计算相同滑窗位置的多个卷积核结果，在不同时钟周期下可以计算不同滑窗位置的输入特征图。</p>
+<blockquote>
+<p>优点：(1)卷积核参数属于网络数据，在执行神经网络推断的过程中无需进行权重更新，<strong>一次性写入</strong>即可，避免反复执行擦写操作；(2)卷积核中的权重值 通常同时包含了正数和负数，因此，可以将两个 ReRAM 阵列分别作为<strong>正负阵列</strong>来共同储存同一个权重值。(ReRAM器件储存的电导值不能为负数)</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="3d-cnn映射到3d-reram">
+  3D CNN映射到3D ReRAM
+  <a class="heading-link" href="#3d-cnn%e6%98%a0%e5%b0%84%e5%88%b03d-reram">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<blockquote>
+<p><strong>三维卷积神经网络（3D CNN，3D Convolutional Neural Network）</strong><br>
+优点：更好地提取时序上的信息，对三维图像和视频的处理准确率更高，可扩展性好。<br>
+缺点：参数数量庞大、运行时间长、训练所需的内存数量大幅增长、需求大量精细标注的视频数据进行训练。</p>
+</blockquote>
+<h4 id="2d-reram面对大规模nn的局限性">
+  2D ReRAM面对大规模NN的局限性
+  <a class="heading-link" href="#2d-reram%e9%9d%a2%e5%af%b9%e5%a4%a7%e8%a7%84%e6%a8%a1nn%e7%9a%84%e5%b1%80%e9%99%90%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ol>
+<li>随着卷积神经网络的深度增加，2D ReRAM阵列的面积会大幅增加，导致集成的芯片难以实用；</li>
+<li>2D ReRAM阵列面积的增大会导致阵列中串扰现象加剧，使经过ReRAM阵列的输出电流的准确度降低;</li>
+<li>大规模神经网络的超大量数据处理会导致阵列与外围电路之间的 I/O 接口数量增多，数据传输的能耗增加。</li>
+</ol>
+<p><strong>将三维卷积核映射到ReRAM的电导值中</strong><br>
+<img src="/images/CNN-3D-ReRAM.png" alt="CNN-3D-ReRAM"></p>
+<p>这里以三维卷积神经网络的第 X 层 和第 +1 X 层为例，其中第 X 层的输入特征图大小为 28×28×28×64, 前三个数字表 示三维卷积核中每一维的尺寸，最后一个数字表示第 X 层的通道数为 64。第 X 层 的卷积核数量为 128 个，卷积核大小为 3×3×3。为简化原理，这里不考虑步长、 池化和卷积核匹配方式等操作。因此，第 X 层的输出结果（也即是第 +1 X 层的输 入特征图的数量）与第 X 层的卷积核数量相同为 128 个，大小为 26×26×26。</p>
+<p>基于第 X 层的卷积核尺寸，可以将每个卷积核中的权重值展开成3×9大小的二维矩阵形式放置在三维 ReRAM 阵列的其中三层相同位置上的列中，因为输入特征图的通道数为 64 个，因此需要将每个卷积核按照 3×576（或 9×192、 27 ×64等，以ReRAM 阵列的尺寸决定）的形式放置在 ReRAM 阵列的竖直截面中。因而<strong>在同一时钟周期下，相同划窗位置下的所有通道的输入特征图区域可以计算多个卷积核的结果，而在不同时钟周期计算不同滑窗位置的输入特征图。</strong></p>
+<h2 id="其他模块">
+  其他模块
+  <a class="heading-link" href="#%e5%85%b6%e4%bb%96%e6%a8%a1%e5%9d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>为了实现完整的CNN，除了卷积核运算与全连接运算的矩阵-向量乘法之外，还需要其他外围电路模块：</p>
+<ul>
+<li>加法树：处理单元中，各个矩阵利用加法树进行加法拼接，得到卷积核的结果；</li>
+<li>最大池化函数：在处理单元中，可以在加法树模块后加入池化模块；</li>
+<li>ReLU非线性神经元函数：一般被实现在处理单元之外，神经网络的末端；</li>
+</ul>
+<p>这些模块既可以基于模拟电路实现(ReRAM计算就是模拟电路)，也可以基于数字电路实现(寄存器、加法器、缓存等)，目前大多用数字电路。</p>
+<h3 id="缓存">
+  缓存
+  <a class="heading-link" href="#%e7%bc%93%e5%ad%98">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>在ReLU函数和最大池化函数后都可以连接上不同规模的缓存，分别用于临时存储池化函数的输入以及该层卷积层的计算结果（即下一层神经网络所需要的输入特征图）。</p>
+<blockquote>
+<p>池化中的缓存：由于池化函数的多个输入为卷积核滑窗在特征图的多个位置进行卷积核计算的输出结果，池化函数的多个输入元素值是同一卷积核经过多个周期得到的，因此需要将前几个周期得到的元素数据进行缓存。</p>
+</blockquote>
+<p>在这种设计下，<strong>每一个ReRAM 阵列可以在处理同一个图片的不同滑窗位置时被复用</strong>，与卷积神经网络的滑窗结构相一致，从而大幅减少了 ReRAM 阵列的面积开销。进一步，由于有了<strong>数字缓存进行层间数据的隔离，多个卷积层之间还可以形成流水线</strong>，对不同输入图片进行流水线处理。</p>
+<h3 id="加法树实现分块矩阵结果合并">
+  加法树实现分块矩阵结果合并
+  <a class="heading-link" href="#%e5%8a%a0%e6%b3%95%e6%a0%91%e5%ae%9e%e7%8e%b0%e5%88%86%e5%9d%97%e7%9f%a9%e9%98%b5%e7%bb%93%e6%9e%9c%e5%90%88%e5%b9%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>由于 ReRAM 集成工艺的技术限制，ReRAM 阵列的大小不能直接储存一个神经网络完整的参数矩阵，因此需要将参数矩阵按照空间划分为多个子矩阵，从而让每个 ReRAM 阵列执行子矩阵的矩阵向量乘法运算。</p>
+<p><strong>多个子矩阵的计算结果需要通过加法运算来进行合并</strong>才能得到最后的输出结果。我们通过使用加法树模块来实现该功能。</p>
+<p><img src="/images/AdderTree.png" alt="AdderTree">
+在这个结构中，两个相邻的处理单元首先被累加起来，并按照二叉树的结构逐步相加最 终将所有子阵列中的计算结果汇总到输出端中。</p>
+<h2 id="reram仿真系统">
+  ReRAM仿真系统
+  <a class="heading-link" href="#reram%e4%bb%bf%e7%9c%9f%e7%b3%bb%e7%bb%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>&hellip;</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js"></script>
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2022 -
+    
+    2023
+     游泳小狗 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+  
+  <script src="/js/coder.min.236049395dc3682fb2719640872958e12f1f24067bb09c327b233e6290c7edac.js" integrity="sha256-I2BJOV3DaC&#43;ycZZAhylY4S8fJAZ7sJwyeyM&#43;YpDH7aw="></script>
+  
+
+  
+
+  
+
+  <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//cdn.usefathom.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  <script async defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script>
+
+
+  <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+  
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+
+  <script type="application/javascript">
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.example.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'ABCDE']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=gid"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'gid');
+</script>
+
+
+  <script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="connectionString",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", 
+    
+    
+    
+    crossOrigin: "anonymous", 
+    
+    cfg: { 
+        connectionString: "connectionstring"
+         
+    }});
+    </script>    
+
+</body>
+
+</html>
