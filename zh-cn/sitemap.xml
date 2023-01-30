@@ -30,6 +30,16 @@
   </url><url>
     <loc>https://valepipi.github.io/tags/cnn/</loc>
     <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/cnn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/cnn/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/</loc>
     <lastmod>2023-01-30T16:06:16+08:00</lastmod>
@@ -78,6 +88,16 @@
   </url><url>
     <loc>https://valepipi.github.io/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-01-30T14:45:42+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/cuda/</loc>
     <lastmod>2023-01-24T22:00:57+08:00</lastmod>

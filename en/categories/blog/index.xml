@@ -6,7 +6,23 @@
     <description>Recent content in blog on Ping&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 24 Jan 2023 22:00:57 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Jan 2023 14:45:42 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>神经网络基础</title>
+      <link>https://valepipi.github.io/en/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Mon, 30 Jan 2023 14:45:42 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</guid>
+      <description>神经网络基本概念神经网络分为两个阶段的运算：训练、推理
+训练——过程视角正向传播：目的是使用当前未训练好的网络对训练样本进行推理；过程和推理过程完全一致，包含大量的矩阵-向量乘法运算 反向传播：目的是根据正向传播获得的计算误差，依次计算并存储各层的中间变量以及参数的梯度，包含大量反向的矩阵-向量乘法运算 权重更新：在正向或反向传播的过程中都会进行权重更新，需要计算各权重矩阵的梯度大小，得到权重的更新值，实现模型的更新 推理——结构视角全连接层
+卷积层
+目的：利用卷积运算的局部特性提取图像的局部特征并逐层抽象 与全连接层的区别：卷积层可以用较少的模型参数实 现对大规模图像的特征提取 特征图(feature map)：在卷积层间传输的特征数据；输入特征图——&amp;gt;卷积核——&amp;gt;输出特征图 卷积核(Convolution Kernel)：卷积核运算是卷积层中的主要运算，涉及大量的数据计算和数据传输。卷积核运算是将两个三维矩阵中的对应元素进行乘法运算，再将乘得的结果进行累加计算。 S为卷积核的行/列的数量，I 为输入特征图的通道数，即一个卷积核的大小为 S×S×I；
+假设通道数=1时，一个卷积核在特征图上扫过的面积就是输出结果的size：一个卷积核扫过特征图上的一个区域就得到一个值(size=1*1)，把所有区域的值按照行列拼接起来就是结果(size=扫过的面积)
+其他：级联在两层卷积运算中间的辅助运算，如非线性神经元函数(ReLU/Sigmoid)、池化(Pooling)等 非线性神经元函数
+目的：提供非线性分类能力，广泛用于传统全连接神经网络、卷积神经网络等各类神经网络算法中 在CNN中，通常级联在卷积核运算后 池化函数
+目的：对特征图进行空间压缩,降低特征图的维度 做法：把特征图相邻范围内的所有元素 用一个值替代，从而在保持局部特征的同时，降低卷积神经网络的计算量和参数量 与卷积核运算的区别：池化函数尽管使用与卷积核相同的滑窗形式，在全特征图中进行运算，但是*步长（Stride）*运算形式会令同一个特征图元素不会被包含至多个池化区域内。 形式：平均池化（Mean Pooling）、最大池化（Max Pooling） 相比于平均池化，最大池化更容易保留特征图中最鲜明的特征信息</description>
+    </item>
+    
     <item>
       <title>cuda编程</title>
       <link>https://valepipi.github.io/en/posts/cuda/</link>
