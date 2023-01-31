@@ -6,7 +6,25 @@
     <description>Recent content in Posts on 游泳小狗</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Jan 2023 16:06:16 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Jan 2023 13:12:36 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>上帝视角看GPU</title>
+      <link>https://valepipi.github.io/posts/gpu/</link>
+      <pubDate>Tue, 31 Jan 2023 13:12:36 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/gpu/</guid>
+      <description>GPU VS CPUCPU：擅长在小数据上做复杂的串行计算和逻辑控制 GPU：擅长在大量数据上做简单的并行计算 图形流水线：游戏、图形 计算流水线：机器学习 CPU上的Core：CPU和GPU对于Core的概念不同，所以数量的统计方式也不同；如果CPU上的Core数量是道路的数量，那么GPU上的Core数量则是道路上的车道数 GPU上的Core：流处理器SP(Streaming Processor) GPU上的SM(Streaming multi-processor)：一组SP+控制器+片上内存 CPU主存DDR带宽：32 ~ 64 bits，延迟低 GPU显存GDDR带宽：128 ~ 512 bits，高吞吐，但是延迟也高 从GPU读取数据会通过warp调度器，合理调度多个warp的I/O和计算，可以用计算掩盖延迟
+图形流水线基础图形/物体以三角形的几何表示
+帧缓存(Frame Buffer)：其中的内容与显示器上的每个像素一一对应，每三个分量(RGB)代表一个像素(Pixel)
+显卡(Graphics Card)：把帧缓存中的内容转化成显示信号，输出到显示器上，它是没有计算能力的
+Shader：专门用来渲染图形的可编辑程序，通过shader，可以自定义显卡渲染画面的算法。其中，Vertex Shader（顶点着色器）主要负责顶点的几何关系等的运算，Pixel Shader（像素着色器）主要负责片源颜色等的计算，需要进行纹理采样。现在发展为unified Shader，统一架构来整合这两种Shader底层的硬件资源。
+可编程流水线单元 PPU(Programmable Pipeline Unit)：和GPU/CPU同等地位，用于图像的计算处理，可以绑上Shader程序进行特殊的计算
+纹理(Texture)：图像的表示
+光栅化器(Rasterizer)：实时渲染的关键，输入几何图形，进行光栅化处理(立即式、tile-based)，计算这个图形占据了哪些像素，输出像素
+逻辑上的模块划分GPU中可以包含各种专用的模块，作为流水线中独立的部分，这些模块之间不能相互调用，需要通过Texture buffer交互
+软件栈光线跟踪流水线</description>
+    </item>
+    
     <item>
       <title>ReRAM存算一体加速CNN</title>
       <link>https://valepipi.github.io/posts/reram/</link>
