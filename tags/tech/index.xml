@@ -14,7 +14,7 @@
       
       <guid>https://valepipi.github.io/posts/gpu/</guid>
       <description>GPU VS CPUCPU：擅长在小数据上做复杂的串行计算和逻辑控制 GPU：擅长在大量数据上做简单的并行计算 图形流水线：游戏、图形 计算流水线：机器学习 CPU上的Core：CPU和GPU对于Core的概念不同，所以数量的统计方式也不同；如果CPU上的Core数量是道路的数量，那么GPU上的Core数量则是道路上的车道数 GPU上的Core：流处理器SP(Streaming Processor) GPU上的SM(Streaming multi-processor)：一组SP+控制器+片上内存 CPU主存DDR带宽：32 ~ 64 bits，延迟低 GPU显存GDDR带宽：128 ~ 512 bits，高吞吐，但是延迟也高 从GPU读取数据会通过warp调度器，合理调度多个warp的I/O和计算，可以用计算掩盖延迟
-图形流水线基础图形/物体以三角形的几何表示
+图形流水线基础待处理的图形/物体以会切分成三角形表示
 帧缓存(Frame Buffer)：其中的内容与显示器上的每个像素一一对应，每三个分量(RGB)代表一个像素(Pixel)
 显卡(Graphics Card)：把帧缓存中的内容转化成显示信号，输出到显示器上，它是没有计算能力的
 Shader：专门用来渲染图形的可编辑程序，通过shader，可以自定义显卡渲染画面的算法。其中，Vertex Shader（顶点着色器）主要负责顶点的几何关系等的运算，Pixel Shader（像素着色器）主要负责片源颜色等的计算，需要进行纹理采样。现在发展为unified Shader，统一架构来整合这两种Shader底层的硬件资源。
@@ -22,7 +22,7 @@ Shader：专门用来渲染图形的可编辑程序，通过shader，可以自�
 纹理(Texture)：图像的表示
 光栅化器(Rasterizer)：实时渲染的关键，输入几何图形，进行光栅化处理(立即式、tile-based)，计算这个图形占据了哪些像素，输出像素
 逻辑上的模块划分GPU中可以包含各种专用的模块，作为流水线中独立的部分，这些模块之间不能相互调用，需要通过Texture buffer交互
-软件栈光线跟踪流水线</description>
+参考资料https://www.bilibili.com/video/BV1P44y1V7bu/?spm_id_from=333.999.0.0 </description>
     </item>
     
     <item>
@@ -31,8 +31,10 @@ Shader：专门用来渲染图形的可编辑程序，通过shader，可以自�
       <pubDate>Tue, 24 Jan 2023 22:00:57 +0800</pubDate>
       
       <guid>https://valepipi.github.io/posts/cuda/</guid>
-      <description>Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
-Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 </description>
+      <description>Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 线程索引如何定位到某一个线程？
+计算该线程在所有线程中的索引
+一维的线程索引 int index = threadIdx.x + blockIdx.x * M = 5 + 2 * 8 = 21 二维的线程索引 Thread_x = blockIdx.x * blockDim.x +threadIdx.x = 6 Thread_y = blockIdx.</description>
     </item>
     
     <item>

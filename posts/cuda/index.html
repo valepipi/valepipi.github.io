@@ -12,18 +12,24 @@
 
 
 <meta name="author" content="游泳小狗">
-<meta name="description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
-Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 ">
+<meta name="description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 线程索引如何定位到某一个线程？
+计算该线程在所有线程中的索引
+一维的线程索引 int index = threadIdx.x &#43; blockIdx.x * M = 5 &#43; 2 * 8 = 21 二维的线程索引 Thread_x = blockIdx.x * blockDim.x &#43;threadIdx.x = 6 Thread_y = blockIdx.">
 <meta name="keywords" content="博客，个人">
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="cuda编程"/>
-<meta name="twitter:description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
-Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 "/>
+<meta name="twitter:description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 线程索引如何定位到某一个线程？
+计算该线程在所有线程中的索引
+一维的线程索引 int index = threadIdx.x &#43; blockIdx.x * M = 5 &#43; 2 * 8 = 21 二维的线程索引 Thread_x = blockIdx.x * blockDim.x &#43;threadIdx.x = 6 Thread_y = blockIdx."/>
 
 <meta property="og:title" content="cuda编程" />
-<meta property="og:description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
-Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 " />
+<meta property="og:description" content="Cuda并行编程Cuda存储结构Global memory： 可读可写，最大最慢，所有Block共享，通常所说32G的GPU指的是global memory=32G Constant memory: 只读，所有Block共享 Texture memory: 只读，所有Block共享 GPU通过以上三种memory与Host上的memory交互 cudaMemcpy()
+Shared memory: 可读可写，很快，较小，一个block内的Thread共享 Local memory: 可读可写，很快，很小，Thread专用 Registers: 可读可写，很快，很小，Thread专用 Cuda线程结构Grid:一组线程块(block) block：一组线程(thread) thread Cuda编程模型的关键术语host: CPU device: GPU host memory: 系统的内存 device memory：gpu卡上的存储器 kernels: GPU函数，由host发出，由device执行 device function: GPU函数，device执行，并且只能被device调用 线程索引如何定位到某一个线程？
+计算该线程在所有线程中的索引
+一维的线程索引 int index = threadIdx.x &#43; blockIdx.x * M = 5 &#43; 2 * 8 = 21 二维的线程索引 Thread_x = blockIdx.x * blockDim.x &#43;threadIdx.x = 6 Thread_y = blockIdx." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://valepipi.github.io/posts/cuda/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-01-24T22:00:57+08:00" />
@@ -173,7 +179,7 @@ Shared memory: 可读可写，很快，较小，一个block内的Thread共享 L
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              阅读时间：1 分钟
+              阅读时间：2 分钟
             </span>
           </div>
           
@@ -247,7 +253,172 @@ Shared memory: 可读可写，很快，较小，一个block内的Thread共享 L
 <li>kernels: GPU函数，由host发出，由device执行</li>
 <li>device function: GPU函数，device执行，并且只能被device调用</li>
 </ul>
-
+<hr>
+<h2 id="线程索引">
+  线程索引
+  <a class="heading-link" href="#%e7%ba%bf%e7%a8%8b%e7%b4%a2%e5%bc%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><strong>如何定位到某一个线程？</strong></p>
+<blockquote>
+<blockquote>
+<p>计算该线程在所有线程中的索引</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>一维的线程索引</li>
+</ul>
+<p><img src="/images/cuda-thread-index.png" alt="cuda-thread-index"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> index = threadIdx.x + blockIdx.x * M
+</span></span><span style="display:flex;"><span>    = 5 + 2 * 8
+</span></span><span style="display:flex;"><span>    = 21
+</span></span></code></pre></div><ul>
+<li>二维的线程索引</li>
+</ul>
+<p><img src="/images/cuda-thread-index2.png" alt="cuda-thread-index2"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>Thread_x = blockIdx.x * blockDim.x +threadIdx.x = 6
+</span></span><span style="display:flex;"><span>Thread_y = blockIdx.y * blockDim.y +threadIdx.y = 3
+</span></span></code></pre></div><p><strong>如何给矩阵运算安排线程？</strong></p>
+<p>当把整个Grid对应到一个矩阵，则该<strong>线程的索引</strong>正好对应到<strong>矩阵的坐标</strong>即可，意为Grid中的一个线程处理矩阵的一个元素。</p>
+<p><strong>如果矩阵的规模大于线程总数？</strong></p>
+<ul>
+<li>grid-sride-loop：每个Grid中的线程循环使用，负责计算绿色框内的子矩阵；其中的每个block中的线程循环使用，负责计算对应颜色的子矩阵</li>
+</ul>
+<p><img src="/images/grid-stride-loop.png" alt="grid-stride-loop"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>tx = cuda.blockIdx.x * cuda.blockDim.x + cuda.threadIdx.x
+</span></span><span style="display:flex;"><span>ty = cuda.blockIdx.x * cuda.blockDim.y + cuda.threadIdx.y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>stride_x = blockDim.x * gridDim.x
+</span></span><span style="display:flex;"><span>stride_y = blockDim.y * gridDim.y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span> (<span style="">int</span> y = ty; y &lt; height; y+=stride_y){
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> x = tx; x &lt; width; x+=stride_x){
+</span></span><span style="display:flex;"><span>        matrix[x,y] = ...
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="cuda矩阵计算">
+  CUDA矩阵计算
+  <a class="heading-link" href="#cuda%e7%9f%a9%e9%98%b5%e8%ae%a1%e7%ae%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<!-- raw HTML omitted -->
+<p><img src="/images/conv-to-mm.png" alt="conv-to-mm"></p>
+<p>在cuda中，将逐步的卷积计算展开为两个大矩阵相乘，用空间换时间。</p>
+<ol>
+<li>一个颜色表示一个通道</li>
+<li>图中的卷积核经过了转置</li>
+</ol>
+<!-- raw HTML omitted -->
+<p><img src="/images/matrix-multi.png" alt="matrix-multi"></p>
+<p>一个线程负责得到结果中的<strong>一个元素</strong>：</p>
+<ol>
+<li>读取矩阵A对应的一行(从global memory)</li>
+<li>读取矩阵B对应的一列(从global memory)</li>
+<li>该行该列的元素相乘再相加，得到结果(一个元素)</li>
+</ol>
+<p>所有线程并行计算，得到结果中的所有元素。</p>
+<p>优化：如果矩阵规模过大，一行or一列读取的时间过长，<strong>利用shared memory每次读取A,B的一个子矩阵，再截取其中的一小截数据读入，分次计算，累加</strong> (shared memory小而快)</p>
+<p><img src="/images/matrix_multi-sharedmemory.png" alt="matrix_multi-sharedmemory"></p>
+<h4 id="代码">
+  代码
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ul>
+<li>cpu实现矩阵乘法</li>
+<li>gpu实现矩阵乘法，仅从global memory读取</li>
+<li>gpu实现矩阵乘法，分块，从shared memory读取</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>TPB = 16
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@numba.jit(nopython=<span style="font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> matmul_cpu(A, B, C):
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> y <span style="font-weight:bold">in</span> range(B.shape[1]):
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> x <span style="font-weight:bold">in</span> range(A.shape[0]):
+</span></span><span style="display:flex;"><span>            tmp = 0.
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> k <span style="font-weight:bold">in</span> range(A.shape[1]):
+</span></span><span style="display:flex;"><span>            tmp += A[x,k]*B[k,y]
+</span></span><span style="display:flex;"><span>        C[x,y] = tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@cuda.jit
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> matmul_gpu(A, B, C):
+</span></span><span style="display:flex;"><span>    row, col = cuda.grid(2)
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> row &lt; C.shape[0] <span style="font-weight:bold">and</span> col &lt; C.shape[1]: <span style="font-style:italic"># 每行每列并行计算</span>
+</span></span><span style="display:flex;"><span>        tmp = 0.
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> k <span style="font-weight:bold">in</span> range(A.shape[1]):
+</span></span><span style="display:flex;"><span>            tmp += A[row, k]*B[k, col]
+</span></span><span style="display:flex;"><span>        C[row, col] = tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@cuda.jit
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> matmul_shared_mem(A, B, C):
+</span></span><span style="display:flex;"><span>    sA = cuda.shared.array(shape=(TPB,TPB), dtype=float32) <span style="font-style:italic">#矩阵A的子矩阵</span>
+</span></span><span style="display:flex;"><span>    sB = cuda.shared.array(shape=(TPB,TPB), dtype=float32) <span style="font-style:italic">#矩阵B的子矩阵</span>
+</span></span><span style="display:flex;"><span>    x, y = cuda.grid(2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tx = cuda.threadIdx.x
+</span></span><span style="display:flex;"><span>    ty = cuda.threadIdex.y
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> x &gt;= C.shape[0] <span style="font-weight:bold">and</span> y &gt;= C.shape[1]:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tmp = 0.
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(int(A.shape[1])/TPB):
+</span></span><span style="display:flex;"><span>        sA[tx, ty] = A[x, ty + i*TPB] <span style="font-style:italic"># 一次计算中的那一列</span>
+</span></span><span style="display:flex;"><span>        sB[tx, ty] = B[tx + i*TPB, y] <span style="font-style:italic"># 一次计算中的那一行</span>
+</span></span><span style="display:flex;"><span>        cuda.syncthreads()
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(TPB):
+</span></span><span style="display:flex;"><span>            tmp += sA[tx, j]*sB[j , ty]
+</span></span><span style="display:flex;"><span>        cuda.syncthreads()
+</span></span><span style="display:flex;"><span>    C[x,y] = tmp
+</span></span></code></pre></div><p>测试函数</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>A = numpy.full((TPB*50, TPB*50), 3, numpy.float)
+</span></span><span style="display:flex;"><span>B = numpy.full((TPB*50, TPB*50), 4, numpy.float)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C_cpu = numpy.full((A.shape[0], B.shape[1]), 0, numpy.float)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="font-style:italic">&#34;Start processing in CPU&#34;</span>)
+</span></span><span style="display:flex;"><span>start_cpu = time.time()
+</span></span><span style="display:flex;"><span>matmul_cpu(A,B,C_cpu)
+</span></span><span style="display:flex;"><span>end_cpu = time.time()
+</span></span><span style="display:flex;"><span>time_cpu = (end_cpu - start_cpu)
+</span></span><span style="display:flex;"><span>print(<span style="font-style:italic">&#34;CPU Time&#34;</span>+ str(time_cpu))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic"># Start in GPU</span>
+</span></span><span style="display:flex;"><span>A_global_mem = cuda.to_device(A)
+</span></span><span style="display:flex;"><span>B_global_mem = cuda.to_device(B)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C_global_mem = cuda.device_array((A.shape[0], B.shape[1]))
+</span></span><span style="display:flex;"><span>C_shared_mem = cuda.device_array((A.shape[0], B.shape[1]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>threadsperblock = (TPB, TPB)
+</span></span><span style="display:flex;"><span>blockspergrid_x = int(math.ceil(A.shape[0]/threadsperblock[0]))
+</span></span><span style="display:flex;"><span>blockspergrid_y = int(math.ceil(B.shape[1]/threadsperblock[1]))
+</span></span><span style="display:flex;"><span>blockspergrid = (blockspergrid_x, blockspergrid_y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="font-style:italic">&#34;Start processing in GPU&#34;</span>)
+</span></span><span style="display:flex;"><span>start_gpu = time.time()
+</span></span><span style="display:flex;"><span>matmul_gpu[blockspergrid, threadsperblock](A_global_mem, B_global_mem, C_global_mem)
+</span></span><span style="display:flex;"><span>cuda.synchronize()
+</span></span><span style="display:flex;"><span>end_gpu = time.time()
+</span></span><span style="display:flex;"><span>time_gpu = (end_gpu - start_gpu)
+</span></span><span style="display:flex;"><span>print(<span style="font-style:italic">&#34;GPU Time (global memory)&#34;</span> + str(time_gpu))
+</span></span><span style="display:flex;"><span>C_global_gpu = C_global_mem.copy_to_host()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>start_gpu_shared = time.time()
+</span></span><span style="display:flex;"><span>matmul_shared_mem[blockspergrid, threadsperblock](A_global_mem, B_global_mem, C_shared_mem)
+</span></span><span style="display:flex;"><span>cuda.synchronize()
+</span></span><span style="display:flex;"><span>end_gpu_shared = time.time()
+</span></span><span style="display:flex;"><span>time_gpu_shared = (end_gpu_shared -start_gpu_shared)
+</span></span><span style="display:flex;"><span>print(<span style="font-style:italic">&#34;GPU Time (shared memory)&#34;</span> + str(time_gpu_shared))
+</span></span><span style="display:flex;"><span>C_shared_gpu = C_shared_mem.copy_to_host()
+</span></span></code></pre></div>
       </div>
 
 
