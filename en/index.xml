@@ -6,7 +6,30 @@
     <description>Recent content on Ping&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Jan 2023 14:45:42 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 May 2023 14:26:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🎅 LeetCode二叉树题解 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/en/posts/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91-c&#43;&#43;/</link>
+      <pubDate>Sun, 07 May 2023 14:26:59 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91-c&#43;&#43;/</guid>
+      <description>本文为二叉树和二叉搜索树的Leetcode刷题记录。
+参考资料: labuladong
+🌴 &amp;lt;二叉树&amp;gt; 题目列表力扣题目 知识点 难度 104. 二叉树的最大深度 遍历 简单 543. 二叉树的直径 遍历 简单 144. 二叉树的前序遍历 遍历 简单 226. 翻转二叉树 遍历 简单 114. 二叉树展开为链表 递归 中等 116. 填充每个节点的下一个右侧节点指针 遍历三叉树 中等 105. 从前序与中序遍历序列构造二叉树 递归构造 中等 106. 从中序与后序遍历序列构造二叉树 递归构造 中等 889. 根据前序和后序遍历构造二叉树 递归构造(结果不唯一) 中等 654. 最大二叉树 递归构造 中等 652. 寻找重复的子树 后序遍历 中等 337. 打家劫舍 III 遍历 中等 236. 二叉树的最近公共祖先 递归 中等 222. 完全二叉树的节点个数 递归 中等 297. 二叉树的序列化与反序列化 递归 困难 题解二叉树结点定义</description>
+    </item>
+    
+    <item>
+      <title>How to OpenMP</title>
+      <link>https://valepipi.github.io/en/posts/how-to-openmp/</link>
+      <pubDate>Fri, 24 Feb 2023 23:32:39 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/how-to-openmp/</guid>
+      <description>介绍fork-join模式的并行编程库， 操作线程单位， 线程级别并行
+用类似于 #pragma omp parallel num_threads(8) 的制导语句指定程序中的并行区域
+安装在ubuntu自带的build-essential包中, 查看openmp版本：
+echo |cpp -fopenmp -dM |grep -i open #define _OPENMP 201511 编译使用直接在编译语句添加-fopenmp g++ -02 -std=c++4 -fopenmp hello.cpp -o hello 或者修改项目的task.json, 在args中加入&amp;quot;-fopenmp&amp;quot; &amp;#34;tasks&amp;#34;:[ { &amp;#34;args&amp;#34;: [ &amp;#34;-fdiagnostics-color=always&amp;#34;, &amp;#34;-fopenmp&amp;#34;, &amp;#34;-g&amp;#34;, &amp;#34;${file}&amp;#34;, &amp;#34;-o&amp;#34;, &amp;#34;${fileDirname}/${fileBasenameNoExtension}&amp;#34; ], } ] 常用的库函数// 设置并行区运行的线程数 void omp_set_num_threads(int) // 获得并行区运行的线程数 void omp_get_num_threads(int) // 获得线程编号 void omp_get_thread_num(void) // 获得openmp wall clock时间(秒) void omp_get_wtime(void) // 获得omp_get_wtime时间精度 void omp_get_wtick(void) 常用语法变量构造并行</description>
+    </item>
+    
     <item>
       <title>神经网络基础</title>
       <link>https://valepipi.github.io/en/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</link>
@@ -61,7 +84,7 @@ Shared memory: 可读可写，很快，较小，一个block内的Thread共享 L
     </item>
     
     <item>
-      <title>🐰LeetCode Hot100 题解</title>
+      <title>🐰LeetCode Hot100 题解 (Python)</title>
       <link>https://valepipi.github.io/en/posts/leetcode/</link>
       <pubDate>Sat, 21 Jan 2023 19:57:59 +0800</pubDate>
       

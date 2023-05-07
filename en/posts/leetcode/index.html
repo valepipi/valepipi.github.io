@@ -18,12 +18,12 @@
 <meta name="keywords" content="blog,developer,personal">
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="🐰LeetCode Hot100 题解"/>
+<meta name="twitter:title" content="🐰LeetCode Hot100 题解 (Python)"/>
 <meta name="twitter:description" content="😃数学问题1. 两数之和给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。
 输入：nums = [2,7,11,15], target = 9 输出：[0,1] 解释：因为 nums[0] &#43; nums[1] == 9 ，返回 [0, 1] 。 class Solution: def twoSum(self, nums: List[int], target: int) -&gt; List[int]: &#34;&#34;&#34; 1. 暴力查找O(n^2) 2. 利用dict反查O(n) &#34;&#34;&#34; # n = len(nums) # for i in range(n): # for j in range(i &#43; 1, n): # if nums[i] &#43; nums[j] == target: # return [i ,j] # return [] dict = {} for i in range( len(nums) ): if target - nums[i] not in dict: dict[nums[i]] = i #建立反查表 else: return [dict[target-nums[i]], i] 88."/>
 
-<meta property="og:title" content="🐰LeetCode Hot100 题解" />
+<meta property="og:title" content="🐰LeetCode Hot100 题解 (Python)" />
 <meta property="og:description" content="😃数学问题1. 两数之和给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。
 输入：nums = [2,7,11,15], target = 9 输出：[0,1] 解释：因为 nums[0] &#43; nums[1] == 9 ，返回 [0, 1] 。 class Solution: def twoSum(self, nums: List[int], target: int) -&gt; List[int]: &#34;&#34;&#34; 1. 暴力查找O(n^2) 2. 利用dict反查O(n) &#34;&#34;&#34; # n = len(nums) # for i in range(n): # for j in range(i &#43; 1, n): # if nums[i] &#43; nums[j] == target: # return [i ,j] # return [] dict = {} for i in range( len(nums) ): if target - nums[i] not in dict: dict[nums[i]] = i #建立反查表 else: return [dict[target-nums[i]], i] 88." />
@@ -162,7 +162,7 @@
         <div class="post-title">
           <h1 class="title">
             <a class="title-link" href="https://valepipi.github.io/en/posts/leetcode/">
-              🐰LeetCode Hot100 题解
+              🐰LeetCode Hot100 题解 (Python)
             </a>
           </h1>
         </div>
