@@ -176,7 +176,7 @@
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              4-minute read
+              9-minute read
             </span>
           </div>
           
@@ -500,20 +500,92 @@
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"></code></pre></div><h2 id="106-从中序与后序遍历序列构造二叉树httpsleetcodecnproblemsconstruct-binary-tree-from-inorder-and-postorder-traversal">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    unordered_map&lt;<span style="">int</span>, <span style="">int</span>&gt; val2index;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* buildTree(vector&lt;<span style="">int</span>&gt;&amp; preorder, vector&lt;<span style="">int</span>&gt;&amp; inorder) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; inorder.size(); i++)
+</span></span><span style="display:flex;"><span>            val2index[inorder[i]] = i;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> build(preorder, 0, preorder.size()-1, inorder, 0, inorder.size()-1);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TreeNode* build(vector&lt;<span style="">int</span>&gt;&amp; preorder, <span style="">int</span> preStart, <span style="">int</span> preEnd, vector&lt;<span style="">int</span>&gt;&amp; inorder, <span style="">int</span> inStart, <span style="">int</span> inEnd){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(preEnd&lt;preStart) <span style="font-weight:bold">return</span> <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> rootVal = preorder[preStart];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> index = val2index[rootVal];
+</span></span><span style="display:flex;"><span>        TreeNode* root = <span style="font-weight:bold">new</span> TreeNode(rootVal);
+</span></span><span style="display:flex;"><span>        <span style="">int</span> leftsize = index - inStart;
+</span></span><span style="display:flex;"><span>        root-&gt;left = build(preorder, preStart+1, preStart+leftsize, inorder, inStart, index-1);
+</span></span><span style="display:flex;"><span>        root-&gt;right = build(preorder, preStart+leftsize+1, preEnd, inorder, index+1, inEnd);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="106-从中序与后序遍历序列构造二叉树httpsleetcodecnproblemsconstruct-binary-tree-from-inorder-and-postorder-traversal">
   <a href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106. 从中序与后序遍历序列构造二叉树</a>
   <a class="heading-link" href="#106-%e4%bb%8e%e4%b8%ad%e5%ba%8f%e4%b8%8e%e5%90%8e%e5%ba%8f%e9%81%8d%e5%8e%86%e5%ba%8f%e5%88%97%e6%9e%84%e9%80%a0%e4%ba%8c%e5%8f%89%e6%a0%91httpsleetcodecnproblemsconstruct-binary-tree-from-inorder-and-postorder-traversal">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    unordered_map&lt;<span style="">int</span>, <span style="">int</span>&gt; val2index;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* buildTree(vector&lt;<span style="">int</span>&gt;&amp; inorder, vector&lt;<span style="">int</span>&gt;&amp; postorder) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; inorder.size(); i++){
+</span></span><span style="display:flex;"><span>            val2index[inorder[i]] = i;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> build(inorder, 0, inorder.size()-1, postorder, 0, postorder.size()-1);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TreeNode* build(vector&lt;<span style="">int</span>&gt;&amp; inorder, <span style="">int</span> inStart, <span style="">int</span> inEnd, vector&lt;<span style="">int</span>&gt;&amp; postorder, <span style="">int</span> postStart, <span style="">int</span> postEnd){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(inStart&gt;inEnd) <span style="font-weight:bold">return</span> <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> rootVal = postorder[postEnd];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> index = val2index[rootVal];
+</span></span><span style="display:flex;"><span>        TreeNode* root = <span style="font-weight:bold">new</span> TreeNode(rootVal);
+</span></span><span style="display:flex;"><span>        <span style="">int</span> leftsize = index - inStart;
+</span></span><span style="display:flex;"><span>        root-&gt;left = build(inorder, inStart, index-1, postorder, postStart, postStart+leftsize-1);
+</span></span><span style="display:flex;"><span>        root-&gt;right = build(inorder, index+1, inEnd, postorder, postStart+leftsize, postEnd-1);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="889-根据前序和后序遍历构造二叉树httpsleetcodecnproblemsconstruct-binary-tree-from-preorder-and-postorder-traversal">
   <a href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/">889. 根据前序和后序遍历构造二叉树</a>
   <a class="heading-link" href="#889-%e6%a0%b9%e6%8d%ae%e5%89%8d%e5%ba%8f%e5%92%8c%e5%90%8e%e5%ba%8f%e9%81%8d%e5%8e%86%e6%9e%84%e9%80%a0%e4%ba%8c%e5%8f%89%e6%a0%91httpsleetcodecnproblemsconstruct-binary-tree-from-preorder-and-postorder-traversal">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    unordered_map&lt;<span style="">int</span>, <span style="">int</span>&gt; val2index;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* constructFromPrePost(vector&lt;<span style="">int</span>&gt;&amp; preorder, vector&lt;<span style="">int</span>&gt;&amp; postorder) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i&lt;postorder.size();i++){
+</span></span><span style="display:flex;"><span>            val2index[postorder[i]] = i;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> build(
+</span></span><span style="display:flex;"><span>            preorder, 0, preorder.size()-1,\
+</span></span><span style="display:flex;"><span>            postorder, 0, postorder.size()-1);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TreeNode* build(
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt;&amp; preorder,
+</span></span><span style="display:flex;"><span>    <span style="">int</span> preStart,
+</span></span><span style="display:flex;"><span>    <span style="">int</span> preEnd,
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt;&amp; postorder,
+</span></span><span style="display:flex;"><span>    <span style="">int</span> postStart,
+</span></span><span style="display:flex;"><span>    <span style="">int</span> postEnd
+</span></span><span style="display:flex;"><span>){
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(preStart&gt;preEnd) <span style="font-weight:bold">return</span> <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(preStart == preEnd) <span style="font-weight:bold">return</span> <span style="font-weight:bold">new</span> TreeNode(preorder[preStart]);
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">//构造根节点
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="">int</span> rootVal = preorder[preStart];
+</span></span><span style="display:flex;"><span>    TreeNode* root = <span style="font-weight:bold">new</span> TreeNode(rootVal);
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">//左子树的根节点
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="">int</span> leftrootVal = preorder[preStart+1];
+</span></span><span style="display:flex;"><span>    <span style="">int</span> index = val2index[leftrootVal];
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">//构造左右子树
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="">int</span> leftsize = index - postStart + 1;
+</span></span><span style="display:flex;"><span>    root-&gt;left = build(preorder, preStart+1, preStart+leftsize, postorder, postStart, index);
+</span></span><span style="display:flex;"><span>    root-&gt;right = build(preorder, preStart+leftsize+1, preEnd, postorder, index+1, postEnd-1);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="654-最大二叉树httpsleetcodecnproblemsmaximum-binary-tree">
   <a href="https://leetcode.cn/problems/maximum-binary-tree/">654. 最大二叉树</a>
   <a class="heading-link" href="#654-%e6%9c%80%e5%a4%a7%e4%ba%8c%e5%8f%89%e6%a0%91httpsleetcodecnproblemsmaximum-binary-tree">
@@ -577,28 +649,111 @@ memo备忘录记录出现次数</p>
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    unordered_map&lt;TreeNode*, <span style="">int</span>&gt; memo;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> rob(TreeNode* root) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> (root == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 利用备忘录消除重叠子问题
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">if</span> (memo.count(root))
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> memo[root];
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 抢，然后去下下家
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="">int</span> do_it = root-&gt;val
+</span></span><span style="display:flex;"><span>                    + (root-&gt;left == <span style="font-weight:bold">nullptr</span> ?
+</span></span><span style="display:flex;"><span>                       0 : rob(root-&gt;left-&gt;left) + rob(root-&gt;left-&gt;right))
+</span></span><span style="display:flex;"><span>                    + (root-&gt;right == <span style="font-weight:bold">nullptr</span> ?
+</span></span><span style="display:flex;"><span>                       0 : rob(root-&gt;right-&gt;left) + rob(root-&gt;right-&gt;right));
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 不抢，然后去下家
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="">int</span> not_do = rob(root-&gt;left) + rob(root-&gt;right);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="">int</span> res = max(do_it, not_do);
+</span></span><span style="display:flex;"><span>        memo[root] = res;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="236-二叉树的最近公共祖先httpsleetcodecnproblemslowest-common-ancestor-of-a-binary-tree">
   <a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/">236. 二叉树的最近公共祖先</a>
   <a class="heading-link" href="#236-%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9a%84%e6%9c%80%e8%bf%91%e5%85%ac%e5%85%b1%e7%a5%96%e5%85%88httpsleetcodecnproblemslowest-common-ancestor-of-a-binary-tree">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == NULL) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(p == root || q == root) <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
+</span></span><span style="display:flex;"><span>        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left != NULL &amp;&amp; right != NULL) <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left == NULL &amp;&amp; right == NULL) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left == NULL ? right: left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="222-完全二叉树的节点个数httpsleetcodecnproblemscount-complete-tree-nodes">
   <a href="https://leetcode.cn/problems/count-complete-tree-nodes/">222. 完全二叉树的节点个数</a>
   <a class="heading-link" href="#222-%e5%ae%8c%e5%85%a8%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9a%84%e8%8a%82%e7%82%b9%e4%b8%aa%e6%95%b0httpsleetcodecnproblemscount-complete-tree-nodes">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == NULL) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(p == root || q == root) <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
+</span></span><span style="display:flex;"><span>        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left != NULL &amp;&amp; right != NULL) <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left == NULL &amp;&amp; right == NULL) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left == NULL ? right: left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="297-二叉树的序列化与反序列化httpsleetcodecnproblemsserialize-and-deserialize-binary-treefavorite59jeatgw">
   <a href="https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/?favorite=59jEaTgw">297. 二叉树的序列化与反序列化</a>
   <a class="heading-link" href="#297-%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9a%84%e5%ba%8f%e5%88%97%e5%8c%96%e4%b8%8e%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96httpsleetcodecnproblemsserialize-and-deserialize-binary-treefavorite59jeatgw">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Codec</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">char</span> SEP = <span style="font-style:italic">&#39;,&#39;</span>;
+</span></span><span style="display:flex;"><span>    string NULL_PTR = <span style="font-style:italic">&#34;#&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// Encodes a tree to a single string.
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    string serialize(TreeNode* root) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> (root == NULL) <span style="font-weight:bold">return</span> NULL_PTR + SEP;
+</span></span><span style="display:flex;"><span>        string res = to_string(root-&gt;val) + SEP;
+</span></span><span style="display:flex;"><span>        res += serialize(root-&gt;left);
+</span></span><span style="display:flex;"><span>        res += serialize(root-&gt;right);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// Decodes your encoded data to tree.
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    TreeNode* deserialize(string data) {
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">//string data to queue&lt;string&gt; nodes数组
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        queue&lt;string&gt; nodes;
+</span></span><span style="display:flex;"><span>        string cur = <span style="font-style:italic">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">char</span> ch: data){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(ch == SEP){
+</span></span><span style="display:flex;"><span>                nodes.push(cur);
+</span></span><span style="display:flex;"><span>                cur = <span style="font-style:italic">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>            }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>                cur += ch;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">//decode每个node
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">return</span> decode(nodes);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TreeNode* decode(queue&lt;string&gt;&amp; nodes){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nodes.empty()) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        string rootVal = nodes.front();
+</span></span><span style="display:flex;"><span>        nodes.pop();
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(rootVal == NULL_PTR) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        TreeNode* root = <span style="font-weight:bold">new</span> TreeNode(stoi(rootVal));
+</span></span><span style="display:flex;"><span>        root-&gt;left = decode(nodes);
+</span></span><span style="display:flex;"><span>        root-&gt;right = decode(nodes);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h1 id="-二叉搜索树bst--题目列表">
   🌴 &lt;二叉搜索树BST&gt;  题目列表
   <a class="heading-link" href="#-%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91bst--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
@@ -673,56 +828,182 @@ memo备忘录记录出现次数</p>
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> sum = 0;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* convertBST(TreeNode* root) {
+</span></span><span style="display:flex;"><span>        traverse(root);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">void</span> traverse(TreeNode* root){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(!root) <span style="font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        traverse(root-&gt;right);
+</span></span><span style="display:flex;"><span>        sum += root-&gt;val;
+</span></span><span style="display:flex;"><span>        root-&gt;val = sum;
+</span></span><span style="display:flex;"><span>        traverse(root-&gt;left);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="230-二叉搜索树中第k小的元素httpsleetcodecnproblemskth-smallest-element-in-a-bst">
   <a href="https://leetcode.cn/problems/kth-smallest-element-in-a-bst/">230. 二叉搜索树中第K小的元素</a>
   <a class="heading-link" href="#230-%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91%e4%b8%ad%e7%ac%ack%e5%b0%8f%e7%9a%84%e5%85%83%e7%b4%a0httpsleetcodecnproblemskth-smallest-element-in-a-bst">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> rank = 0;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">int</span> kthSmallest(TreeNode* root, <span style="">int</span> k) {
+</span></span><span style="display:flex;"><span>        traverse(root, k, rank, res);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">void</span> traverse(TreeNode* root, <span style="">int</span> k, <span style="">int</span>&amp; rank, <span style="">int</span>&amp; res){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        traverse(root-&gt;left, k, rank, res);
+</span></span><span style="display:flex;"><span>        rank++;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(rank == k){
+</span></span><span style="display:flex;"><span>            res = root-&gt;val;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        traverse(root-&gt;right, k, rank, res);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="700-二叉搜索树中的搜索httpsleetcodecnproblemssearch-in-a-binary-search-tree">
   <a href="https://leetcode.cn/problems/search-in-a-binary-search-tree/">700. 二叉搜索树中的搜索</a>
   <a class="heading-link" href="#700-%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91%e4%b8%ad%e7%9a%84%e6%90%9c%e7%b4%a2httpsleetcodecnproblemssearch-in-a-binary-search-tree">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* searchBST(TreeNode* root, <span style="">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(val &lt; root-&gt;val) <span style="font-weight:bold">return</span> searchBST(root-&gt;left, val);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(val &gt; root-&gt;val) <span style="font-weight:bold">return</span> searchBST(root-&gt;right, val);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="98-验证二叉搜索树httpsleetcodecnproblemsvalidate-binary-search-tree">
   <a href="https://leetcode.cn/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a>
   <a class="heading-link" href="#98-%e9%aa%8c%e8%af%81%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91httpsleetcodecnproblemsvalidate-binary-search-tree">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> isValidBST(TreeNode* root) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> isValid(root, <span style="font-weight:bold">nullptr</span>, <span style="font-weight:bold">nullptr</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> isValid(TreeNode* root, TreeNode* min, TreeNode* max){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(!root) <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(min != <span style="font-weight:bold">nullptr</span> &amp;&amp; root-&gt;val &lt;= min-&gt;val) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(max != <span style="font-weight:bold">nullptr</span> &amp;&amp; root-&gt;val &gt;= max-&gt;val) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> isValid(root-&gt;left, min, root) &amp;&amp; isValid(root-&gt;right, root, max);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="701-二叉搜索树中的插入操作httpsleetcodecnproblemsinsert-into-a-binary-search-tree">
   <a href="https://leetcode.cn/problems/insert-into-a-binary-search-tree/">701. 二叉搜索树中的插入操作</a>
   <a class="heading-link" href="#701-%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91%e4%b8%ad%e7%9a%84%e6%8f%92%e5%85%a5%e6%93%8d%e4%bd%9chttpsleetcodecnproblemsinsert-into-a-binary-search-tree">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* insertIntoBST(TreeNode* root, <span style="">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> <span style="font-weight:bold">new</span> TreeNode(val);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(val &lt; root-&gt;val) root-&gt;left = insertIntoBST(root-&gt;left, val);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(val &gt; root-&gt;val) root-&gt;right = insertIntoBST(root-&gt;right, val);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="450-删除二叉搜索树中的节点httpsleetcodecnproblemsdelete-node-in-a-bst">
   <a href="https://leetcode.cn/problems/delete-node-in-a-bst/">450. 删除二叉搜索树中的节点</a>
   <a class="heading-link" href="#450-%e5%88%a0%e9%99%a4%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91%e4%b8%ad%e7%9a%84%e8%8a%82%e7%82%b9httpsleetcodecnproblemsdelete-node-in-a-bst">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* deleteNode(TreeNode* root, <span style="">int</span> key) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root-&gt;val == key){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(root-&gt;left == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> root-&gt;right;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(root-&gt;right == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> root-&gt;left;
+</span></span><span style="display:flex;"><span>            TreeNode* minNode = getMin(root-&gt;right);
+</span></span><span style="display:flex;"><span>            root-&gt;right = deleteNode(root-&gt;right, minNode-&gt;val);
+</span></span><span style="display:flex;"><span>            minNode-&gt;left = root-&gt;left;
+</span></span><span style="display:flex;"><span>            minNode-&gt;right = root-&gt;right;
+</span></span><span style="display:flex;"><span>            root = minNode;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> if(root-&gt;val &lt; key){
+</span></span><span style="display:flex;"><span>            root-&gt;right = deleteNode(root-&gt;right, key);
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            root-&gt;left = deleteNode(root-&gt;left, key);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TreeNode* getMin(TreeNode* node){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(node-&gt;left != <span style="font-weight:bold">nullptr</span>) node = node-&gt;left;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> node;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="96-不同的二叉搜索树httpsleetcodecnproblemsunique-binary-search-trees">
   <a href="https://leetcode.cn/problems/unique-binary-search-trees/">96. 不同的二叉搜索树</a>
   <a class="heading-link" href="#96-%e4%b8%8d%e5%90%8c%e7%9a%84%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91httpsleetcodecnproblemsunique-binary-search-trees">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> memo[20][20];
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">int</span> numTrees(<span style="">int</span> n) {
+</span></span><span style="display:flex;"><span>        memset(memo, 0, <span style="font-weight:bold">sizeof</span>(memo));
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> count(1, n);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">int</span> count(<span style="">int</span> lo, <span style="">int</span> hi){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(hi &lt; lo) <span style="font-weight:bold">return</span> 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(memo[lo][hi] != 0) <span style="font-weight:bold">return</span> memo[lo][hi];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> mid = lo; mid &lt;= hi; mid++){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> leftres = count(lo, mid-1);
+</span></span><span style="display:flex;"><span>            <span style="">int</span> rightres = count(mid+1, hi);
+</span></span><span style="display:flex;"><span>            res += leftres * rightres; <span style="font-style:italic">//每次计算以其中一个为根节点的情况
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>        memo[lo][hi] = res;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="95-不同的二叉搜索树-iihttpsleetcodecnproblemsunique-binary-search-trees-ii">
   <a href="https://leetcode.cn/problems/unique-binary-search-trees-ii/">95. 不同的二叉搜索树 II</a>
   <a class="heading-link" href="#95-%e4%b8%8d%e5%90%8c%e7%9a%84%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91-iihttpsleetcodecnproblemsunique-binary-search-trees-ii">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;TreeNode*&gt; generateTrees(<span style="">int</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> build(1, n);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    vector&lt;TreeNode*&gt; build(<span style="">int</span> lo, <span style="">int</span> hi){
+</span></span><span style="display:flex;"><span>        vector&lt;TreeNode*&gt; res;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(hi &lt; lo){
+</span></span><span style="display:flex;"><span>            res.push_back(<span style="font-weight:bold">nullptr</span>);
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> mid = lo; mid &lt;= hi; mid++){
+</span></span><span style="display:flex;"><span>            vector&lt;TreeNode*&gt; left = build(lo, mid-1);
+</span></span><span style="display:flex;"><span>            vector&lt;TreeNode*&gt; right = build(mid+1, hi);
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span> l: left){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span> r: right){
+</span></span><span style="display:flex;"><span>                    TreeNode* root = <span style="font-weight:bold">new</span> TreeNode(mid);
+</span></span><span style="display:flex;"><span>                    root-&gt;left = l;
+</span></span><span style="display:flex;"><span>                    root-&gt;right = r;
+</span></span><span style="display:flex;"><span>                    res.push_back(root);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="235-二叉搜索树的最近公共祖先httpsleetcodecnproblemslowest-common-ancestor-of-a-binary-search-tree">
   <a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/">235. 二叉搜索树的最近公共祖先</a>
   <a class="heading-link" href="#235-%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91%e7%9a%84%e6%9c%80%e8%bf%91%e5%85%ac%e5%85%b1%e7%a5%96%e5%85%88httpsleetcodecnproblemslowest-common-ancestor-of-a-binary-search-tree">
