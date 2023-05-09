@@ -6,9 +6,24 @@
     <description>Recent content in LeetCode on Ping&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 07 May 2023 14:26:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 May 2023 09:45:06 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>🎅 LeetCode二叉树题解 (C&#43;&#43;)</title>
+      <title>🔗 LeetCode链表题解 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/en/posts/leetcode-linklist-c&#43;&#43;/</link>
+      <pubDate>Tue, 09 May 2023 09:45:06 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/leetcode-linklist-c&#43;&#43;/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+🔗 &amp;lt;链表&amp;gt; 题目列表&amp;hellip;
+题解单链表节点定义
+struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {} }; 21.合并两个有序链表//简单
+dummy
+class Solution { public: ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) { ListNode* dummy = new ListNode(-1); ListNode* p = dummy; ListNode* p1 = list1; ListNode* p2 = list2; while(p1 != nullptr &amp;amp;&amp;amp; p2 !</description>
+    </item>
+    
+    <item>
+      <title>🌴 LeetCode二叉树题解 (C&#43;&#43;)</title>
       <link>https://valepipi.github.io/en/posts/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91-c&#43;&#43;/</link>
       <pubDate>Sun, 07 May 2023 14:26:59 +0800</pubDate>
       
