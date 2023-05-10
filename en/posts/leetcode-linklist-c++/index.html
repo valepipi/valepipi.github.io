@@ -423,6 +423,56 @@ dummy node: 避免空指针<br>
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> p1;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="206-反转链表httpsleetcodecnproblemsreverse-linked-list">
+  <a href="https://leetcode.cn/problems/reverse-linked-list/">206. 反转链表</a>
+  <a class="heading-link" href="#206-%e5%8f%8d%e8%bd%ac%e9%93%be%e8%a1%a8httpsleetcodecnproblemsreverse-linked-list">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 简单<br>
+递归<br>
+<img src="/images/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.png" alt="反转链表"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    ListNode* reverseList(ListNode* head) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(head == <span style="font-weight:bold">nullptr</span> || head-&gt;next == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> head;
+</span></span><span style="display:flex;"><span>        ListNode* last = reverseList(head-&gt;next);
+</span></span><span style="display:flex;"><span>        head-&gt;next-&gt;next = head;
+</span></span><span style="display:flex;"><span>        head-&gt;next = <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> last;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="92-反转链表-iihttpsleetcodecnproblemsreverse-linked-list-ii">
+  <a href="https://leetcode.cn/problems/reverse-linked-list-ii/">92. 反转链表 II</a>
+  <a class="heading-link" href="#92-%e5%8f%8d%e8%bd%ac%e9%93%be%e8%a1%a8-iihttpsleetcodecnproblemsreverse-linked-list-ii">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+<img src="/images/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A82-1.png" alt="反转链表2"><br>
+递归<br>
+反转链表的一部分 m~n，拆分为两个问题：
+1. base case m=1，反转链表的前n个节点（head~n）：需要记录第n+1个节点successor，并且反转完之后连接，head-&gt;next = successor
+2. 通常 m!=1，递归反转剩下的部分head-&gt;next，触发base case</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    ListNode* reverseBetween(ListNode* head, <span style="">int</span> left, <span style="">int</span> right) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left == 1) <span style="font-weight:bold">return</span> reverseN(head, right);
+</span></span><span style="display:flex;"><span>        head-&gt;next = reverseBetween(head-&gt;next, left-1, right-1);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> head;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    ListNode* succesor = <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>    ListNode* reverseN(ListNode* head, <span style="">int</span> n){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(n == 1){
+</span></span><span style="display:flex;"><span>            succesor = head-&gt;next;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> head;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        ListNode* last = reverseN(head-&gt;next, n-1);
+</span></span><span style="display:flex;"><span>        head-&gt;next-&gt;next = head;
+</span></span><span style="display:flex;"><span>        head-&gt;next = succesor;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> last;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
       </div>
 
