@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>transformer on 游泳小狗</title>
+    <link>https://valepipi.github.io/tags/transformer/</link>
+    <description>Recent content in transformer on 游泳小狗</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 12 May 2023 10:43:59 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transformer Pytorch 源码阅读</title>
+      <link>https://valepipi.github.io/posts/transformer/</link>
+      <pubDate>Fri, 12 May 2023 10:43:59 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/transformer/</guid>
+      <description>Transformer Pytorch 源码阅读论文：https://arxiv.org/pdf/1706.03762.pdf 代码：torch/nn/modules/transformer.py 教程：http://nlp.seas.harvard.edu/2018/04/03/attention.html
+!model</description>
+    </item>
+    
+  </channel>
+</rss>

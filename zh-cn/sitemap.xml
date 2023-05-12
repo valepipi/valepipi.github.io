@@ -2,6 +2,116 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://valepipi.github.io/categories/blog/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/categories/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/categories/blog/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/categories/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/categories/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/tags/pim/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/posts/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/tags/reram/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/reram/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/reram/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/posts/reram%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+  </url><url>
+    <loc>https://valepipi.github.io/tags/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/</loc>
+    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/tags/transformer/</loc>
+    <lastmod>2023-05-12T10:43:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/transformer/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/transformer/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/posts/transformer/</loc>
+    <lastmod>2023-05-12T10:43:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/transformer/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/transformer/"
+                />
+  </url><url>
     <loc>https://valepipi.github.io/posts/leetcode-linklist-c&#43;&#43;/</loc>
     <lastmod>2023-05-09T09:45:06+08:00</lastmod>
     <xhtml:link
@@ -15,32 +125,6 @@
                 href="https://valepipi.github.io/posts/leetcode-linklist-c&#43;&#43;/"
                 />
   </url><url>
-    <loc>https://valepipi.github.io/categories/blog/</loc>
-    <lastmod>2023-05-09T09:45:06+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/categories/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/categories/blog/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/categories/</loc>
-    <lastmod>2023-05-09T09:45:06+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/categories/"
-                />
-  </url><url>
     <loc>https://valepipi.github.io/tags/leetcode/</loc>
     <lastmod>2023-05-09T09:45:06+08:00</lastmod>
     <xhtml:link
@@ -52,45 +136,6 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://valepipi.github.io/tags/leetcode/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/posts/</loc>
-    <lastmod>2023-05-09T09:45:06+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/posts/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/tags/</loc>
-    <lastmod>2023-05-09T09:45:06+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/tags/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/</loc>
-    <lastmod>2023-05-09T09:45:06+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/"
                 />
   </url><url>
     <loc>https://valepipi.github.io/posts/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91-c&#43;&#43;/</loc>
@@ -148,11 +193,18 @@
                 href="https://valepipi.github.io/tags/cnn/"
                 />
   </url><url>
-    <loc>https://valepipi.github.io/tags/reram/</loc>
+    <loc>https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/</loc>
     <lastmod>2023-01-30T16:06:16+08:00</lastmod>
-  </url><url>
-    <loc>https://valepipi.github.io/posts/reram/</loc>
-    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/posts/reram%E5%8A%A0%E9%80%9Fcnn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/"
+                />
   </url><url>
     <loc>https://valepipi.github.io/posts/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-01-30T14:45:42+08:00</lastmod>

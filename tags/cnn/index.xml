@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 30 Jan 2023 16:06:16 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ReRAM存算一体加速CNN</title>
-      <link>https://valepipi.github.io/posts/reram/</link>
+      <link>https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/</link>
       <pubDate>Mon, 30 Jan 2023 16:06:16 +0800</pubDate>
       
-      <guid>https://valepipi.github.io/posts/reram/</guid>
+      <guid>https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/</guid>
       <description>ReRAM器件特性ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。
 存储模式VS计算模式：一般的，ReRAM 阵列在进行计算操作时需要将所有的输入端口打开。
 优势可作为存储元件，将数据以电阻/电导的形式储存在器件中；

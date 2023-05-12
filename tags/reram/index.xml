@@ -6,13 +6,31 @@
     <description>Recent content in ReRAM on 游泳小狗</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Jan 2023 16:06:16 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/reram/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2023 20:52:35 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/tags/reram/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RRAM存算一体研究</title>
+      <link>https://valepipi.github.io/posts/reram%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93/</link>
+      <pubDate>Fri, 12 May 2023 20:52:35 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/reram%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93/</guid>
+      <description>RRAM存算一体研究复旦大学芯片与系统前沿技术论坛-Processing in memory hardcore design and soft landing-北京大学 燕博南 B站教程-存算一体存储器基础(思维导图对发展现状总结详尽) 陈巍谈芯 https://zhuanlan.zhihu.com/p/480612865 **[视频]** 《存算一体白皮书2022》中国移动研究院 冯诺依曼瓶颈与存储墙&amp;hellip;
+存算一体的优势模拟存算 PIM优势模拟存算
+存算一体研究现状B站教程-存算一体存储器基础(思维导图对发展现状总结详尽) //思维导图 &amp;hellip;
+基于PIM的存储器层次结构PIM memory hierarchy
+PIM Solution Stack在原有的存储芯片上加计算单元 在SOC上加PIM加速器 //待画图 STACK1 // 待画图 STACK2
+存算一体的基本电路模块PIM基本电路模块
+存算一体设计难点&amp;hellip;
+模拟存内计算的设计挑战挑战主要在模拟计算，数字计算较少。
+模拟PIM挑战
+优化方向优化方向-可重构 &amp;hellip; 分形冯诺依曼&amp;hellip;</description>
+    </item>
+    
     <item>
       <title>ReRAM存算一体加速CNN</title>
-      <link>https://valepipi.github.io/posts/reram/</link>
+      <link>https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/</link>
       <pubDate>Mon, 30 Jan 2023 16:06:16 +0800</pubDate>
       
-      <guid>https://valepipi.github.io/posts/reram/</guid>
+      <guid>https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/</guid>
       <description>ReRAM器件特性ReRAM 是一种无源双端型阻性器件，可储存多个阻态(MLC)。
 存储模式VS计算模式：一般的，ReRAM 阵列在进行计算操作时需要将所有的输入端口打开。
 优势可作为存储元件，将数据以电阻/电导的形式储存在器件中；
