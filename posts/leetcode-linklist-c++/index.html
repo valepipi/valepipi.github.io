@@ -508,6 +508,70 @@ dummy node: 避免空指针<br>
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> pre;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="234-回文链表httpsleetcodecnproblemspalindrome-linked-list">
+  <a href="https://leetcode.cn/problems/palindrome-linked-list/">234. 回文链表</a>
+  <a class="heading-link" href="#234-%e5%9b%9e%e6%96%87%e9%93%be%e8%a1%a8httpsleetcodecnproblemspalindrome-linked-list">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 简单</p>
+<ol>
+<li>快慢指针, 反转后半段链表:
+<ol>
+<li>找到链表的中间节点，一分为二</li>
+<li>若总数是奇数，则慢指针最后需再走一步(判断条件到：fast-&gt;next!=NULL)<br>
+(若判断条件到fast-&gt;next-&gt;next!=NULL, 则无需多走，但要加base case: head==NULL)</li>
+</ol>
+</li>
+<li>双指针, 逐个比较两个链表的节点值是否相等</li>
+<li>恢复链表</li>
+<li>返回结果<br>
+时间复杂度O(n)，空间复杂度O(1)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> isPalindrome(ListNode* head) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(head == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ListNode* slow = head;
+</span></span><span style="display:flex;"><span>        ListNode* fast = head;
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 找到链表中间节点
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">while</span>(fast-&gt;next != <span style="font-weight:bold">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span style="font-weight:bold">nullptr</span>){
+</span></span><span style="display:flex;"><span>            slow = slow-&gt;next;
+</span></span><span style="display:flex;"><span>            fast = fast-&gt;next-&gt;next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 记录前半段的尾节点，便于恢复链表
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        ListNode* endofhalf = slow;
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 反转后半段链表
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        ListNode* left = head;
+</span></span><span style="display:flex;"><span>        ListNode* right = reverse(slow-&gt;next);
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 记录后半段的头节点，便于恢复链表
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        ListNode* startofnexthalf = right;
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">//比较回文
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">while</span>(right != <span style="font-weight:bold">nullptr</span>){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(left-&gt;val != right-&gt;val) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>            left = left-&gt;next;
+</span></span><span style="display:flex;"><span>            right = right-&gt;next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">//恢复链表
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        endofhalf-&gt;next = reverse(startofnexthalf);
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">//返回结果
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    ListNode* reverse(ListNode* head){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(head == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        ListNode* pre = <span style="font-weight:bold">nullptr</span>;
+</span></span><span style="display:flex;"><span>        ListNode* cur = head;
+</span></span><span style="display:flex;"><span>        ListNode* next = head;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(cur != <span style="font-weight:bold">nullptr</span>){
+</span></span><span style="display:flex;"><span>            next = cur-&gt;next;
+</span></span><span style="display:flex;"><span>            cur-&gt;next = pre;
+</span></span><span style="display:flex;"><span>            pre = cur;
+</span></span><span style="display:flex;"><span>            cur = next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> pre;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
       </div>
 
