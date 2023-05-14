@@ -6,7 +6,25 @@
     <description>Recent content in LeetCode on Ping&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 09 May 2023 09:45:06 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 May 2023 16:38:45 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🎰 LeetCode数组题解 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/en/posts/leetcode-array/</link>
+      <pubDate>Sat, 13 May 2023 16:38:45 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/en/posts/leetcode-array/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+🎰 &amp;lt;数组&amp;gt; 题目列表&amp;hellip;
+题解26. 删除有序数组中的重复项//简单
+原地修改，双指针
+slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &amp;lt; nums.size()){ if(nums[slow] != nums[fast]){ slow++; nums[slow] = nums[fast]; } fast++; } return slow+1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
+原地修改，双指针
+移除指定的元素
+修改nums[slow] = nums[fast]条件即可: nums[fast] != val
+class Solution{ public: int removeElement(vector&amp;lt;int&amp;gt;&amp;amp; nums, int val) { int slow = 0; int fast = 0; while(fast &amp;lt; nums.</description>
+    </item>
+    
     <item>
       <title>🔗 LeetCode链表题解 (C&#43;&#43;)</title>
       <link>https://valepipi.github.io/en/posts/leetcode-linklist-c&#43;&#43;/</link>
