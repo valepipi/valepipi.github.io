@@ -15,14 +15,16 @@
       <guid>https://valepipi.github.io/posts/leetcode-array/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
+数组技巧
+前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
+差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
 🎰 &amp;lt;数组&amp;gt; 题目列表&amp;hellip;
 题解26. 删除有序数组中的重复项//简单
 原地修改，双指针
 slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &amp;lt; nums.size()){ if(nums[slow] != nums[fast]){ slow++; nums[slow] = nums[fast]; } fast++; } return slow+1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
 原地修改，双指针
 移除指定的元素
-修改nums[slow] = nums[fast]条件即可: nums[fast] != val
-class Solution{ public: int removeElement(vector&amp;lt;int&amp;gt;&amp;amp; nums, int val) { int slow = 0; int fast = 0; while(fast &amp;lt; nums.</description>
+修改nums[slow] = nums[fast]条件即可: nums[fast] != val</description>
     </item>
     
     <item>
