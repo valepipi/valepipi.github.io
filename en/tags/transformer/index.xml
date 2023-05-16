@@ -13,7 +13,7 @@
       <pubDate>Fri, 12 May 2023 10:43:59 +0800</pubDate>
       
       <guid>https://valepipi.github.io/en/posts/transformer/</guid>
-      <description></description>
+      <description>Transformer Pytorch 源码阅读论文：https://arxiv.org/pdf/1706.03762.pdf 代码：torch/nn/modules/transformer.py 教程：http://nlp.seas.harvard.edu/2018/04/03/attention.html</description>
     </item>
     
   </channel>
