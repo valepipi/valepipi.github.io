@@ -17,13 +17,8 @@
 数组技巧
 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-🎰 &lt;数组&gt; 题目列表&hellip;
-题解26. 删除有序数组中的重复项//简单
-原地修改，双指针
-slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&lt;int&gt;&amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &lt; nums.size()){ if(nums[slow] != nums[fast]){ slow&#43;&#43;; nums[slow] = nums[fast]; } fast&#43;&#43;; } return slow&#43;1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
-原地修改，双指针
-移除指定的元素
-修改nums[slow] = nums[fast]条件即可: nums[fast] != val">
+原地翻转：组间反转，组内不变 hello world -&gt; word hello
+前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums.">
 <meta name="keywords" content="blog,developer,personal">
 
 <meta name="twitter:card" content="summary"/>
@@ -33,13 +28,8 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
 数组技巧
 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-🎰 &lt;数组&gt; 题目列表&hellip;
-题解26. 删除有序数组中的重复项//简单
-原地修改，双指针
-slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&lt;int&gt;&amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &lt; nums.size()){ if(nums[slow] != nums[fast]){ slow&#43;&#43;; nums[slow] = nums[fast]; } fast&#43;&#43;; } return slow&#43;1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
-原地修改，双指针
-移除指定的元素
-修改nums[slow] = nums[fast]条件即可: nums[fast] != val"/>
+原地翻转：组间反转，组内不变 hello world -&gt; word hello
+前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums."/>
 
 <meta property="og:title" content="🎰 LeetCode数组题解 (C&#43;&#43;)" />
 <meta property="og:description" content="本文为链表的Leetcode刷题记录。
@@ -47,13 +37,8 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
 数组技巧
 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-🎰 &lt;数组&gt; 题目列表&hellip;
-题解26. 删除有序数组中的重复项//简单
-原地修改，双指针
-slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&lt;int&gt;&amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &lt; nums.size()){ if(nums[slow] != nums[fast]){ slow&#43;&#43;; nums[slow] = nums[fast]; } fast&#43;&#43;; } return slow&#43;1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
-原地修改，双指针
-移除指定的元素
-修改nums[slow] = nums[fast]条件即可: nums[fast] != val" />
+原地翻转：组间反转，组内不变 hello world -&gt; word hello
+前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://valepipi.github.io/en/posts/leetcode-array/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-13T16:38:45+08:00" />
@@ -203,7 +188,7 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              3-minute read
+              8-minute read
             </span>
           </div>
           
@@ -229,9 +214,91 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
 <p><strong>数组技巧</strong></p>
 <blockquote>
 <p><strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong><br>
-<strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong></p>
+<strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong><br>
+<strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code></strong></p>
 </blockquote>
-<h1 id="-数组--题目列表">
+<ol>
+<li>前缀和框架</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">PrefixSum</span>{
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="">int</span>* prefix;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    PrefixSum(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>        prefix = <span style="font-weight:bold">new</span> <span style="">int</span>[nums.size()+1];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; nums.size(); i++)
+</span></span><span style="display:flex;"><span>            prefix[i+1] = prefix[i] + nums[i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">int</span> query(<span style="">int</span> i, <span style="">int</span> j){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> prefix[j+1] - prefix[i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>差分数组工具类</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; diff;
+</span></span><span style="display:flex;"><span>    Difference(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>        assert(nums.size() &gt; 0);
+</span></span><span style="display:flex;"><span>        diff = vector&lt;<span style="">int</span>&gt;(nums.size());
+</span></span><span style="display:flex;"><span>        diff[0] = nums[0];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;nums.size(); i++){
+</span></span><span style="display:flex;"><span>            diff[i] = nums[i] - nums[i-1];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">void</span> increment(<span style="">int</span> i, <span style="">int</span> j, <span style="">int</span> val){
+</span></span><span style="display:flex;"><span>        diff[i] += val;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(j+1 &lt; diff.size()) <span style="font-style:italic">// 注意
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            diff[j+1] -= val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; result(){
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>        res[0] = diff[0];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt; diff.size(); i++)
+</span></span><span style="display:flex;"><span>            res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="3">
+<li>原地翻转
+<ul>
+<li>一维
+<ul>
+<li>先整个翻转 <code>hello world -&gt; dlrow olleh</code></li>
+<li>再翻转每个组内 <code>dlrow olleh -&gt; word hello</code></li>
+</ul>
+</li>
+<li>二维（矩阵顺时针旋转）
+<ul>
+<li>整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)</li>
+<li>翻转每一行内</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>沿主对角线镜像翻转二维矩阵(转置)<br>
+<strong><code>swap(matrix[i][j], matrix[j][i])</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> (<span style="">int</span> i = 0; i &lt; n; i++) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> (<span style="">int</span> j = 0; j &lt; i; j++) {
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// swap(matrix[i][j], matrix[j][i])
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="">int</span> temp = matrix[i][j];
+</span></span><span style="display:flex;"><span>            matrix[i][j] = matrix[j][i];
+</span></span><span style="display:flex;"><span>            matrix[j][i] = temp;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>沿副对角线镜像翻转二维矩阵<br>
+<strong><code>swap(matrix[i][j], matrix[n-j-1][n-i-1])</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> (<span style="">int</span> i = 0; i &lt; n; i++) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> (<span style="">int</span> j = 0; j &lt; n - i; j++) {
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// swap(matrix[i][j], matrix[n-j-1][n-i-1])
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="">int</span> temp = matrix[i][j];
+</span></span><span style="display:flex;"><span>            matrix[i][j] = matrix[n - j - 1][n - i - 1];
+</span></span><span style="display:flex;"><span>            matrix[n - j - 1][n - i - 1] = temp;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h1 id="-数组--题目列表">
   🎰 &lt;数组&gt;  题目列表
   <a class="heading-link" href="#-%e6%95%b0%e7%bb%84--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
     <i class="fa fa-link" aria-hidden="true"></i>
@@ -335,7 +402,7 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
 <p>// 简单<br>
 <a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">26. 删除有序数组中的重复项</a>的变体<br>
 原地修改，双指针<br>
-<strong>数组变为字符串</strong></p>
+数组变为字符串</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
 </span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
 </span></span><span style="display:flex;"><span>    <span style="">void</span> reverseString(vector&lt;<span style="">char</span>&gt;&amp; s) {
@@ -442,9 +509,14 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<p>// 简单
-暴力法：每次遍历数组求和，时间O(N)<br>
-前缀和优化法：时间O(1)</p>
+<p>// 简单</p>
+<ul>
+<li>暴力法：每次遍历数组求和，时间O(N)</li>
+<li>前缀和：时间O(1)</li>
+</ul>
+<blockquote>
+<p><strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong></p>
+</blockquote>
 <ol>
 <li>构造前缀和 <code>PreSum[i] = nums[0]~nums[i]</code>(tips:PreSum[0]=0，空出)</li>
 <li>查询 <code>sumRange[left, right] = PreSum[right+1] - PreSum[left]</code></li>
@@ -470,10 +542,12 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<p>// 中等<br>
+<p>// 中等</p>
+<blockquote>
+<p><strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong><br>
 构造前缀和, 利用已知的子问题的结果，通过计算简化检索的复杂度(空间换时间)<br>
-<strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong><br>
 构造前缀和注意多申请一个空间</p>
+</blockquote>
 <ul>
 <li>初始化一维数组</li>
 </ul>
@@ -501,6 +575,362 @@ slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到�
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="">int</span> sumRegion(<span style="">int</span> row1, <span style="">int</span> col1, <span style="">int</span> row2, <span style="">int</span> col2) {
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> PreSum[row2+1][col2+1] - PreSum[row2+1][col1] - PreSum[row1][col2+1] + PreSum[row1][col1];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="307-区间加法httpsleetcodecnproblemsrange-addition">
+  <a href="https://leetcode.cn/problems/range-addition/">307. 区间加法</a>
+  <a class="heading-link" href="#307-%e5%8c%ba%e9%97%b4%e5%8a%a0%e6%b3%95httpsleetcodecnproblemsrange-addition">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等</p>
+<blockquote>
+<p><strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong></p>
+<ol>
+<li>构造差分数组：<code>diff[i] = nums[i] - nums[i - 1]</code></li>
+<li>对区间 <code>nums[i..j]</code> 的元素全部加 3，那么只需要让 <code>diff[i] += 3</code>，然后再让 <code>diff[j+1] -= 3</code> 即可</li>
+<li>根据<code>diff</code>可以反推出原数组</li>
+</ol>
+</blockquote>
+<p><strong>差分数组工具类&hellip;</strong></p>
+<p>本题</p>
+<ul>
+<li>暴力法：每次的批量修改都通过for循环操作，时间O(N)</li>
+<li>差分数组：时间O(1)
+<ul>
+<li>构造差分数组工具类、区间加减方法increment()、返回结果方法result()</li>
+<li>调用加减操作</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>vector&lt;<span style="">int</span>&gt; getModifiedArray(<span style="">int</span> length, vector&lt;vector&lt;<span style="">int</span>&gt;&amp; updates&gt;){
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; nums(length, 0);
+</span></span><span style="display:flex;"><span>    Difference df(nums, length);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>: updates){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> i = update[0];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> j = update[1];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> val = update[2];
+</span></span><span style="display:flex;"><span>        df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> df.result();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="1109-航班预订统计httpsleetcodecnproblemscorporate-flight-bookings">
+  <a href="https://leetcode.cn/problems/corporate-flight-bookings/">1109. 航班预订统计</a>
+  <a class="heading-link" href="#1109-%e8%88%aa%e7%8f%ad%e9%a2%84%e8%ae%a2%e7%bb%9f%e8%ae%a1httpsleetcodecnproblemscorporate-flight-bookings">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+差分数组，操作区间</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; corpFlightBookings(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; bookings, <span style="">int</span> n) {
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; nums(n);
+</span></span><span style="display:flex;"><span>        Difference df(nums);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; booking: bookings){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> i = booking[0] - 1;
+</span></span><span style="display:flex;"><span>            <span style="">int</span> j = booking[1] - 1;
+</span></span><span style="display:flex;"><span>            <span style="">int</span> val = booking[2];
+</span></span><span style="display:flex;"><span>            df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> df.result();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; diff;
+</span></span><span style="display:flex;"><span>        Difference(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>            assert(nums.size() &gt; 0);
+</span></span><span style="display:flex;"><span>            diff = vector&lt;<span style="">int</span>&gt;(nums.size());
+</span></span><span style="display:flex;"><span>            diff[0] = nums[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;nums.size(); i++){
+</span></span><span style="display:flex;"><span>                diff[i] = nums[i] - nums[i-1];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>        <span style="">void</span> increment(<span style="">int</span> i, <span style="">int</span> j, <span style="">int</span> val){
+</span></span><span style="display:flex;"><span>            diff[i] += val;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(j+1 &lt; diff.size())
+</span></span><span style="display:flex;"><span>                diff[j+1] -= val;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; result(){
+</span></span><span style="display:flex;"><span>            vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>            res[0] = diff[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt; diff.size(); i++)
+</span></span><span style="display:flex;"><span>                res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="1094-拼车httpsleetcodecnproblemscar-pooling">
+  <a href="https://leetcode.cn/problems/car-pooling/">1094. 拼车</a>
+  <a class="heading-link" href="#1094-%e6%8b%bc%e8%bd%a6httpsleetcodecnproblemscar-pooling">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+差分数组，操作区间</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> carPooling(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; trips, <span style="">int</span> capacity) {
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; nums(1001); <span style="font-style:italic">//车站数量不超过1000
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        Difference df(nums, 1001);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; trip: trips){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> i = trip[1];
+</span></span><span style="display:flex;"><span>            <span style="">int</span> j = trip[2] - 1; <span style="font-style:italic">//j站已经下车
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="">int</span> val = trip[0];
+</span></span><span style="display:flex;"><span>            df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> (!df.cover(capacity)) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; diff;
+</span></span><span style="display:flex;"><span>        Difference(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> len){
+</span></span><span style="display:flex;"><span>            assert(len &gt; 0);
+</span></span><span style="display:flex;"><span>            diff = vector&lt;<span style="">int</span>&gt;(len);
+</span></span><span style="display:flex;"><span>            diff[0] = nums[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;len; i++)
+</span></span><span style="display:flex;"><span>                diff[i] = nums[i] - nums[i-1];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="">void</span> increment(<span style="">int</span> i, <span style="">int</span> j, <span style="">int</span> val){
+</span></span><span style="display:flex;"><span>            diff[i] += val;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(j+1 &lt; diff.size())
+</span></span><span style="display:flex;"><span>                diff[j+1] -= val;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="">bool</span> cover(<span style="">int</span> max){
+</span></span><span style="display:flex;"><span>            vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>            res[0] = diff[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(res[0] &gt; max) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;diff.size(); i++){
+</span></span><span style="display:flex;"><span>                res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(res[i] &gt; max) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>超载判断条件：</p>
+<ul>
+<li>问题：每次操作之后判断所有车站
+<ul>
+<li><code>df.cover(capacity)</code>在循环中调用，开销是O(N)</li>
+</ul>
+</li>
+<li>优化：所有操作之后判断所有车站
+<ul>
+<li>由于车在每个时间点只能出现在一个站，所以对于一个站只可能操作一次，不可能有前后两批乘客在同一个站上车</li>
+<li>只需要对最后的结果(走完1000个车站)做一次遍历，判断每个站是否超载即可</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> carPooling(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; trips, <span style="">int</span> capacity) {
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; trip: trips){
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">//...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; res = df.result();
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; r: res){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(r &gt; capacity) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        vector&lt;<span style="">int</span>&gt; result(){
+</span></span><span style="display:flex;"><span>            vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>            res[0] = diff[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;diff.size(); i++){
+</span></span><span style="display:flex;"><span>                res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="48-旋转图像httpsleetcodecnproblemsrotate-image">
+  <a href="https://leetcode.cn/problems/rotate-image/">48. 旋转图像</a>
+  <a class="heading-link" href="#48-%e6%97%8b%e8%bd%ac%e5%9b%be%e5%83%8fhttpsleetcodecnproblemsrotate-image">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等</p>
+<p>二维矩阵顺时针旋转
+- 沿着主对角线翻转（转置）
+- 翻转每行的一维数组</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">void</span> rotate(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; matrix) {
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 沿着主对角线镜像翻转
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="">int</span> n = matrix.size();
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i&lt;n; i++){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> j =i; j&lt;n; j++){
+</span></span><span style="display:flex;"><span>                <span style="">int</span> temp = matrix[i][j];
+</span></span><span style="display:flex;"><span>                matrix[i][j] = matrix[j][i];
+</span></span><span style="display:flex;"><span>                matrix[j][i] = temp;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 翻转每行的一维数组
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; row: matrix){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> i = 0;
+</span></span><span style="display:flex;"><span>            <span style="">int</span> j = row.size() - 1;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">while</span>(i&lt;j){
+</span></span><span style="display:flex;"><span>                <span style="">int</span> temp = row[j];
+</span></span><span style="display:flex;"><span>                row[j] = row[i];
+</span></span><span style="display:flex;"><span>                row[i] = temp;
+</span></span><span style="display:flex;"><span>                i++;
+</span></span><span style="display:flex;"><span>                j--;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="54-螺旋矩阵httpsleetcodecnproblemsspiral-matrix">
+  <a href="https://leetcode.cn/problems/spiral-matrix/">54. 螺旋矩阵</a>
+  <a class="heading-link" href="#54-%e8%9e%ba%e6%97%8b%e7%9f%a9%e9%98%b5httpsleetcodecnproblemsspiral-matrix">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等</p>
+<ul>
+<li>螺旋遍历顺序：左到右，上到下，右到左，下到上</li>
+<li>定义四个边界
+<ul>
+<li><code>upper_bound = 0</code></li>
+<li><code>lower_bound = m - 1</code></li>
+<li><code>left_bound = 0</code></li>
+<li><code>right_bound = n - 1</code></li>
+</ul>
+</li>
+<li>朝四个方向遍历的条件与范围
+<ul>
+<li>左到右
+<ul>
+<li>条件：<code>upper_bound &lt;= lower_bound</code></li>
+<li>范围：<code>left_bound ~ right_bound</code></li>
+</ul>
+</li>
+<li>上到下
+<ul>
+<li>条件：<code>left_bound &lt;= right_bound</code></li>
+<li>范围：<code>upper_bound ~ lower_bound</code></li>
+</ul>
+</li>
+<li>右到左
+<ul>
+<li>条件：<code>upper_bound &lt;= lower_bound</code></li>
+<li>范围：<code>right_bound ~ left_bound</code></li>
+</ul>
+</li>
+<li>下到上
+<ul>
+<li>条件：<code>left_bound &lt;= right_bound</code></li>
+<li>范围：<code>lower_bound ~ uppper_bound</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>螺旋收缩
+<ul>
+<li>左到右：每轮上边界收缩 <code>upper_bound++</code></li>
+<li>上到下：每轮右边界收缩 <code>right_bound--</code></li>
+<li>右到左：每轮下边界收缩 <code>lower_bound--</code></li>
+<li>下到上：每轮左边界收缩 <code>left_bound++</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/54.png" alt="54. 螺旋矩阵"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; spiralOrder(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; matrix) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> m = matrix.size();
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = matrix[0].size();
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; res;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> upper_bound = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> lower_bound = m - 1;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left_bound = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> right_bound = n - 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(res.size() &lt; m*n){
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 左到右
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(upper_bound &lt;= lower_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> j = left_bound; j &lt;= right_bound; j++)
+</span></span><span style="display:flex;"><span>                    res.push_back(matrix[upper_bound][j]);
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">// 上边界收缩
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                upper_bound++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 上到下
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(left_bound &lt;= right_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> i = upper_bound; i &lt;= lower_bound; i++)
+</span></span><span style="display:flex;"><span>                    res.push_back(matrix[i][right_bound]);
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">// 右边界收缩
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                right_bound--;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 右到左
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(upper_bound &lt;= lower_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> j = right_bound; j &gt;= left_bound; j--)
+</span></span><span style="display:flex;"><span>                    res.push_back(matrix[lower_bound][j]);
+</span></span><span style="display:flex;"><span>                lower_bound--;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 下到上
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(left_bound &lt;= right_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> i = lower_bound; i &gt;= upper_bound; i--)
+</span></span><span style="display:flex;"><span>                    res.push_back(matrix[i][left_bound]);
+</span></span><span style="display:flex;"><span>                left_bound++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="59-螺旋矩阵-iihttpsleetcodecnproblemsspiral-matrix-ii">
+  <a href="https://leetcode.cn/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a>
+  <a class="heading-link" href="#59-%e8%9e%ba%e6%97%8b%e7%9f%a9%e9%98%b5-iihttpsleetcodecnproblemsspiral-matrix-ii">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等</p>
+<p>类似于  <a href="https://leetcode.cn/problems/spiral-matrix/">54. 螺旋矩阵</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;vector&lt;<span style="">int</span>&gt;&gt; generateMatrix(<span style="">int</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> num = 1;
+</span></span><span style="display:flex;"><span>        vector&lt;vector&lt;<span style="">int</span>&gt;&gt; matrix (n, vector&lt;<span style="">int</span>&gt;(n, 0));
+</span></span><span style="display:flex;"><span>        <span style="">int</span> upper_bound = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> lower_bound = n - 1;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left_bound = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> right_bound = n - 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(num &lt;= n*n){
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 左到右
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(upper_bound &lt;= lower_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> j = left_bound; j &lt;= right_bound; j++)
+</span></span><span style="display:flex;"><span>                    matrix[upper_bound][j] = num++;
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">// 上边界收缩
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                upper_bound++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 上到下
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(left_bound &lt;= right_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> i = upper_bound; i &lt;= lower_bound; i++)
+</span></span><span style="display:flex;"><span>                    matrix[i][right_bound] = num++;
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">// 右边界收缩
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                right_bound--;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 右到左
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(upper_bound &lt;= lower_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> j = right_bound; j &gt;= left_bound; j--)
+</span></span><span style="display:flex;"><span>                    matrix[lower_bound][j] = num++;
+</span></span><span style="display:flex;"><span>                lower_bound--;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// 下到上
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(left_bound &lt;= right_bound){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">for</span>(<span style="">int</span> i = lower_bound; i &gt;= upper_bound; i--)
+</span></span><span style="display:flex;"><span>                    matrix[i][left_bound] = num++;
+</span></span><span style="display:flex;"><span>                left_bound++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> matrix;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
