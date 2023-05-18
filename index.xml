@@ -23,19 +23,6 @@
     </item>
     
     <item>
-      <title>RRAM存算一体研究</title>
-      <link>https://valepipi.github.io/posts/reram%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93/</link>
-      <pubDate>Fri, 12 May 2023 20:52:35 +0800</pubDate>
-      
-      <guid>https://valepipi.github.io/posts/reram%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93/</guid>
-      <description>RRAM存算一体研究复旦大学芯片与系统前沿技术论坛-Processing in memory hardcore design and soft landing-北京大学 燕博南 B站教程-存算一体存储器基础(思维导图对发展现状总结详尽) 陈巍谈芯 https://zhuanlan.zhihu.com/p/480612865 **[视频]** 《存算一体白皮书2022》中国移动研究院 冯诺依曼瓶颈与存储墙&amp;hellip;
-存算一体的优势模拟存算 存算一体研究现状B站教程-存算一体存储器基础(思维导图对发展现状总结详尽) //思维导图 &amp;hellip;
-基于PIM的存储器层次结构PIM Solution Stack在原有的存储芯片上加计算单元 在SOC上加PIM加速器 //待画图 // 待画图 存算一体的基本电路模块存算一体设计难点&amp;hellip;
-模拟存内计算的设计挑战挑战主要在模拟计算，数字计算较少。
-优化方向&amp;hellip; 分形冯诺依曼&amp;hellip;</description>
-    </item>
-    
-    <item>
       <title>Transformer Pytorch 源码阅读</title>
       <link>https://valepipi.github.io/posts/transformer/</link>
       <pubDate>Fri, 12 May 2023 10:43:59 +0800</pubDate>
@@ -183,7 +170,7 @@ Shared memory: 可读可写，很快，较小，一个block内的Thread共享 L
       <pubDate>Mon, 23 Jan 2023 18:07:44 +0800</pubDate>
       
       <guid>https://valepipi.github.io/about/</guid>
-      <description>教育经历硕士: 2021.09 ~ 2024.06 | 💜深圳大学🤍 | 计算机科学与技术 本科: 2017.09 ~ 2021.06 | 💚武汉科技大学🤍 | 信息安全 专业技能Python、C++、Java、SQL基本语法 Pytorch深度学习框架，源码阅读和应用 git协作开发、markdown文档 Pandas、Numpy数据处理，PowerBi搭建可视化看板 证书奖项CET6 软考中级-软件设计师 研究生：一等奖学金×2 本科：国家励志奖学金 二等奖学金×2 实习经历2022.8 ~ 2022.12 | 💙字节跳动🤍 | AILab算法框架实习生 智能语音引擎的高性能深度学习训练框架开发
+      <description>教育经历硕士: 2021.09 ~ 2024.06 | 💜深圳大学🤍 | 计算机科学与技术 本科: 2017.09 ~ 2021.06 | 💚武汉科技大学🤍 | 信息安全 专业技能Python、C++、Java、SQL基本语法 Pytorch深度学习框架，源码阅读和应用 git协作开发、markdown文档 Pandas、Numpy数据处理，PowerBi搭建可视化看板 证书奖项CET6 软考中级-软件设计师 研究生：一等奖学金×2 本科：国家奖学金 校级学金×2 实习经历2022.8 ~ 2022.12 | 💙字节跳动🤍 | AILab算法框架实习生 智能语音引擎的高性能深度学习训练框架开发
 科研经历</description>
     </item>
     

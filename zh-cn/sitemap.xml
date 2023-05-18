@@ -93,25 +93,6 @@
                 href="https://valepipi.github.io/"
                 />
   </url><url>
-    <loc>https://valepipi.github.io/tags/pim/</loc>
-    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
-  </url><url>
-    <loc>https://valepipi.github.io/tags/reram/</loc>
-    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://valepipi.github.io/en/tags/reram/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://valepipi.github.io/tags/reram/"
-                />
-  </url><url>
-    <loc>https://valepipi.github.io/posts/reram%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93/</loc>
-    <lastmod>2023-05-12T20:52:35+08:00</lastmod>
-  </url><url>
     <loc>https://valepipi.github.io/tags/transformer/</loc>
     <lastmod>2023-05-12T10:43:59+08:00</lastmod>
     <xhtml:link
@@ -204,6 +185,19 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://valepipi.github.io/tags/cnn/"
+                />
+  </url><url>
+    <loc>https://valepipi.github.io/tags/reram/</loc>
+    <lastmod>2023-01-30T16:06:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://valepipi.github.io/en/tags/reram/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://valepipi.github.io/tags/reram/"
                 />
   </url><url>
     <loc>https://valepipi.github.io/posts/reram%E5%8A%A0%E9%80%9Fcnn/</loc>

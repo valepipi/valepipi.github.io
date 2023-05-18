@@ -17,24 +17,6 @@
     </item>
     
     <item>
-      <title>PIM</title>
-      <link>https://valepipi.github.io/tags/pim/</link>
-      <pubDate>Fri, 12 May 2023 20:52:35 +0800</pubDate>
-      
-      <guid>https://valepipi.github.io/tags/pim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ReRAM</title>
-      <link>https://valepipi.github.io/tags/reram/</link>
-      <pubDate>Fri, 12 May 2023 20:52:35 +0800</pubDate>
-      
-      <guid>https://valepipi.github.io/tags/reram/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>transformer</title>
       <link>https://valepipi.github.io/tags/transformer/</link>
       <pubDate>Fri, 12 May 2023 10:43:59 +0800</pubDate>
@@ -58,6 +40,15 @@
       <pubDate>Mon, 30 Jan 2023 16:06:16 +0800</pubDate>
       
       <guid>https://valepipi.github.io/tags/cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReRAM</title>
+      <link>https://valepipi.github.io/tags/reram/</link>
+      <pubDate>Mon, 30 Jan 2023 16:06:16 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/tags/reram/</guid>
       <description></description>
     </item>
     
