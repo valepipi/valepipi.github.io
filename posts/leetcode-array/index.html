@@ -17,8 +17,8 @@
 🎰 &lt;数组&gt; 题目列表&hellip;
 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello
-前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums.">
+原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right)
+前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.">
 <meta name="keywords" content="博客，个人">
 
 <meta name="twitter:card" content="summary"/>
@@ -28,8 +28,8 @@
 🎰 &lt;数组&gt; 题目列表&hellip;
 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello
-前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums."/>
+原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right)
+前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums."/>
 
 <meta property="og:title" content="🎰 LeetCode数组题解 (C&#43;&#43;)" />
 <meta property="og:description" content="本文为链表的Leetcode刷题记录。
@@ -37,8 +37,8 @@
 🎰 &lt;数组&gt; 题目列表&hellip;
 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello
-前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums." />
+原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right)
+前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://valepipi.github.io/posts/leetcode-array/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-13T16:38:45+08:00" />
@@ -188,7 +188,7 @@
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              阅读时间：8 分钟
+              阅读时间：10 分钟
             </span>
           </div>
           
@@ -227,7 +227,8 @@
 <blockquote>
 <p><strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong><br>
 <strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong><br>
-<strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code></strong></p>
+<strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code>；矩阵反转、螺旋矩阵</strong>
+<strong>滑动窗口：寻找最优解，构造窗口<code>[left, right)</code></strong></p>
 </blockquote>
 <h3 id="前缀和框架">
   前缀和框架
@@ -311,6 +312,27 @@
 </span></span><span style="display:flex;"><span>            matrix[n - j - 1][n - i - 1] = temp;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h3 id="滑动窗口">
+  滑动窗口
+  <a class="heading-link" href="#%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">void</span> slidingWindow(string s){
+</span></span><span style="display:flex;"><span>    unordered_map&lt;<span style="">char</span>, <span style="">int</span>&gt; window;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(right &lt; s.size()){
+</span></span><span style="display:flex;"><span>        <span style="">char</span> c = s[right];
+</span></span><span style="display:flex;"><span>        window.add(c);
+</span></span><span style="display:flex;"><span>        right++; <span style="font-style:italic">// 增大窗口
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">while</span>(left &lt; right &amp;&amp; window need shrink){
+</span></span><span style="display:flex;"><span>            <span style="">char</span> d = s[left];
+</span></span><span style="display:flex;"><span>            window.remove(d);
+</span></span><span style="display:flex;"><span>            left++; <span style="font-style:italic">// 缩小窗口
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="题解">
   题解
   <a class="heading-link" href="#%e9%a2%98%e8%a7%a3">
@@ -937,6 +959,196 @@
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> matrix;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="76-最小覆盖子串httpsleetcodecnproblemsminimum-window-substring">
+  <a href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a>
+  <a class="heading-link" href="#76-%e6%9c%80%e5%b0%8f%e8%a6%86%e7%9b%96%e5%ad%90%e4%b8%b2httpsleetcodecnproblemsminimum-window-substring">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>//中等<br>
+滑动窗口框架</p>
+<ul>
+<li>定义
+<ul>
+<li>当前窗口：window&lt;字符，数量&gt;，left = 0, right = 0 <code>[left, right)</code></li>
+<li>根据目标串转化：need&lt;字符，数量&gt;</li>
+<li>结果：start, min_len , 返回 <code>s.substr(start, min_len)</code></li>
+</ul>
+</li>
+<li>滑动过程
+<ul>
+<li>停止条件：right &lt; s.size()</li>
+<li>向右扩张 <code>right++</code>
+<ul>
+<li>如果新加的字符c在目标串t中(不在可以忽略)，更新 window.add(c)
+<ul>
+<li>某个字符达到条件window[c] == need[c]，则更新 valid++;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>找到某个可行解
+<ul>
+<li>更新结果 start, min_cur</li>
+<li>如果删除的字符d在目标串t中
+<ul>
+<li>某个字符不再满足条件 window[c] == need[c]，则更新valid&ndash;;</li>
+<li>window.remove(d)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    string minWindow(string s, string t) {
+</span></span><span style="display:flex;"><span>        unordered_map&lt;<span style="">char</span>, <span style="">int</span>&gt; window, need;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> start = 0, min_len = INT_MAX;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> valid = 0;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">char</span> c: t) need[c]++;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(right &lt; s.size()){
+</span></span><span style="display:flex;"><span>            <span style="">char</span> c = s[right];
+</span></span><span style="display:flex;"><span>            right++;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(need.count(c)){ <span style="font-style:italic">//need.count(key) 查询key是否存在, 存在则返回1
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                window[c]++;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(need[c] == window[c]) valid++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">while</span>(valid == need.size()){
+</span></span><span style="display:flex;"><span>                <span style="">int</span> cur_len = right - left;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(cur_len &lt; min_len){
+</span></span><span style="display:flex;"><span>                    start = left;
+</span></span><span style="display:flex;"><span>                    min_len = cur_len;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="">char</span> d = s[left];
+</span></span><span style="display:flex;"><span>                left++;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(need.count(d)){
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">if</span>(need[d] == window[d]) valid--;
+</span></span><span style="display:flex;"><span>                    window[d]--;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> min_len == INT_MAX?
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#34;&#34;</span>: s.substr(start, min_len);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="3-无重复字符的最长子串httpsleetcodecnproblemslongest-substring-without-repeating-characters">
+  <a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a>
+  <a class="heading-link" href="#3-%e6%97%a0%e9%87%8d%e5%a4%8d%e5%ad%97%e7%ac%a6%e7%9a%84%e6%9c%80%e9%95%bf%e5%ad%90%e4%b8%b2httpsleetcodecnproblemslongest-substring-without-repeating-characters">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+滑动窗口框架<br>
+<a href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a>的变体<br>
+收缩条件：重复 <code>while(window[c]&gt;1)</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">int</span> lengthOfLongestSubstring(string s) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        unordered_map&lt;<span style="">char</span>, <span style="">int</span>&gt; window;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(right &lt; s.size()){
+</span></span><span style="display:flex;"><span>            <span style="">char</span> c = s[right];
+</span></span><span style="display:flex;"><span>            right++;
+</span></span><span style="display:flex;"><span>            window[c]++;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">while</span>(window[c]&gt;1){
+</span></span><span style="display:flex;"><span>                <span style="">char</span> d = s[left];
+</span></span><span style="display:flex;"><span>                left++;
+</span></span><span style="display:flex;"><span>                window[d]--;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            res = max(res, right-left);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="567-字符串的排列httpsleetcodecnproblemspermutation-in-string">
+  <a href="https://leetcode.cn/problems/permutation-in-string/">567. 字符串的排列</a>
+  <a class="heading-link" href="#567-%e5%ad%97%e7%ac%a6%e4%b8%b2%e7%9a%84%e6%8e%92%e5%88%97httpsleetcodecnproblemspermutation-in-string">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等
+滑动窗口框架<br>
+<a href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a>的变体</p>
+<ul>
+<li>收缩条件：满足子串长度 <code>while(right - left &gt;= s1.size())</code></li>
+<li>返回条件：所有字符都满足数量 <code>if(valid == need.size()) return true;</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> checkInclusion(string s1, string s2) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> valid = 0;
+</span></span><span style="display:flex;"><span>        unordered_map&lt;<span style="">char</span>, <span style="">int</span>&gt; window, need;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">char</span> c: s1) need[c]++;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(right &lt; s2.size()){
+</span></span><span style="display:flex;"><span>            <span style="">char</span> c = s2[right];
+</span></span><span style="display:flex;"><span>            right++;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(need.count(c)){
+</span></span><span style="display:flex;"><span>                window[c]++;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(window[c] == need[c]) valid++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">while</span>(right - left &gt;= s1.size()){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(valid == need.size()) <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>                <span style="">char</span> d = s2[left];
+</span></span><span style="display:flex;"><span>                left++;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(need.count(d)){
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">if</span>(window[d] == need[d]) valid--;
+</span></span><span style="display:flex;"><span>                    window[d]--;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="438-找到字符串中所有字母异位词httpsleetcodecnproblemsfind-all-anagrams-in-a-string">
+  <a href="https://leetcode.cn/problems/find-all-anagrams-in-a-string/">438. 找到字符串中所有字母异位词</a>
+  <a class="heading-link" href="#438-%e6%89%be%e5%88%b0%e5%ad%97%e7%ac%a6%e4%b8%b2%e4%b8%ad%e6%89%80%e6%9c%89%e5%ad%97%e6%af%8d%e5%bc%82%e4%bd%8d%e8%af%8dhttpsleetcodecnproblemsfind-all-anagrams-in-a-string">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+滑动窗口框架</p>
+<p>异位词： 排列<br>
+即：找出所有子串的排列</p>
+<ul>
+<li>收缩条件：<code>while(right - right &gt;= p.size())</code></li>
+<li>返回结果：<code>if(valid == need.size()) res.push_back(left);</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; findAnagrams(string s, string p) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> (p.size() &gt; s.size()) <span style="font-weight:bold">return</span> {};
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; res;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> valid = 0;
+</span></span><span style="display:flex;"><span>        unordered_map&lt;<span style="">char</span>, <span style="">int</span>&gt; window, need;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">char</span> c: p) need[c]++;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(right &lt; s.size()){
+</span></span><span style="display:flex;"><span>            <span style="">char</span> c = s[right];
+</span></span><span style="display:flex;"><span>            right++;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(need.count(c)){
+</span></span><span style="display:flex;"><span>                window[c]++;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(window[c] == need[c]) valid++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">while</span>(right - left &gt;= p.size()){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(valid == need.size()) res.push_back(left);
+</span></span><span style="display:flex;"><span>                <span style="">char</span> d = s[left];
+</span></span><span style="display:flex;"><span>                left++;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(need.count(d)){
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">if</span>(window[d] == need[d]) valid--;
+</span></span><span style="display:flex;"><span>                    window[d]--;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
