@@ -17,7 +17,7 @@
 🎰 &lt;数组&gt; 题目列表&hellip;
 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right)
+原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right) 滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配 二分搜索
 前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.">
 <meta name="keywords" content="博客，个人">
 
@@ -28,7 +28,7 @@
 🎰 &lt;数组&gt; 题目列表&hellip;
 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right)
+原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right) 滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配 二分搜索
 前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums."/>
 
 <meta property="og:title" content="🎰 LeetCode数组题解 (C&#43;&#43;)" />
@@ -37,7 +37,7 @@
 🎰 &lt;数组&gt; 题目列表&hellip;
 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right)
+原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right) 滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配 二分搜索
 前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://valepipi.github.io/posts/leetcode-array/" /><meta property="article:section" content="posts" />
@@ -188,7 +188,7 @@
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              阅读时间：10 分钟
+              阅读时间：11 分钟
             </span>
           </div>
           
@@ -228,7 +228,9 @@
 <p><strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong><br>
 <strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong><br>
 <strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code>；矩阵反转、螺旋矩阵</strong>
-<strong>滑动窗口：寻找最优解，构造窗口<code>[left, right)</code></strong></p>
+<strong>滑动窗口：寻找最优解，构造窗口<code>[left, right)</code></strong>
+<strong>滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配</strong>
+<strong>二分搜索</strong></p>
 </blockquote>
 <h3 id="前缀和框架">
   前缀和框架
@@ -332,6 +334,44 @@
 </span></span><span style="display:flex;"><span>            left++; <span style="font-style:italic">// 缩小窗口
 </span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }
 </span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="滑动哈希">
+  滑动哈希
+  <a class="heading-link" href="#%e6%bb%91%e5%8a%a8%e5%93%88%e5%b8%8c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>滑动数字：删除高位，添加低位</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">// 删除高位 8264 -&gt; 264
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> number = 8264;
+</span></span><span style="display:flex;"><span><span style="">int</span> R = 10; <span style="font-style:italic">//number的进制
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> removeVal = 8; <span style="font-style:italic">//number的最高位数字
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> L = 4; <span style="font-style:italic">//原来 number的位数
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>number = number - removeVal*pow(R, L-1); <span style="font-style:italic">// 8264 - 8000 = 264
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">// 添加低位 8264 -&gt; 38264
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> number = 8264;
+</span></span><span style="display:flex;"><span><span style="">int</span> R = 10; <span style="font-style:italic">// number的位数
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> appendVal = 3; <span style="font-style:italic">// 添加的数字
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>number = R*number + appendVal; <span style="font-style:italic">// 8264*10 + 3= 82643
+</span></span></span></code></pre></div><h3 id="二分搜索框架">
+  二分搜索框架
+  <a class="heading-link" href="#%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2%e6%a1%86%e6%9e%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> binarySearch(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] == target){
+</span></span><span style="display:flex;"><span>            ...
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> ...;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="题解">
   题解
@@ -1149,6 +1189,101 @@
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="187-重复的dna序列httpsleetcodecnproblemsrepeated-dna-sequences">
+  <a href="https://leetcode.cn/problems/repeated-dna-sequences/">187. 重复的DNA序列</a>
+  <a class="heading-link" href="#187-%e9%87%8d%e5%a4%8d%e7%9a%84dna%e5%ba%8f%e5%88%97httpsleetcodecnproblemsrepeated-dna-sequences">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等</p>
+<p>法一：暴力搜索<br>
+时间复杂度：O(NL)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;string&gt; findRepeatedDnaSequences(string s) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = s.length();
+</span></span><span style="display:flex;"><span>        unordered_set&lt;string&gt; seen;
+</span></span><span style="display:flex;"><span>        unordered_set&lt;string&gt; res;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i+10 &lt;= n; i++){ <span style="font-style:italic">// O(N)
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            string subStr = s.substr(i, 10); <span style="font-style:italic">// O(L) 待优化
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">if</span>(seen.count(subStr))
+</span></span><span style="display:flex;"><span>                res.insert(subStr);
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                seen.insert(subStr);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> vector&lt;string&gt; (res.begin(), res.end());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>法二：滑动哈希<br>
+时间复杂度：O(N)</p>
+<p>滑动哈希代替暴力匹配：不每次都去一个字符一个字符地比较子串和模式串，而是维护一个滑动窗口，运用滑动哈希算法一边滑动一边计算窗口中字符串的哈希值，拿这个哈希值去和模式串的哈希值比较，这样就可以避免截取子串，从而把匹配算法降低为 O(N)</p>
+<p>优化：</p>
+<ul>
+<li>用唯一的数字(哈希思想)代表对应的字符串，减少字符串的构造时间 O(L) -&gt; O(1)
+<ul>
+<li>在遍历中不断构造字符串： 每次都需要 <code>s.subtr(pos, L)</code> ，时间O(L)</li>
+<li>在遍历中不断构造数字：四个字母 <code>AGCT</code> -&gt; 四进制元 <code>0123</code>；长度L=10的碱基序列 -&gt; 10位的四进制数字；每次只需<em>删除最高位，添加最低位就能构造下一个数字</em>，时间 O(1)</li>
+</ul>
+</li>
+<li>用 int 即可囊括 10 位四进制数字的最大值，免于用long，节省空间
+<ul>
+<li>10位的四进制数字包含的哈希值个数(几种可能性)：<code>4^10 = 1,048,576</code></li>
+<li>int 范围 4Bytes 包含的哈希值个数(几种可能性)： <code>2^32 = 4,294,967,296</code>, 其中 <code>2,4,294,967,296</code>是十位数，足够表示10位的四进制数字 <code>2^32 &gt; 4^10</code>（全部转为十进制）</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>数据范围的另一种算法（全部转为二进制）：  
+</span></span><span style="display:flex;"><span>int类型是32位二进制  
+</span></span><span style="display:flex;"><span>十位四进制数最大值：3,333,333,333  
+</span></span><span style="display:flex;"><span>-&gt; 二进制数：11,111,111,111,111,111,111 (20位&lt;=32位，可以容纳)  
+</span></span><span style="display:flex;"><span>十位十进制数最大值：9,999,999,999  
+</span></span><span style="display:flex;"><span>-&gt; 二进制数：1,001,010,100,000,010,111,110,001,111,111,111 (34位&gt;32位，不能容纳)  
+</span></span></code></pre></div><p><img src="/images/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="数据类型"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;string&gt; findRepeatedDnaSequences(string s) {
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; nums(s.length());
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// 四个字母转换为四进制的四个数字，之后用int表示10个字母的序列
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; nums.size(); i++){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">switch</span>(s[i]){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">case</span> <span style="font-style:italic">&#39;A&#39;</span>:
+</span></span><span style="display:flex;"><span>                    nums[i] = 0;
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">case</span> <span style="font-style:italic">&#39;G&#39;</span>:
+</span></span><span style="display:flex;"><span>                    nums[i] = 1;
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">case</span> <span style="font-style:italic">&#39;T&#39;</span>:
+</span></span><span style="display:flex;"><span>                    nums[i] = 2;
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">case</span> <span style="font-style:italic">&#39;C&#39;</span>:
+</span></span><span style="display:flex;"><span>                    nums[i] = 3;
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        unordered_set&lt;<span style="">int</span>&gt; seen; <span style="font-style:italic">//记录见过的，用于判断是否重复出现
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        unordered_set&lt;string&gt; res; <span style="font-style:italic">// 重复出现的
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="">int</span> L = 10; <span style="font-style:italic">// 位数
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="">int</span> R = 4; <span style="font-style:italic">// 进制
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="">int</span> RL = pow(R, L-1);
+</span></span><span style="display:flex;"><span>        <span style="">int</span> windowHash = 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = 0;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(right &lt; nums.size()){
+</span></span><span style="display:flex;"><span>            windowHash = R * windowHash + nums[right]; <span style="font-style:italic">// 向右滑动，低位添加
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            right++;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(right - left == L){
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(seen.count(windowHash)) <span style="font-style:italic">// 重复了
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                    res.insert(s.substr(left, right - left));
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">else</span> <span style="font-style:italic">// 新的
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                    seen.insert(windowHash);
+</span></span><span style="display:flex;"><span>                windowHash = windowHash - nums[left] * RL; <span style="font-style:italic">// 左边收缩，高位删除
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                left++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> vector&lt;string&gt; (res.begin(), res.end());
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
