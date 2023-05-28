@@ -17,7 +17,7 @@
 数组技巧
 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello
+原地翻转：组间反转，组内不变 hello world -&gt; word hello 二分查找：搜索左边界、搜索右边界
 前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums.">
 <meta name="keywords" content="blog,developer,personal">
 
@@ -28,7 +28,7 @@
 数组技巧
 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello
+原地翻转：组间反转，组内不变 hello world -&gt; word hello 二分查找：搜索左边界、搜索右边界
 前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums."/>
 
 <meta property="og:title" content="🎰 LeetCode数组题解 (C&#43;&#43;)" />
@@ -37,7 +37,7 @@
 数组技巧
 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&gt; word hello
+原地翻转：组间反转，组内不变 hello world -&gt; word hello 二分查找：搜索左边界、搜索右边界
 前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&lt;int&gt;&amp; nums){ prefix = new int[nums.size()&#43;1]; for(int i = 0; i &lt; nums.size(); i&#43;&#43;) prefix[i&#43;1] = prefix[i] &#43; nums[i]; } int query(int i, int j){ return prefix[j&#43;1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://valepipi.github.io/en/posts/leetcode-array/" /><meta property="article:section" content="posts" />
@@ -188,7 +188,7 @@
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              8-minute read
+              9-minute read
             </span>
           </div>
           
@@ -215,7 +215,8 @@
 <blockquote>
 <p><strong>前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</strong><br>
 <strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong><br>
-<strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code></strong></p>
+<strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code></strong>
+<strong>二分查找：搜索左边界、搜索右边界</strong></p>
 </blockquote>
 <ol>
 <li>前缀和框架</li>
@@ -298,6 +299,37 @@
 </span></span><span style="display:flex;"><span>            matrix[n - j - 1][n - i - 1] = temp;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><ol start="4">
+<li>二分查找框架</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">//搜索左边界的二分查找
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(left &gt;= nums.size() || nums[left] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">//搜索右边界的二分查找
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> right_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(right &lt; 0 || nums[right] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> right;
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="-数组--题目列表">
   🎰 &lt;数组&gt;  题目列表
   <a class="heading-link" href="#-%e6%95%b0%e7%bb%84--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
@@ -931,6 +963,74 @@
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> matrix;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="704-二分查找httpsleetcodecnproblemsbinary-search">
+  <a href="https://leetcode.cn/problems/binary-search/">704. 二分查找</a>
+  <a class="heading-link" href="#704-%e4%ba%8c%e5%88%86%e6%9f%a5%e6%89%behttpsleetcodecnproblemsbinary-search">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">// 直接二分查找
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> binary_search(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(nums[mid] == target){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> mid;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="34-在排序数组中查找元素的第一个和最后一个位置httpsleetcodecnproblemsfind-first-and-last-position-of-element-in-sorted-array">
+  <a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">34. 在排序数组中查找元素的第一个和最后一个位置</a>
+  <a class="heading-link" href="#34-%e5%9c%a8%e6%8e%92%e5%ba%8f%e6%95%b0%e7%bb%84%e4%b8%ad%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e5%92%8c%e6%9c%80%e5%90%8e%e4%b8%80%e4%b8%aa%e4%bd%8d%e7%bd%aehttpsleetcodecnproblemsfind-first-and-last-position-of-element-in-sorted-array">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+二分查找的变体<br>
+- int left = 搜索左边界的二分查找
+- int right = 搜索右边界的二分查找
+- <code>return {left, right}</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; searchRange(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = left_bound(nums, target);
+</span></span><span style="display:flex;"><span>        <span style="">int</span> right = right_bound(nums, target);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> {left, right};
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>                left = mid + 1;
+</span></span><span style="display:flex;"><span>            }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>                right = mid - 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left &gt;= nums.size() || nums[left] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> right_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>                right = mid - 1;
+</span></span><span style="display:flex;"><span>            }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>                left = mid + 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(right &lt; 0 || nums[right] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> right;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
