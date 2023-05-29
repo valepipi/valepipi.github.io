@@ -188,7 +188,7 @@
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              9-minute read
+              11-minute read
             </span>
           </div>
           
@@ -1033,6 +1033,131 @@
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> right;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="528-按权重随机选择httpsleetcodecnproblemsrandom-pick-with-weight">
+  <a href="https://leetcode.cn/problems/random-pick-with-weight/">528. 按权重随机选择</a>
+  <a class="heading-link" href="#528-%e6%8c%89%e6%9d%83%e9%87%8d%e9%9a%8f%e6%9c%ba%e9%80%89%e6%8b%a9httpsleetcodecnproblemsrandom-pick-with-weight">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+思路：
+- 权重数组转化为前缀和 PreSum
+- 生成一个取值在PreSum之内的随机数 target
+- target右边最近的元素 -&gt; 在数组PreSum中寻找大于等于target的最小元素: 搜索左侧边界的二分搜索</p>
+<ol>
+<li>权重数组转为前缀和PreSum</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>vector&lt;<span style="">int</span>&gt; w; <span style="font-style:italic">// 权重数组
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>vector&lt;<span style="">int</span>&gt; preSum; <span style="font-style:italic">// 前缀和
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> n = w.size();
+</span></span><span style="display:flex;"><span>preSum.resize(n + 1); <span style="font-style:italic">// preSum[0] = 0 是占位符
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>preSum[0] = 0;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; n; i++)
+</span></span><span style="display:flex;"><span>    preSum[i+1] = preSum[i] + w[i]
+</span></span></code></pre></div><ol start="2">
+<li>生成随机数 <code>target in [1,preSum[n-1]]</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> n = <span style="font-weight:bold">sizeof</span>(preSum) / <span style="font-weight:bold">sizeof</span>(preSum[0])
+</span></span><span style="display:flex;"><span><span style="">int</span> target = rand() % preSum[n-1] + 1;
+</span></span></code></pre></div><ol start="3">
+<li>搜索左侧边界的二分搜索</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(nums.size() == 0) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &lt; target)
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// 允许 mid[left] != target，本题目标是搜索 &gt;= target的最小元素的索引
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="font-weight:bold">if</span> (left &gt;= nums.size()) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>题解</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; preSum;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    Solution(vector&lt;<span style="">int</span>&gt;&amp; w) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = w.size();
+</span></span><span style="display:flex;"><span>        preSum.resize(n+1);
+</span></span><span style="display:flex;"><span>        preSum[0] = 0;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; n; i++)
+</span></span><span style="display:flex;"><span>            preSum[i+1] = preSum[i] + w[i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> pickIndex() {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = preSum.size();
+</span></span><span style="display:flex;"><span>        <span style="">int</span> target = rand() % preSum[n-1] + 1; <span style="font-style:italic">// [1, preSum[n-1]]
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">return</span> left_bound(preSum, target) - 1; <span style="font-style:italic">// preSum[0]未利用
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = nums.size() - 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> mid = left + (right - left) / 2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(nums[mid] &lt; target)
+</span></span><span style="display:flex;"><span>                left = mid + 1;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                right = mid - 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode.cn/problems/split-array-largest-sum/">410. 分割数组的最大值</a>
+//困难</p>
+<p>反向思考，问题转化为二分查找：
+- 原问题：把数组nums分割为m个子数组subnums，找出其中一种划分方式
+- <code>max(getSum(subnum))</code>最小
+- 二分查找问题：把数组nums分割为一些子数组subnums，使其最大的数组和不超过max
+- <code>max(getSum(subnum)) &lt;= max</code> ，子数组的个数至少是多少？当个数==m的时候满足题意, 返回最小的max</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> splitArray(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> m){
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// 子数组和的范围：[最大元素值，所有元素和]
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="">int</span> lo = getMax(nums), hi = getSum(nums) + 1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(lo &lt; hi){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = lo + (hi - lo)/2;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = split(nums, mid);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(n == m){
+</span></span><span style="display:flex;"><span>            hi = mid; <span style="font-style:italic">// 寻找左边界：在[lo, hi]中搜索·最小的max·
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(n &lt; m){ <span style="font-style:italic">// 分成4个就能满足split，但要求分成五个，说明条件太宽松了
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            hi = mid; <span style="font-style:italic">// 收缩条件，压低上限
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(n &gt; m){
+</span></span><span style="display:flex;"><span>            lo = mid + 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> lo;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="">int</span> split(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> max){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> count = 1;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> sum = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; nums.size(); i++){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> (sum + nums[i] &gt; max){
+</span></span><span style="display:flex;"><span>            count++;
+</span></span><span style="display:flex;"><span>            sum = nums[i];
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            sum += nums[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> count;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="">int</span> getMax(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> n : nums)
+</span></span><span style="display:flex;"><span>        res = max(n, res);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="">int</span> getSum(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> n: nums)
+</span></span><span style="display:flex;"><span>        res += n;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
       </div>
 
