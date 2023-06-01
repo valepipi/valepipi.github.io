@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net/; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+
+
+
+<meta name="author" content="游泳小狗">
+<meta name="description" content="本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+二分查找：搜索左边界、搜索右边界
+二分查找框架 //搜索左边界的二分查找 int left_bound(vector&lt;int&gt;&amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &lt;= right){ int mid = left &#43; (right - left)/2; if(nums[mid] &lt; target){ left = mid &#43; 1; }else{ right = mid - 1; } } if(left &gt;= nums.size() || nums[left] != target) return -1; return left; } //搜索右边界的二分查找 int right_bound(vector&lt;int&gt;&amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &lt;= right){ int mid = left &#43; (right - left)/2; if(nums[mid] &gt; target){ right = mid - 1; }else{ left = mid &#43; 1; } } if(right &lt; 0 || nums[right] !">
+<meta name="keywords" content="博客，个人">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="🎰 LeetCode数组题解-二分查找 (C&#43;&#43;)"/>
+<meta name="twitter:description" content="本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+二分查找：搜索左边界、搜索右边界
+二分查找框架 //搜索左边界的二分查找 int left_bound(vector&lt;int&gt;&amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &lt;= right){ int mid = left &#43; (right - left)/2; if(nums[mid] &lt; target){ left = mid &#43; 1; }else{ right = mid - 1; } } if(left &gt;= nums.size() || nums[left] != target) return -1; return left; } //搜索右边界的二分查找 int right_bound(vector&lt;int&gt;&amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &lt;= right){ int mid = left &#43; (right - left)/2; if(nums[mid] &gt; target){ right = mid - 1; }else{ left = mid &#43; 1; } } if(right &lt; 0 || nums[right] !"/>
+
+<meta property="og:title" content="🎰 LeetCode数组题解-二分查找 (C&#43;&#43;)" />
+<meta property="og:description" content="本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+二分查找：搜索左边界、搜索右边界
+二分查找框架 //搜索左边界的二分查找 int left_bound(vector&lt;int&gt;&amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &lt;= right){ int mid = left &#43; (right - left)/2; if(nums[mid] &lt; target){ left = mid &#43; 1; }else{ right = mid - 1; } } if(left &gt;= nums.size() || nums[left] != target) return -1; return left; } //搜索右边界的二分查找 int right_bound(vector&lt;int&gt;&amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &lt;= right){ int mid = left &#43; (right - left)/2; if(nums[mid] &gt; target){ right = mid - 1; }else{ left = mid &#43; 1; } } if(right &lt; 0 || nums[right] !" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://valepipi.github.io/posts/leetcode-array-bisearch/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-01T09:56:54+08:00" />
+<meta property="article:modified_time" content="2023-06-01T09:56:54+08:00" /><meta property="og:site_name" content="游泳小狗" />
+
+
+
+
+  <title>游泳小狗</title>
+
+  
+  <link rel="canonical" href="https://valepipi.github.io/posts/leetcode-array-bisearch/">
+  
+
+  <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.6b1a4fbc48955b72aea7913e43fabeb45e8bc120da5aa41b598dd33adcac4b59.css" integrity="sha256-axpPvEiVW3Kup5E&#43;Q/q&#43;tF6LwSDaWqQbWY3TOtysS1k=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css" integrity="sha256-OeQafxa9&#43;MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+   
+
+
+
+
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+  
+
+  <meta name="generator" content="Hugo 0.101.0" />
+
+
+  
+
+</head>
+
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-dark">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      游泳小狗
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">爱好</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">联系我</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://valepipi.github.io/en/">英文</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://valepipi.github.io/posts/leetcode-array-bisearch/">
+              🎰 LeetCode数组题解-二分查找 (C&#43;&#43;)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-06-01T09:56:54&#43;08:00">
+                June 1, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：4 分钟
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/blog/">blog</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/leetcode/">LeetCode</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>本文为链表的Leetcode刷题记录。</p>
+<blockquote>
+<p>参考资料: <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-66994/dong-ge-da-8f403/">labuladong</a></p>
+</blockquote>
+<blockquote>
+<p><strong>二分查找：搜索左边界、搜索右边界</strong></p>
+</blockquote>
+<ul>
+<li>二分查找框架</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">//搜索左边界的二分查找
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(left &gt;= nums.size() || nums[left] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">//搜索右边界的二分查找
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> right_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(right &lt; 0 || nums[right] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> right;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="-数组-二分查找--题目列表">
+  🎰 &lt;数组-二分查找&gt;  题目列表
+  <a class="heading-link" href="#-%e6%95%b0%e7%bb%84-%e4%ba%8c%e5%88%86%e6%9f%a5%e6%89%be--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<p>&hellip;</p>
+<h1 id="题解">
+  题解
+  <a class="heading-link" href="#%e9%a2%98%e8%a7%a3">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<h2 id="704-二分查找httpsleetcodecnproblemsbinary-search">
+  <a href="https://leetcode.cn/problems/binary-search/">704. 二分查找</a>
+  <a class="heading-link" href="#704-%e4%ba%8c%e5%88%86%e6%9f%a5%e6%89%behttpsleetcodecnproblemsbinary-search">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-style:italic">// 直接二分查找
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> binary_search(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(nums[mid] == target){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> mid;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="34-在排序数组中查找元素的第一个和最后一个位置httpsleetcodecnproblemsfind-first-and-last-position-of-element-in-sorted-array">
+  <a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">34. 在排序数组中查找元素的第一个和最后一个位置</a>
+  <a class="heading-link" href="#34-%e5%9c%a8%e6%8e%92%e5%ba%8f%e6%95%b0%e7%bb%84%e4%b8%ad%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e5%92%8c%e6%9c%80%e5%90%8e%e4%b8%80%e4%b8%aa%e4%bd%8d%e7%bd%aehttpsleetcodecnproblemsfind-first-and-last-position-of-element-in-sorted-array">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+二分查找的变体<br>
+- int left = 搜索左边界的二分查找
+- int right = 搜索右边界的二分查找
+- <code>return {left, right}</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; searchRange(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = left_bound(nums, target);
+</span></span><span style="display:flex;"><span>        <span style="">int</span> right = right_bound(nums, target);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> {left, right};
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(nums[mid] &lt; target){
+</span></span><span style="display:flex;"><span>                left = mid + 1;
+</span></span><span style="display:flex;"><span>            }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>                right = mid - 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left &gt;= nums.size() || nums[left] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> right_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(nums[mid] &gt; target){
+</span></span><span style="display:flex;"><span>                right = mid - 1;
+</span></span><span style="display:flex;"><span>            }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>                left = mid + 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(right &lt; 0 || nums[right] != target) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> right;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="528-按权重随机选择httpsleetcodecnproblemsrandom-pick-with-weight">
+  <a href="https://leetcode.cn/problems/random-pick-with-weight/">528. 按权重随机选择</a>
+  <a class="heading-link" href="#528-%e6%8c%89%e6%9d%83%e9%87%8d%e9%9a%8f%e6%9c%ba%e9%80%89%e6%8b%a9httpsleetcodecnproblemsrandom-pick-with-weight">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+思路：
+- 权重数组转化为前缀和 PreSum
+- 生成一个取值在PreSum之内的随机数 target
+- target右边最近的元素 -&gt; 在数组PreSum中寻找大于等于target的最小元素: 搜索左侧边界的二分搜索</p>
+<ol>
+<li>权重数组转为前缀和PreSum</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>vector&lt;<span style="">int</span>&gt; w; <span style="font-style:italic">// 权重数组
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>vector&lt;<span style="">int</span>&gt; preSum; <span style="font-style:italic">// 前缀和
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">int</span> n = w.size();
+</span></span><span style="display:flex;"><span>preSum.resize(n + 1); <span style="font-style:italic">// preSum[0] = 0 是占位符
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>preSum[0] = 0;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; n; i++)
+</span></span><span style="display:flex;"><span>    preSum[i+1] = preSum[i] + w[i]
+</span></span></code></pre></div><ol start="2">
+<li>生成随机数 <code>target in [1,preSum[n-1]]</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> n = <span style="font-weight:bold">sizeof</span>(preSum) / <span style="font-weight:bold">sizeof</span>(preSum[0])
+</span></span><span style="display:flex;"><span><span style="">int</span> target = rand() % preSum[n-1] + 1;
+</span></span></code></pre></div><ol start="3">
+<li>搜索左侧边界的二分搜索</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span>(nums.size() == 0) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left = 0, right = nums.size()-1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(nums[mid] &lt; target)
+</span></span><span style="display:flex;"><span>            left = mid + 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>            right = mid - 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// 允许 mid[left] != target，本题目标是搜索 &gt;= target的最小元素的索引
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="font-weight:bold">if</span> (left &gt;= nums.size()) <span style="font-weight:bold">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>题解</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; preSum;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    Solution(vector&lt;<span style="">int</span>&gt;&amp; w) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = w.size();
+</span></span><span style="display:flex;"><span>        preSum.resize(n+1);
+</span></span><span style="display:flex;"><span>        preSum[0] = 0;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; n; i++)
+</span></span><span style="display:flex;"><span>            preSum[i+1] = preSum[i] + w[i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> pickIndex() {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = preSum.size();
+</span></span><span style="display:flex;"><span>        <span style="">int</span> target = rand() % preSum[n-1] + 1; <span style="font-style:italic">// [1, preSum[n-1]]
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">return</span> left_bound(preSum, target) - 1; <span style="font-style:italic">// preSum[0]未利用
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="">int</span> left_bound(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> target){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0, right = nums.size() - 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span>(left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> mid = left + (right - left) / 2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(nums[mid] &lt; target)
+</span></span><span style="display:flex;"><span>                left = mid + 1;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                right = mid - 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode.cn/problems/split-array-largest-sum/">410. 分割数组的最大值</a>
+//困难</p>
+<p>反向思考，问题转化为二分查找：
+- 原问题：把数组nums分割为m个子数组subnums，找出其中一种划分方式
+- <code>max(getSum(subnum))</code>最小
+- 二分查找问题：把数组nums分割为一些子数组subnums，使其最大的数组和不超过max
+- <code>max(getSum(subnum)) &lt;= max</code> ，子数组的个数至少是多少？当个数==m的时候满足题意, 返回最小的max</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="">int</span> splitArray(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> m){
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// 子数组和的范围：[最大元素值，所有元素和]
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="">int</span> lo = getMax(nums), hi = getSum(nums) + 1;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span>(lo &lt; hi){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> mid = lo + (hi - lo)/2;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> n = split(nums, mid);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(n == m){
+</span></span><span style="display:flex;"><span>            hi = mid; <span style="font-style:italic">// 寻找左边界：在[lo, hi]中搜索·最小的max·
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(n &lt; m){ <span style="font-style:italic">// 分成4个就能满足split，但要求分成五个，说明条件太宽松了
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            hi = mid; <span style="font-style:italic">// 收缩条件，压低上限
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span>(n &gt; m){
+</span></span><span style="display:flex;"><span>            lo = mid + 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> lo;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="">int</span> split(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> max){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> count = 1;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> sum = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> i = 0; i &lt; nums.size(); i++){
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> (sum + nums[i] &gt; max){
+</span></span><span style="display:flex;"><span>            count++;
+</span></span><span style="display:flex;"><span>            sum = nums[i];
+</span></span><span style="display:flex;"><span>        }<span style="font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            sum += nums[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> count;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="">int</span> getMax(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> n : nums)
+</span></span><span style="display:flex;"><span>        res = max(n, res);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="">int</span> getSum(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>    <span style="">int</span> res = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="">int</span> n: nums)
+</span></span><span style="display:flex;"><span>        res += n;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js"></script>
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2022 -
+    
+    2023
+     游泳小狗 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+  
+  <script src="/js/coder.min.236049395dc3682fb2719640872958e12f1f24067bb09c327b233e6290c7edac.js" integrity="sha256-I2BJOV3DaC&#43;ycZZAhylY4S8fJAZ7sJwyeyM&#43;YpDH7aw="></script>
+  
+
+  
+
+  
+
+  <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//cdn.usefathom.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  <script async defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script>
+
+
+  <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+  
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+
+  <script type="application/javascript">
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.example.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'ABCDE']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=gid"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'gid');
+</script>
+
+
+  <script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="connectionString",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", 
+    
+    
+    
+    crossOrigin: "anonymous", 
+    
+    cfg: { 
+        connectionString: "connectionstring"
+         
+    }});
+    </script>    
+
+</body>
+
+</html>

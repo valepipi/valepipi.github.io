@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Sat, 13 May 2023 16:38:45 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>🎰 LeetCode数组题解 (C&#43;&#43;)</title>
+      <title>🎰 LeetCode数组[算法框架] (C&#43;&#43;)</title>
       <link>https://valepipi.github.io/en/posts/leetcode-array/</link>
       <pubDate>Sat, 13 May 2023 16:38:45 +0800</pubDate>
       
@@ -16,10 +16,7 @@
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
 数组技巧
-前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
-差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello 二分查找：搜索左边界、搜索右边界
-前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.size() &amp;gt; 0); diff = vector&amp;lt;int&amp;gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&amp;lt;nums.</description>
+双指针 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。 原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello 二分查找：搜索左边界、搜索右边界 前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 差分数组工具类 class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.size() &amp;gt; 0); diff = vector&amp;lt;int&amp;gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&amp;lt;nums.</description>
     </item>
     
     <item>

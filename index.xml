@@ -6,7 +6,80 @@
     <description>Recent content on 游泳小狗</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 13 May 2023 16:38:45 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2023 09:56:54 +0800</lastBuildDate><atom:link href="https://valepipi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🎰 LeetCode数组题解-差分数组 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/posts/leetcode-array-sub/</link>
+      <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/leetcode-array-sub/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+差分数组工具类 class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.size() &amp;gt; 0); diff = vector&amp;lt;int&amp;gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&amp;lt;nums.size(); i++){ diff[i] = nums[i] - nums[i-1]; } } void increment(int i, int j, int val){ diff[i] += val; if(j+1 &amp;lt; diff.size()) // 注意 diff[j+1] -= val; } vector&amp;lt;int&amp;gt; result(){ vector&amp;lt;int&amp;gt; res(diff.size()); res[0] = diff[0]; for(int i = 1; i&amp;lt; diff.size(); i++) res[i] = res[i-1] + diff[i]; return res; } }; 🎰 &amp;lt;数组-差分数组&amp;gt; 题目列表&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>🎰 LeetCode数组题解-二分查找 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/posts/leetcode-array-bisearch/</link>
+      <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/leetcode-array-bisearch/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+二分查找：搜索左边界、搜索右边界
+二分查找框架 //搜索左边界的二分查找 int left_bound(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &amp;lt;= right){ int mid = left + (right - left)/2; if(nums[mid] &amp;lt; target){ left = mid + 1; }else{ right = mid - 1; } } if(left &amp;gt;= nums.size() || nums[left] != target) return -1; return left; } //搜索右边界的二分查找 int right_bound(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &amp;lt;= right){ int mid = left + (right - left)/2; if(nums[mid] &amp;gt; target){ right = mid - 1; }else{ left = mid + 1; } } if(right &amp;lt; 0 || nums[right] !</description>
+    </item>
+    
+    <item>
+      <title>🎰 LeetCode数组题解-前缀和 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/posts/leetcode-array-presum/</link>
+      <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/leetcode-array-presum/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
+前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 🎰 &amp;lt;数组-前缀和&amp;gt; 题目列表&amp;hellip;
+题解303. 区域和检索 - 数组不可变// 简单
+暴力法：每次遍历数组求和，时间O(N) 前缀和：时间O(1) 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
+构造前缀和 PreSum[i] = nums[0]~nums[i](tips:PreSum[0]=0，空出) 查询 sumRange[left, right] = PreSum[right+1] - PreSum[left] class NumArray { private: vector&amp;lt;int&amp;gt; PreSum; public: NumArray(vector&amp;lt;int&amp;gt;&amp;amp; nums) { PreSum.</description>
+    </item>
+    
+    <item>
+      <title>🎰 LeetCode数组题解-双指针 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/posts/leetcode-array-doubleptr/</link>
+      <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/leetcode-array-doubleptr/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+🎰 &amp;lt;数组-双指针&amp;gt; 题目列表&amp;hellip;
+题解26. 删除有序数组中的重复项//简单
+原地修改，双指针
+slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &amp;lt; nums.size()){ if(nums[slow] != nums[fast]){ slow++; nums[slow] = nums[fast]; } fast++; } return slow+1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
+原地修改，双指针
+移除指定的元素
+修改nums[slow] = nums[fast]条件即可: nums[fast] != val
+class Solution{ public: int removeElement(vector&amp;lt;int&amp;gt;&amp;amp; nums, int val) { int slow = 0; int fast = 0; while(fast &amp;lt; nums.</description>
+    </item>
+    
+    <item>
+      <title>🎰 LeetCode数组题解-原地翻转 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/posts/leetcode-array-inverse/</link>
+      <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/leetcode-array-inverse/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello
+原地翻转 一维 先整个翻转 hello world -&amp;gt; dlrow olleh 再翻转每个组内 dlrow olleh -&amp;gt; word hello 二维（矩阵顺时针旋转） 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置) 翻转每一行内 沿主对角线镜像翻转二维矩阵(转置)
+swap(matrix[i][j], matrix[j][i])
+for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; i; j++) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵
+swap(matrix[i][j], matrix[n-j-1][n-i-1])
+for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; n - i; j++) { // swap(matrix[i][j], matrix[n-j-1][n-i-1]) int temp = matrix[i][j]; matrix[i][j] = matrix[n - j - 1][n - i - 1]; matrix[n - j - 1][n - i - 1] = temp; } } 🎰 &amp;lt;数组-原地翻转&amp;gt; 题目列表&amp;hellip;</description>
+    </item>
+    
     <item>
       <title>🎰 LeetCode数组题解 (C&#43;&#43;)</title>
       <link>https://valepipi.github.io/posts/leetcode-array/</link>

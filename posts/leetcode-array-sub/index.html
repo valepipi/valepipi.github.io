@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net/; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+
+
+
+<meta name="author" content="游泳小狗">
+<meta name="description" content="本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums.size(); i&#43;&#43;){ diff[i] = nums[i] - nums[i-1]; } } void increment(int i, int j, int val){ diff[i] &#43;= val; if(j&#43;1 &lt; diff.size()) // 注意 diff[j&#43;1] -= val; } vector&lt;int&gt; result(){ vector&lt;int&gt; res(diff.size()); res[0] = diff[0]; for(int i = 1; i&lt; diff.size(); i&#43;&#43;) res[i] = res[i-1] &#43; diff[i]; return res; } }; 🎰 &lt;数组-差分数组&gt; 题目列表&hellip;">
+<meta name="keywords" content="博客，个人">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="🎰 LeetCode数组题解-差分数组 (C&#43;&#43;)"/>
+<meta name="twitter:description" content="本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums.size(); i&#43;&#43;){ diff[i] = nums[i] - nums[i-1]; } } void increment(int i, int j, int val){ diff[i] &#43;= val; if(j&#43;1 &lt; diff.size()) // 注意 diff[j&#43;1] -= val; } vector&lt;int&gt; result(){ vector&lt;int&gt; res(diff.size()); res[0] = diff[0]; for(int i = 1; i&lt; diff.size(); i&#43;&#43;) res[i] = res[i-1] &#43; diff[i]; return res; } }; 🎰 &lt;数组-差分数组&gt; 题目列表&hellip;"/>
+
+<meta property="og:title" content="🎰 LeetCode数组题解-差分数组 (C&#43;&#43;)" />
+<meta property="og:description" content="本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+差分数组工具类 class Difference{ public: vector&lt;int&gt; diff; Difference(vector&lt;int&gt;&amp; nums){ assert(nums.size() &gt; 0); diff = vector&lt;int&gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&lt;nums.size(); i&#43;&#43;){ diff[i] = nums[i] - nums[i-1]; } } void increment(int i, int j, int val){ diff[i] &#43;= val; if(j&#43;1 &lt; diff.size()) // 注意 diff[j&#43;1] -= val; } vector&lt;int&gt; result(){ vector&lt;int&gt; res(diff.size()); res[0] = diff[0]; for(int i = 1; i&lt; diff.size(); i&#43;&#43;) res[i] = res[i-1] &#43; diff[i]; return res; } }; 🎰 &lt;数组-差分数组&gt; 题目列表&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://valepipi.github.io/posts/leetcode-array-sub/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-01T09:56:54+08:00" />
+<meta property="article:modified_time" content="2023-06-01T09:56:54+08:00" /><meta property="og:site_name" content="游泳小狗" />
+
+
+
+
+  <title>游泳小狗</title>
+
+  
+  <link rel="canonical" href="https://valepipi.github.io/posts/leetcode-array-sub/">
+  
+
+  <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.6b1a4fbc48955b72aea7913e43fabeb45e8bc120da5aa41b598dd33adcac4b59.css" integrity="sha256-axpPvEiVW3Kup5E&#43;Q/q&#43;tF6LwSDaWqQbWY3TOtysS1k=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css" integrity="sha256-OeQafxa9&#43;MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+   
+
+
+
+
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+  
+
+  <meta name="generator" content="Hugo 0.101.0" />
+
+
+  
+
+</head>
+
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-dark">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      游泳小狗
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">爱好</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">联系我</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://valepipi.github.io/en/">英文</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://valepipi.github.io/posts/leetcode-array-sub/">
+              🎰 LeetCode数组题解-差分数组 (C&#43;&#43;)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-06-01T09:56:54&#43;08:00">
+                June 1, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/blog/">blog</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/leetcode/">LeetCode</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>本文为链表的Leetcode刷题记录。</p>
+<blockquote>
+<p>参考资料: <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-66994/dong-ge-da-8f403/">labuladong</a></p>
+</blockquote>
+<blockquote>
+<p><strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong></p>
+</blockquote>
+<ul>
+<li>差分数组工具类</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; diff;
+</span></span><span style="display:flex;"><span>    Difference(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>        assert(nums.size() &gt; 0);
+</span></span><span style="display:flex;"><span>        diff = vector&lt;<span style="">int</span>&gt;(nums.size());
+</span></span><span style="display:flex;"><span>        diff[0] = nums[0];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;nums.size(); i++){
+</span></span><span style="display:flex;"><span>            diff[i] = nums[i] - nums[i-1];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="">void</span> increment(<span style="">int</span> i, <span style="">int</span> j, <span style="">int</span> val){
+</span></span><span style="display:flex;"><span>        diff[i] += val;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(j+1 &lt; diff.size()) <span style="font-style:italic">// 注意
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            diff[j+1] -= val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; result(){
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>        res[0] = diff[0];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt; diff.size(); i++)
+</span></span><span style="display:flex;"><span>            res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="-数组-差分数组--题目列表">
+  🎰 &lt;数组-差分数组&gt;  题目列表
+  <a class="heading-link" href="#-%e6%95%b0%e7%bb%84-%e5%b7%ae%e5%88%86%e6%95%b0%e7%bb%84--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<p>&hellip;</p>
+<h1 id="题解">
+  题解
+  <a class="heading-link" href="#%e9%a2%98%e8%a7%a3">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<h2 id="307-区间加法httpsleetcodecnproblemsrange-addition">
+  <a href="https://leetcode.cn/problems/range-addition/">307. 区间加法</a>
+  <a class="heading-link" href="#307-%e5%8c%ba%e9%97%b4%e5%8a%a0%e6%b3%95httpsleetcodecnproblemsrange-addition">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等</p>
+<blockquote>
+<p><strong>差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。</strong></p>
+<ol>
+<li>构造差分数组：<code>diff[i] = nums[i] - nums[i - 1]</code></li>
+<li>对区间 <code>nums[i..j]</code> 的元素全部加 3，那么只需要让 <code>diff[i] += 3</code>，然后再让 <code>diff[j+1] -= 3</code> 即可</li>
+<li>根据<code>diff</code>可以反推出原数组</li>
+</ol>
+</blockquote>
+<p><strong>差分数组工具类&hellip;</strong></p>
+<p>本题</p>
+<ul>
+<li>暴力法：每次的批量修改都通过for循环操作，时间O(N)</li>
+<li>差分数组：时间O(1)
+<ul>
+<li>构造差分数组工具类、区间加减方法increment()、返回结果方法result()</li>
+<li>调用加减操作</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>vector&lt;<span style="">int</span>&gt; getModifiedArray(<span style="">int</span> length, vector&lt;vector&lt;<span style="">int</span>&gt;&amp; updates&gt;){
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; nums(length, 0);
+</span></span><span style="display:flex;"><span>    Difference df(nums, length);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>: updates){
+</span></span><span style="display:flex;"><span>        <span style="">int</span> i = update[0];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> j = update[1];
+</span></span><span style="display:flex;"><span>        <span style="">int</span> val = update[2];
+</span></span><span style="display:flex;"><span>        df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> df.result();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="1109-航班预订统计httpsleetcodecnproblemscorporate-flight-bookings">
+  <a href="https://leetcode.cn/problems/corporate-flight-bookings/">1109. 航班预订统计</a>
+  <a class="heading-link" href="#1109-%e8%88%aa%e7%8f%ad%e9%a2%84%e8%ae%a2%e7%bb%9f%e8%ae%a1httpsleetcodecnproblemscorporate-flight-bookings">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+差分数组，操作区间</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    vector&lt;<span style="">int</span>&gt; corpFlightBookings(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; bookings, <span style="">int</span> n) {
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; nums(n);
+</span></span><span style="display:flex;"><span>        Difference df(nums);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; booking: bookings){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> i = booking[0] - 1;
+</span></span><span style="display:flex;"><span>            <span style="">int</span> j = booking[1] - 1;
+</span></span><span style="display:flex;"><span>            <span style="">int</span> val = booking[2];
+</span></span><span style="display:flex;"><span>            df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> df.result();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; diff;
+</span></span><span style="display:flex;"><span>        Difference(vector&lt;<span style="">int</span>&gt;&amp; nums){
+</span></span><span style="display:flex;"><span>            assert(nums.size() &gt; 0);
+</span></span><span style="display:flex;"><span>            diff = vector&lt;<span style="">int</span>&gt;(nums.size());
+</span></span><span style="display:flex;"><span>            diff[0] = nums[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;nums.size(); i++){
+</span></span><span style="display:flex;"><span>                diff[i] = nums[i] - nums[i-1];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>        <span style="">void</span> increment(<span style="">int</span> i, <span style="">int</span> j, <span style="">int</span> val){
+</span></span><span style="display:flex;"><span>            diff[i] += val;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(j+1 &lt; diff.size())
+</span></span><span style="display:flex;"><span>                diff[j+1] -= val;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; result(){
+</span></span><span style="display:flex;"><span>            vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>            res[0] = diff[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt; diff.size(); i++)
+</span></span><span style="display:flex;"><span>                res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="1094-拼车httpsleetcodecnproblemscar-pooling">
+  <a href="https://leetcode.cn/problems/car-pooling/">1094. 拼车</a>
+  <a class="heading-link" href="#1094-%e6%8b%bc%e8%bd%a6httpsleetcodecnproblemscar-pooling">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>// 中等<br>
+差分数组，操作区间</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> carPooling(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; trips, <span style="">int</span> capacity) {
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; nums(1001); <span style="font-style:italic">//车站数量不超过1000
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        Difference df(nums, 1001);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; trip: trips){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> i = trip[1];
+</span></span><span style="display:flex;"><span>            <span style="">int</span> j = trip[2] - 1; <span style="font-style:italic">//j站已经下车
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="">int</span> val = trip[0];
+</span></span><span style="display:flex;"><span>            df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> (!df.cover(capacity)) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; diff;
+</span></span><span style="display:flex;"><span>        Difference(vector&lt;<span style="">int</span>&gt;&amp; nums, <span style="">int</span> len){
+</span></span><span style="display:flex;"><span>            assert(len &gt; 0);
+</span></span><span style="display:flex;"><span>            diff = vector&lt;<span style="">int</span>&gt;(len);
+</span></span><span style="display:flex;"><span>            diff[0] = nums[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;len; i++)
+</span></span><span style="display:flex;"><span>                diff[i] = nums[i] - nums[i-1];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="">void</span> increment(<span style="">int</span> i, <span style="">int</span> j, <span style="">int</span> val){
+</span></span><span style="display:flex;"><span>            diff[i] += val;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(j+1 &lt; diff.size())
+</span></span><span style="display:flex;"><span>                diff[j+1] -= val;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="">bool</span> cover(<span style="">int</span> max){
+</span></span><span style="display:flex;"><span>            vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>            res[0] = diff[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(res[0] &gt; max) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;diff.size(); i++){
+</span></span><span style="display:flex;"><span>                res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">if</span>(res[i] &gt; max) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>超载判断条件：</p>
+<ul>
+<li>问题：每次操作之后判断所有车站
+<ul>
+<li><code>df.cover(capacity)</code>在循环中调用，开销是O(N)</li>
+</ul>
+</li>
+<li>优化：所有操作之后判断所有车站
+<ul>
+<li>由于车在每个时间点只能出现在一个站，所以对于一个站只可能操作一次，不可能有前后两批乘客在同一个站上车</li>
+<li>只需要对最后的结果(走完1000个车站)做一次遍历，判断每个站是否超载即可</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> carPooling(vector&lt;vector&lt;<span style="">int</span>&gt;&gt;&amp; trips, <span style="">int</span> capacity) {
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; trip: trips){
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">//...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            df.increment(i, j, val);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="">int</span>&gt; res = df.result();
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span>(<span style="font-weight:bold">auto</span>&amp; r: res){
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span>(r &gt; capacity) <span style="font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">class</span> <span style="font-weight:bold">Difference</span>{
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        vector&lt;<span style="">int</span>&gt; result(){
+</span></span><span style="display:flex;"><span>            vector&lt;<span style="">int</span>&gt; res(diff.size());
+</span></span><span style="display:flex;"><span>            res[0] = diff[0];
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">for</span>(<span style="">int</span> i = 1; i&lt;diff.size(); i++){
+</span></span><span style="display:flex;"><span>                res[i] = res[i-1] + diff[i];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js"></script>
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2022 -
+    
+    2023
+     游泳小狗 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+  
+  <script src="/js/coder.min.236049395dc3682fb2719640872958e12f1f24067bb09c327b233e6290c7edac.js" integrity="sha256-I2BJOV3DaC&#43;ycZZAhylY4S8fJAZ7sJwyeyM&#43;YpDH7aw="></script>
+  
+
+  
+
+  
+
+  <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//cdn.usefathom.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  <script async defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script>
+
+
+  <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+  
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+
+  <script type="application/javascript">
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.example.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'ABCDE']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=gid"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'gid');
+</script>
+
+
+  <script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="connectionString",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", 
+    
+    
+    
+    crossOrigin: "anonymous", 
+    
+    cfg: { 
+        connectionString: "connectionstring"
+         
+    }});
+    </script>    
+
+</body>
+
+</html>
