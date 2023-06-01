@@ -32,6 +32,19 @@
     </item>
     
     <item>
+      <title>🎰 LeetCode数组题解-滑动窗口 (C&#43;&#43;)</title>
+      <link>https://valepipi.github.io/posts/leetcode-window/</link>
+      <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
+      
+      <guid>https://valepipi.github.io/posts/leetcode-window/</guid>
+      <description>本文为链表的Leetcode刷题记录。
+参考资料: labuladong
+滑动窗口：寻找最优解，构造窗口[left, right) 滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配
+滑动窗口void slidingWindow(string s){ unordered_map&amp;lt;char, int&amp;gt; window; int left = 0, right = 0; while(right &amp;lt; s.size()){ char c = s[right]; window.add(c); right++; // 增大窗口 // ... while(left &amp;lt; right &amp;amp;&amp;amp; window need shrink){ char d = s[left]; window.remove(d); left++; // 缩小窗口 } } } 滑动哈希滑动数字：删除高位，添加低位
+// 删除高位 8264 -&amp;gt; 264 int number = 8264; int R = 10; //number的进制 int removeVal = 8; //number的最高位数字 int L = 4; //原来 number的位数 number = number - removeVal*pow(R, L-1); // 8264 - 8000 = 264 // 添加低位 8264 -&amp;gt; 38264 int number = 8264; int R = 10; // number的位数 int appendVal = 3; // 添加的数字 number = R*number + appendVal; // 8264*10 + 3= 82643 🎰 &amp;lt;滑动窗口&amp;gt; 题目列表&amp;hellip;</description>
+    </item>
+    
+    <item>
       <title>🎰 LeetCode数组题解-前缀和 (C&#43;&#43;)</title>
       <link>https://valepipi.github.io/posts/leetcode-array-presum/</link>
       <pubDate>Thu, 01 Jun 2023 09:56:54 +0800</pubDate>
@@ -72,12 +85,10 @@ class Solution{ public: int removeElement(vector&amp;lt;int&amp;gt;&amp;amp; num
       <guid>https://valepipi.github.io/posts/leetcode-array-inverse/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello
-原地翻转 一维 先整个翻转 hello world -&amp;gt; dlrow olleh 再翻转每个组内 dlrow olleh -&amp;gt; word hello 二维（矩阵顺时针旋转） 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置) 翻转每一行内 沿主对角线镜像翻转二维矩阵(转置)
+原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello；矩阵反转、螺旋矩阵
+原地翻转- 一维- 先整个翻转 `hello world -&amp;gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&amp;gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
 swap(matrix[i][j], matrix[j][i])
-for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; i; j++) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵
-swap(matrix[i][j], matrix[n-j-1][n-i-1])
-for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; n - i; j++) { // swap(matrix[i][j], matrix[n-j-1][n-i-1]) int temp = matrix[i][j]; matrix[i][j] = matrix[n - j - 1][n - i - 1]; matrix[n - j - 1][n - i - 1] = temp; } } 🎰 &amp;lt;数组-原地翻转&amp;gt; 题目列表&amp;hellip;</description>
+for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; i; j++) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵</description>
     </item>
     
     <item>
