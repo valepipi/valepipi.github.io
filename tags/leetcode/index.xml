@@ -52,11 +52,9 @@
       <guid>https://valepipi.github.io/posts/leetcode-array-presum/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
-前缀和框架 class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 🎰 &amp;lt;数组-前缀和&amp;gt; 题目列表&amp;hellip;
-题解303. 区域和检索 - 数组不可变// 简单
-暴力法：每次遍历数组求和，时间O(N) 前缀和：时间O(1) 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
-构造前缀和 PreSum[i] = nums[0]~nums[i](tips:PreSum[0]=0，空出) 查询 sumRange[left, right] = PreSum[right+1] - PreSum[left] class NumArray { private: vector&amp;lt;int&amp;gt; PreSum; public: NumArray(vector&amp;lt;int&amp;gt;&amp;amp; nums) { PreSum.</description>
+🎰 &amp;lt;数组-前缀和&amp;gt; 题目列表力扣题目 知识点 难度 303. 区域和检索 - 数组不可变 构造一维前缀和+查询 简单 304. 二维区域和检索 - 矩阵不可变 构造二维前缀和+查询 中等 前缀和框架 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
+class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 题解303. 区域和检索 - 数组不可变// 简单
+暴力法：每次遍历数组求和，时间O(N) 前缀和：时间O(1) 前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</description>
     </item>
     
     <item>
@@ -85,25 +83,27 @@ class Solution{ public: int removeElement(vector&amp;lt;int&amp;gt;&amp;amp; num
       <guid>https://valepipi.github.io/posts/leetcode-array-inverse/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello；矩阵反转、螺旋矩阵
-原地翻转- 一维- 先整个翻转 `hello world -&amp;gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&amp;gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
+🎰 &amp;lt;数组-原地翻转&amp;gt; 题目列表力扣题目 知识点 难度 48. 旋转图像 主对角线翻转+翻转每行 中等 54. 螺旋矩阵 四个边界+四个方向 中等 59. 螺旋矩阵 II 四个边界+四个方向 中等 原地翻转原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello；矩阵反转、螺旋矩阵
+- 一维- 先整个翻转 `hello world -&amp;gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&amp;gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
 swap(matrix[i][j], matrix[j][i])
 for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; i; j++) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵</description>
     </item>
     
     <item>
-      <title>🎰 LeetCode数组题解 (C&#43;&#43;)</title>
+      <title>🎰 LeetCode数组算法框架 (C&#43;&#43;)</title>
       <link>https://valepipi.github.io/posts/leetcode-array/</link>
       <pubDate>Sat, 13 May 2023 16:38:45 +0800</pubDate>
       
       <guid>https://valepipi.github.io/posts/leetcode-array/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-🎰 &amp;lt;数组&amp;gt; 题目列表&amp;hellip;
-技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
+🎰 &amp;lt;数组&amp;gt; 框架列表算法框架 题目列表 知识点 前缀和 303. 区域和检索 - 数组不可变304. 二维区域和检索 - 矩阵不可变 简单 差分数组 双指针 中等 原地翻转 快慢指针、dummy node 中等 滑动窗口 双指针 中等 滑动哈希 快慢指针、dummy node 中等 二分搜索 双指针 中等 技巧前缀和：主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello；矩阵反转、螺旋矩阵 滑动窗口：寻找最优解，构造窗口[left, right) 滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配 二分搜索
-前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.size() &amp;gt; 0); diff = vector&amp;lt;int&amp;gt;(nums.</description>
+原地翻转：组间反转，组内不变 hello world -&amp;gt; word hello；矩阵反转、螺旋矩阵
+滑动窗口：寻找最优解，构造窗口[left, right)
+滑动哈希：在滑动窗口中快速计算窗口中元素的哈希值, 设计一种哈希编码方式用O(1)优化暴力匹配
+二分搜索
+前缀和框架class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;gt;&amp;amp; nums){ prefix = new int[nums.size()+1]; for(int i = 0; i &amp;lt; nums.size(); i++) prefix[i+1] = prefix[i] + nums[i]; } int query(int i, int j){ return prefix[j+1] - prefix[i]; } } 差分数组工具类class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.</description>
     </item>
     
     <item>

@@ -14,8 +14,8 @@
 <meta name="author" content="游泳小狗">
 <meta name="description" content="本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵
-原地翻转- 一维- 先整个翻转 `hello world -&gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
+🎰 &lt;数组-原地翻转&gt; 题目列表力扣题目 知识点 难度 48. 旋转图像 主对角线翻转&#43;翻转每行 中等 54. 螺旋矩阵 四个边界&#43;四个方向 中等 59. 螺旋矩阵 II 四个边界&#43;四个方向 中等 原地翻转原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵
+- 一维- 先整个翻转 `hello world -&gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
 swap(matrix[i][j], matrix[j][i])
 for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; i; j&#43;&#43;) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵">
 <meta name="keywords" content="博客，个人">
@@ -24,16 +24,16 @@ for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; i; j&#43;&#43;) 
 <meta name="twitter:title" content="🎰 LeetCode数组题解-原地翻转 (C&#43;&#43;)"/>
 <meta name="twitter:description" content="本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵
-原地翻转- 一维- 先整个翻转 `hello world -&gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
+🎰 &lt;数组-原地翻转&gt; 题目列表力扣题目 知识点 难度 48. 旋转图像 主对角线翻转&#43;翻转每行 中等 54. 螺旋矩阵 四个边界&#43;四个方向 中等 59. 螺旋矩阵 II 四个边界&#43;四个方向 中等 原地翻转原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵
+- 一维- 先整个翻转 `hello world -&gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
 swap(matrix[i][j], matrix[j][i])
 for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; i; j&#43;&#43;) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵"/>
 
 <meta property="og:title" content="🎰 LeetCode数组题解-原地翻转 (C&#43;&#43;)" />
 <meta property="og:description" content="本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵
-原地翻转- 一维- 先整个翻转 `hello world -&gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
+🎰 &lt;数组-原地翻转&gt; 题目列表力扣题目 知识点 难度 48. 旋转图像 主对角线翻转&#43;翻转每行 中等 54. 螺旋矩阵 四个边界&#43;四个方向 中等 59. 螺旋矩阵 II 四个边界&#43;四个方向 中等 原地翻转原地翻转：组间反转，组内不变 hello world -&gt; word hello；矩阵反转、螺旋矩阵
+- 一维- 先整个翻转 `hello world -&gt; dlrow olleh`- 再翻转每个组内 `dlrow olleh -&gt; word hello`- 二维（矩阵顺时针旋转）- 整个矩阵转置 (逆时针旋转则是沿着副对角线方向转置)- 翻转每一行内沿主对角线镜像翻转二维矩阵(转置)
 swap(matrix[i][j], matrix[j][i])
 for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; i; j&#43;&#43;) { // swap(matrix[i][j], matrix[j][i]) int temp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = temp; } } 沿副对角线镜像翻转二维矩阵" />
 <meta property="og:type" content="article" />
@@ -210,15 +210,47 @@ for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; i; j&#43;&#43;) 
 <blockquote>
 <p>参考资料: <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-66994/dong-ge-da-8f403/">labuladong</a></p>
 </blockquote>
-<blockquote>
-<p><strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code>；矩阵反转、螺旋矩阵</strong></p>
-</blockquote>
+<h1 id="-数组-原地翻转--题目列表">
+  🎰 &lt;数组-原地翻转&gt;  题目列表
+  <a class="heading-link" href="#-%e6%95%b0%e7%bb%84-%e5%8e%9f%e5%9c%b0%e7%bf%bb%e8%bd%ac--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<table>
+<thead>
+<tr>
+<th>力扣题目</th>
+<th>知识点</th>
+<th>难度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://leetcode.cn/problems/rotate-image/">48. 旋转图像</a></td>
+<td>主对角线翻转+翻转每行</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><a href="https://leetcode.cn/problems/spiral-matrix/">54. 螺旋矩阵</a></td>
+<td>四个边界+四个方向</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><a href="https://leetcode.cn/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a></td>
+<td>四个边界+四个方向</td>
+<td>中等</td>
+</tr>
+</tbody>
+</table>
 <h3 id="原地翻转">
   原地翻转
   <a class="heading-link" href="#%e5%8e%9f%e5%9c%b0%e7%bf%bb%e8%bd%ac">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
+<blockquote>
+<p><strong>原地翻转：组间反转，组内不变 <code>hello world -&gt; word hello</code>；矩阵反转、螺旋矩阵</strong></p>
+</blockquote>
 <pre><code>- 一维
   - 先整个翻转 `hello world -&gt; dlrow olleh`
   - 再翻转每个组内 `dlrow olleh -&gt; word hello`
@@ -246,15 +278,7 @@ for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; i; j&#43;&#43;) 
 </span></span><span style="display:flex;"><span>            matrix[n - j - 1][n - i - 1] = temp;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><p>s</p>
-<h1 id="-数组-原地翻转--题目列表">
-  🎰 &lt;数组-原地翻转&gt;  题目列表
-  <a class="heading-link" href="#-%e6%95%b0%e7%bb%84-%e5%8e%9f%e5%9c%b0%e7%bf%bb%e8%bd%ac--%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h1>
-<p>&hellip;</p>
-<h1 id="题解">
+</span></span></code></pre></div><h1 id="题解">
   题解
   <a class="heading-link" href="#%e9%a2%98%e8%a7%a3">
     <i class="fa fa-link" aria-hidden="true"></i>
