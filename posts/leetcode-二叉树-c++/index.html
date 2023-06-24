@@ -698,14 +698,13 @@ memo备忘录记录出现次数</p>
 </h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
 </span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
-</span></span><span style="display:flex;"><span>    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == NULL) <span style="font-weight:bold">return</span> NULL;
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(p == root || q == root) <span style="font-weight:bold">return</span> root;
-</span></span><span style="display:flex;"><span>        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
-</span></span><span style="display:flex;"><span>        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left != NULL &amp;&amp; right != NULL) <span style="font-weight:bold">return</span> root;
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left == NULL &amp;&amp; right == NULL) <span style="font-weight:bold">return</span> NULL;
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left == NULL ? right: left;
+</span></span><span style="display:flex;"><span>    <span style="">int</span> countNodes(TreeNode* root) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == <span style="font-weight:bold">nullptr</span>) <span style="font-weight:bold">return</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="">int</span> leftnodes = countNodes(root-&gt;left);
+</span></span><span style="display:flex;"><span>        <span style="">int</span> rightnodes = countNodes(root-&gt;right);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> 1 + leftnodes + rightnodes;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="297-二叉树的序列化与反序列化httpsleetcodecnproblemsserialize-and-deserialize-binary-treefavorite59jeatgw">
@@ -828,6 +827,7 @@ memo备忘录记录出现次数</p>
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
+<p>倒的中序遍历：右-&gt;中-&gt;左</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
 </span></span><span style="display:flex;"><span>    <span style="">int</span> sum = 0;
 </span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
@@ -849,6 +849,7 @@ memo备忘录记录出现次数</p>
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
+<p>中序遍历</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
 </span></span><span style="display:flex;"><span>    <span style="">int</span> rank = 0;
 </span></span><span style="display:flex;"><span>    <span style="">int</span> res = 0;
@@ -1010,7 +1011,18 @@ memo备忘录记录出现次数</p>
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == NULL) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(root == q || root == p) <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
+</span></span><span style="display:flex;"><span>        TreeNode* right= lowestCommonAncestor(root-&gt;right, p, q);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left != NULL &amp;&amp; right != NULL) <span style="font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span>(left == NULL &amp;&amp; right == NULL) <span style="font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> left == NULL ? right: left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
       </div>
 
