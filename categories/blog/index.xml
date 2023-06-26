@@ -65,14 +65,9 @@ class PrefixSum{ private: int* prefix; public: PrefixSum(vector&amp;lt;int&amp;g
       <guid>https://valepipi.github.io/posts/leetcode-array-doubleptr/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-🎰 &amp;lt;数组-双指针&amp;gt; 题目列表&amp;hellip;
-题解26. 删除有序数组中的重复项//简单
+🎰 &amp;lt;数组-双指针&amp;gt; 题目列表力扣题目 知识点 难度 26. 删除有序数组中的重复项 双指针、原地修改 简单 27. 移除元素 双指针、原地修改 简单 83. 删除排序链表中的重复元素 双指针、原地修改 简单 344. 反转字符串 双指针、原地修改 简单 283. 移动零 双指针、原地修改 简单 167. 两数之和 II - 输入有序数组 双指针 中等 题解26. 删除有序数组中的重复项//简单
 原地修改，双指针
-slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) { int slow = 0; int fast = 0; if(nums.size() == 0) return 0; while(fast &amp;lt; nums.size()){ if(nums[slow] != nums[fast]){ slow++; nums[slow] = nums[fast]; } fast++; } return slow+1; } }; 27. 移除元素//简单 26. 删除有序数组中的重复项的变体
-原地修改，双指针
-移除指定的元素
-修改nums[slow] = nums[fast]条件即可: nums[fast] != val
-class Solution{ public: int removeElement(vector&amp;lt;int&amp;gt;&amp;amp; nums, int val) { int slow = 0; int fast = 0; while(fast &amp;lt; nums.</description>
+slow记录当前元素，fast在前方试探下一个不同的元素 fast遇到不同的元素时，赋值给slow的下一个位置 (数组有序) 当fast遍历完数组，结束；此时，0-slow是去重后的数组 class Solution { public: int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) { int slow = 0; // slow记录当前元素，需保留，先移动后赋值 int fast = 0; // fast寻找下一个新元素 if(nums.size() == 0) return 0; while(fast &amp;lt; nums.</description>
     </item>
     
     <item>
