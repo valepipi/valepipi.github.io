@@ -27,8 +27,8 @@
       <guid>https://valepipi.github.io/posts/leetcode-array-bisearch/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-二分查找：搜索左边界、搜索右边界
-二分查找框架 //搜索左边界的二分查找 int left_bound(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &amp;lt;= right){ int mid = left + (right - left)/2; if(nums[mid] &amp;lt; target){ left = mid + 1; }else{ right = mid - 1; } } if(left &amp;gt;= nums.size() || nums[left] != target) return -1; return left; } //搜索右边界的二分查找 int right_bound(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &amp;lt;= right){ int mid = left + (right - left)/2; if(nums[mid] &amp;gt; target){ right = mid - 1; }else{ left = mid + 1; } } if(right &amp;lt; 0 || nums[right] !</description>
+🎰 &amp;lt;数组-二分查找&amp;gt; 题目列表力扣题目 知识点 难度 704. 二分查找 二分查找 简单 34. 在排序数组中查找元素的第一个和最后一个位置 二分搜索左侧边界、右侧边界 中等 528. 按权重随机选择 前缀和、二分搜索左侧边界 中等 410. 分割数组的最大值) 二分搜索 困难 二分查找：搜索左边界、搜索右边界
+二分查找框架 //搜索左边界的二分查找 int left_bound(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target){ int left = 0, right = nums.size()-1; while(left &amp;lt;= right){ int mid = left + (right - left)/2; if(nums[mid] &amp;lt; target){ left = mid + 1; }else{ right = mid - 1; } } if(left &amp;gt;= nums.size() || nums[left] !</description>
     </item>
     
     <item>
