@@ -15,8 +15,8 @@
       <guid>https://valepipi.github.io/posts/leetcode-array-sub/</guid>
       <description>本文为链表的Leetcode刷题记录。
 参考资料: labuladong
-差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
-差分数组工具类 class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.size() &amp;gt; 0); diff = vector&amp;lt;int&amp;gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&amp;lt;nums.size(); i++){ diff[i] = nums[i] - nums[i-1]; } } void increment(int i, int j, int val){ diff[i] += val; if(j+1 &amp;lt; diff.size()) // 注意 diff[j+1] -= val; } vector&amp;lt;int&amp;gt; result(){ vector&amp;lt;int&amp;gt; res(diff.size()); res[0] = diff[0]; for(int i = 1; i&amp;lt; diff.size(); i++) res[i] = res[i-1] + diff[i]; return res; } }; 🎰 &amp;lt;数组-差分数组&amp;gt; 题目列表&amp;hellip;</description>
+🎰 &amp;lt;数组-差分数组&amp;gt; 题目列表力扣题目 知识点 难度 307. 区间加法 差分数组 中等 1109. 航班预订统计 差分数组 中等 1094. 拼车 前缀和、二分搜索左侧边界 中等 差分数组: 主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+构造差分数组：diff[i] = nums[i] - nums[i - 1] 对区间 nums[i..j] 的元素全部加 3，那么只需要让 diff[i] += 3，然后再让 diff[j+1] -= 3 即可 根据diff可以反推出原数组 差分数组工具类 class Difference{ public: vector&amp;lt;int&amp;gt; diff; Difference(vector&amp;lt;int&amp;gt;&amp;amp; nums){ assert(nums.size() &amp;gt; 0); diff = vector&amp;lt;int&amp;gt;(nums.size()); diff[0] = nums[0]; for(int i = 1; i&amp;lt;nums.size(); i++){ diff[i] = nums[i] - nums[i-1]; } } void increment(int i, int j, int val){ diff[i] += val; if(j+1 &amp;lt; diff.</description>
     </item>
     
     <item>
